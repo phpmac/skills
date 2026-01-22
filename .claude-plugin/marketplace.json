@@ -1,14 +1,14 @@
 {
-  "name": "skills-collection",
-  "description": "Personal collection of Claude skills for various development tasks",
+  "name": "phpmac/skills",
+  "description": "自己的技能库",
   "owner": {
-    "name": "a",
+    "name": "phpmac",
     "email": "a@vc.sb"
   },
   "plugins": [
     {
       "name": "skills",
-      "description": "Collection of custom skills for Claude Code",
+      "description": "自己的技能库",
       "version": "1.0.0",
       "source": "./",
       "author": {

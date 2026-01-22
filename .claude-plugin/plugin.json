@@ -1,9 +1,9 @@
 {
-  "name": "a/skills",
+  "name": "phpmac/skills",
   "description": "自己的技能库",
   "version": "1.0.0",
   "author": {
-    "name": "a",
+    "name": "phpmac",
     "email": "a@vc.sb"
   },
   "homepage": "https://github.com/phpmac/skills",
