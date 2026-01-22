@@ -1,0 +1,20 @@
+{
+  "name": "skills-collection",
+  "description": "Personal collection of Claude skills for various development tasks",
+  "owner": {
+    "name": "a",
+    "email": "a@vc.sb"
+  },
+  "plugins": [
+    {
+      "name": "skills",
+      "description": "Collection of custom skills for Claude Code",
+      "version": "1.0.0",
+      "source": "./",
+      "author": {
+        "name": "a",
+        "email": "a@vc.sb"
+      }
+    }
+  ]
+}

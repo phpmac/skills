@@ -1,0 +1,18 @@
+{
+  "name": "a/skills",
+  "description": "自己的技能库",
+  "version": "1.0.0",
+  "author": {
+    "name": "a",
+    "email": "a@vc.sb"
+  },
+  "homepage": "https://github.com/phpmac/skills",
+  "repository": "https://github.com/phpmac/skills",
+  "license": "MIT",
+  "keywords": [
+    "skills",
+    "claude",
+    "development",
+    "productivity"
+  ]
+}
