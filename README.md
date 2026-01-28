@@ -9,6 +9,7 @@
 /plugin marketplace add ~/Downloads/skills
 
 # 技能
-bunx add-skill ~/Downloads/skills/skills
+bunx skills add ~/Downloads/skills/skills
 
+bunx skills add vercel-labs/agent-skills
 ```
