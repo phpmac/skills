@@ -7,6 +7,8 @@
 ```bash
 # 插件
 /plugin marketplace add ~/Downloads/skills
+# 官方
+/plugin marketplace add anthropics/claude-code
 
 # 技能
 bunx skills add ~/Downloads/skills/skills
