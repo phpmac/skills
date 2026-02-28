@@ -5,21 +5,11 @@
 ## 安装使用方法
 
 ```bash
-# 插件
+# 本地安装,会自己安装插件和skills
 /plugin marketplace add ~/Downloads/skills
-# 官方
-/plugin marketplace add anthropics/claude-code
 
-# 技能
-bunx skills add ~/Downloads/skills/skills
-
-# 通用,禁止安装第三方未知技能,防止后门
-bunx skills add https://github.com/anthropics/skills --skill skill-creator
-bunx skills add https://github.com/vercel-labs/agent-skills --skill vercel-react-best-practices
-bunx skills add https://github.com/vercel-labs/agent-skills --skill web-design-guidelines
-
-# APP通用
-bunx skills add expo/skills
-
-bunx skills add vercel-labs/agent-skills
+# 一键复制 hoohookify 规则到 ~/.claude/ 目录下
+cp -r plugins/hookify/examples/ ~/.claude/
 ```
+
+[借鉴了官方应用市场](https://github.com/anthropics/claude-code)

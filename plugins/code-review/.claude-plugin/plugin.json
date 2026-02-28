@@ -1,0 +1,10 @@
+{
+  "name": "code-review",
+  "description": "使用多个专业 Agent 并行审计 PR 变更, 通过置信度评分过滤误报, 实现自动化代码审查",
+  "version": "1.0.0",
+  "author": {
+    "name": "Boris Cherny",
+    "email": "boris@anthropic.com"
+  }
+}
+

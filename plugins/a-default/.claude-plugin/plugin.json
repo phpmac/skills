@@ -1,0 +1,9 @@
+{
+  "name": "a-default",
+  "version": "1.0.0",
+  "description": "强制第三方模型遵守 CLAUDE.md 规则",
+  "author": {
+    "name": "phpmac",
+    "email": "a@vc.sb"
+  }
+}

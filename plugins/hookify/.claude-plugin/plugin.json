@@ -1,0 +1,9 @@
+{
+  "name": "hookify",
+  "version": "0.1.0",
+  "description": "通过分析对话模式轻松创建 hooks 以防止不良行为",
+  "author": {
+    "name": "Daisy Hollman",
+    "email": "daisy@anthropic.com"
+  }
+}
