@@ -8,8 +8,8 @@
 # 本地安装,会自己安装插件和skills
 /plugin marketplace add ~/Downloads/skills
 
-# 一键复制 hoohookify 规则到 ~/.claude/ 目录下
-cp -r plugins/hookify/examples/ ~/.claude/
+# 一键复制 hookify 规则到 ~/.claude/ 目录下
+rm -rf ~/.claude/hookify.*(N) &&cp -r plugins/hookify/examples/ ~/.claude/
 ```
 
 [借鉴了官方应用市场](https://github.com/anthropics/claude-code)

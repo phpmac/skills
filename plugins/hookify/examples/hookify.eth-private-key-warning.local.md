@@ -2,7 +2,7 @@
 name: warn-eth-private-key
 enabled: true
 event: file
-action: warn
+action: block
 conditions:
   - field: content
     operator: regex_match
