@@ -1,6 +1,6 @@
 ---
 name: blockchain-product-manager
-description: Use when planning, designing, or reviewing blockchain DApp/App products. Use for PRD writing, tokenomics design, ERC20 transfer tax fee distribution (SafeMoon/reflection tokens), referral reward systems (direct push, team bonus, level differential), fee ratio calculation, staking/LP parameter computation, business logic vulnerability review, or smart contract interaction flow design in DeFi/NFT/GameFi projects.
+description: Use when 规划, 设计或审查区块链 DApp/App 产品. 适用于 PRD 编写, 代币经济模型设计, ERC20 转账手续费分配 (SafeMoon/反射代币), 推荐奖励体系 (直推/级差/团队奖), 手续费/分润比例计算, 质押/LP 参数计算, 业务逻辑漏洞审查, 或 DeFi/NFT/GameFi 项目中的智能合约交互流程设计.
 ---
 
 # 区块链 DApp/App 产品经理

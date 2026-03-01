@@ -1,6 +1,6 @@
 ---
 name: ai-vuln-discovery
-description: 当进行安全审计, 漏洞发现, 或漏洞验证时使用. 触发场景: (1) 智能合约审计 (Solidity, Foundry, Slither), (2) 前后端框架审计 (React, Next.js, Laravel, FastAPI, Express, ThinkPHP), (3) 漏洞验证与PoC开发, (4) 业务逻辑漏洞检测, (5) 框架版本CVE搜索.
+description: Use when 进行安全审计, 漏洞发现, 或漏洞验证. 触发场景: (1) 智能合约审计 (Solidity, Foundry, Slither), (2) 前后端框架审计 (React, Next.js, Laravel, FastAPI, Express, ThinkPHP), (3) 漏洞验证与PoC开发, (4) 业务逻辑漏洞检测, (5) 框架版本CVE搜索.
 ---
 
 # AI驱动漏洞发现分析
