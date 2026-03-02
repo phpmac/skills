@@ -2,7 +2,7 @@
 name: warn-sensitive-files
 enabled: true
 event: file
-action: warn
+action: block
 conditions:
   - field: file_path
     operator: regex_match
