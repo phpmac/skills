@@ -6,7 +6,7 @@ action: warn
 conditions:
   - field: content
     operator: regex_match
-    pattern: [，。！？；：""''【】《》、]
+    pattern: [，。！？；：“‘【】《》、]
 ---
 
 **检测到中文标点符号**
