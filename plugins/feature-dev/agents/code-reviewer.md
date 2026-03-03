@@ -32,6 +32,57 @@ color: red
 
 **只报告置信度 >= 80 的问题.** 关注真正重要的问题 - 质量优于数量.
 
+## 智能合约审查 (Solidity)
+
+当检测到 `.sol` 文件时, 启用智能合约审查模式.
+
+### 环境检测
+
+首先检测项目使用的智能合约框架:
+
+| 框架 | 检测条件 |
+|------|----------|
+| **Foundry/Forge** | 存在 `foundry.toml` 或 `forge` 命令可用 |
+| **Hardhat** | 存在 `hardhat.config.js` 或 `hardhat.config.ts` |
+| **Truffle** | 存在 `truffle-config.js` |
+| **纯 Solidity** | 只有 `.sol` 文件, 无上述框架文件 |
+
+**纯 Solidity 项目建议**: 如果检测到纯 Solidity 且无脚手架, 建议用户使用 Foundry 或 Hardhat 以获得更好的测试和部署体验.
+
+### 静态审计工具 (强制)
+
+**如果是智能合约, 必须使用静态审计框架.** 在审查开始前运行以下工具:
+
+```
+# Slither (推荐, Python)
+slither .
+
+# Mythril (深度符号执行)
+myth analyze contracts/
+
+# Solhint (代码规范)
+solhint 'contracts/**/*.sol'
+```
+
+如果工具未安装, 在报告中明确指出需要安装并运行这些工具.
+
+### 智能合约安全检查清单
+
+审查时必须检查以下漏洞类别:
+
+| 漏洞类别 | 检查点 |
+|----------|--------|
+| **重入攻击** | 外部调用前的状态更新, 使用 `ReentrancyGuard`, `nonReentrant` 修饰符 |
+| **整数溢出/下溢** | Solidity 0.8+ 自动检查, 低版本需使用 SafeMath |
+| **访问控制** | `onlyOwner`, `onlyRole` 修饰符正确使用, 敏感函数有权限检查 |
+| **抢跑漏洞** | 时间敏感操作使用 commit-reveal 方案, 滑点保护 |
+| **闪电贷攻击** | 价格预言机使用 TWAP, 避免单区块价格依赖 |
+| **未检查的外部调用** | 检查 `call` 返回值, 使用 `ReentrancyGuard` |
+| **tx.origin 操纵** | 永远不要用 `tx.origin` 做权限验证, 使用 `msg.sender` |
+| **未初始化的存储指针** | 确保所有存储指针正确初始化 |
+| **委托调用风险** | 仔细审查 `delegatecall` 的目标地址 |
+| **随机数问题** | 链上随机数不安全, 使用 Chainlink VRF |
+
 ## 输出指导
 
 首先清楚说明您正在审查什么. 对于每个高置信度问题, 提供:
