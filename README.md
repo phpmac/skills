@@ -8,8 +8,14 @@
 # 本地安装,会自己安装插件和skills
 /plugin marketplace add ~/Downloads/skills
 
+/plugin marketplace add anthropics/claude-code
+
+
 # 一键复制 hookify 规则到 ~/.claude/ 目录下
 rm -rf ~/.claude/hookify.*(N) && cp plugins/hookify/examples/* ~/.claude/
+
+
+bunx skills add OpenZeppelin/openzeppelin-skills
 ```
 
 [借鉴了官方应用市场](https://github.com/anthropics/claude-code)
