@@ -40,7 +40,7 @@ Commit Commands 插件自动化常见的 git 操作, 减少上下文切换和手
 
 **特性:**
 - 自动起草匹配仓库风格的提交信息
-- 遵循约定式提交实践
+- 遵循约定式提交实践, 根据变更类型选择正确前缀: feat(新功能)/fix(修复)/docs(文档)/refactor(重构)/chore(杂项)/更新(其他)
 - 避免提交包含密钥的文件 (.env, credentials.json)
 - 在提交信息中包含 Claude Code 署名
 
@@ -215,11 +215,3 @@ Commit Commands 插件自动化常见的 git 操作, 减少上下文切换和手
 - **让 Claude 起草信息**: 提交信息分析会学习您仓库的风格
 - **定期清理**: 每周运行 `/clean_gone` 维护干净的分支列表
 - **推送前审查**: 始终在推送前审查提交信息和变更
-
-## 作者
-
-Anthropic (support@anthropic.com)
-
-## 版本
-
-1.0.0
