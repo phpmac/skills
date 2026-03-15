@@ -7,9 +7,9 @@ description: Use when 使用 Hardhat v2 测试智能合约 (不兼容 Hardhat v3
 
 ## Overview
 
-使用 Hardhat v2 Network 的 fork 功能，在本地环境中模拟主网/测试网状态，无需私钥即可模拟任何地址进行测试。
+使用 Hardhat v2 Network 的 fork 功能, 在本地环境中模拟主网/测试网状态, 无需私钥即可模拟任何地址进行测试.
 
-**注意：Hardhat v3 语法不同，本技能仅适用于 Hardhat v2**
+**注意：Hardhat v3 语法不同, 本技能仅适用于 Hardhat v2**
 
 ## When to Use
 
@@ -180,7 +180,7 @@ FORK_ENABLED=true FORK_URL=https://your-rpc-url bunx hardhat test test/YourTest.
 # 或使用 npx
 FORK_ENABLED=true FORK_URL=https://your-rpc-url npx hardhat test test/YourTest.ts --network hardhat
 
-# 或者在 hardhat.config.ts 中预设 URL，只需启用
+# 或者在 hardhat.config.ts 中预设 URL, 只需启用
 FORK_ENABLED=true bunx hardhat test test/YourTest.ts --network hardhat
 ```
 
@@ -189,7 +189,7 @@ FORK_ENABLED=true bunx hardhat test test/YourTest.ts --network hardhat
 
 | 错误                                          | 原因                         | 解决方法                            |
 | ------------------------------------------- | -------------------------- | ------------------------------- |
-| `hardhat_impersonateAccount does not exist` | 直接连接真实网络，不是 fork 环境        | 使用 `--network hardhat` 并启用 fork |
+| `hardhat_impersonateAccount does not exist` | 直接连接真实网络, 不是 fork 环境        | 使用 `--network hardhat` 并启用 fork |
 | `missing trie node`                         | RPC 节点不是归档节点               | 使用 Alchemy/QuickNode 等归档节点      |
 | `insufficient funds for gas`                | 模拟账户没有 BNB                 | 用 `hardhat_setBalance` 或转账      |
 | 测试在真实网络执行                                   | 使用了 `--network bscTestnet` | 使用 `--network hardhat`          |
@@ -202,7 +202,7 @@ FORK_ENABLED=true bunx hardhat test test/YourTest.ts --network hardhat
 
 | 问题         | 原因               | 解决方法                                  |
 | ---------- | ---------------- | ------------------------------------- |
-| 模拟账户没有代币余额 | Fork 状态中该地址余额为 0 | 从富有的地址转账，或使用已有余额的地址                   |
+| 模拟账户没有代币余额 | Fork 状态中该地址余额为 0 | 从富有的地址转账, 或使用已有余额的地址                   |
 | 合约调用权限不足   | 使用了非管理员地址        | 模拟部署者/管理员地址                           |
 | 用户已有上级/关系  | 再次绑定会失败          | 检查 `getParent()` 或使用 `setParent()` 覆盖 |
 | 测试超时       | RPC 响应慢          | 增加 `this.timeout()`                   |
@@ -242,7 +242,7 @@ await signer.sendTransaction({
 
 ## RPC 节点要求
 
-**必须使用归档节点**，公共节点通常不支持 fork：
+**必须使用归档节点**, 公共节点通常不支持 fork：
 
 
 | 网络       | 推荐归档节点              |
