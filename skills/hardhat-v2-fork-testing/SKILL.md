@@ -1,7 +1,7 @@
 ---
-
-## name: hardhat-v2-fork-testing
+name: hardhat-v2-fork-testing
 description: Use when 使用 Hardhat v2 测试智能合约 (不兼容 Hardhat v3). 适用于测试已部署的主网/测试网合约, 需要在没有私钥的情况下模拟现有地址, 或希望在真实链状态上进行测试.
+---
 
 # Hardhat v2 Fork Testing
 

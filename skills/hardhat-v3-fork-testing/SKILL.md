@@ -1,6 +1,6 @@
 ---
 name: hardhat-v3-fork-testing
-description: Hardhat v3 Solidity Fork 单元测试规范. 在 Fork 主网环境下测试已部署合约时使用此 skill.
+description: Use when 在 Fork 主网环境下测试已部署合约. 适用于 Hardhat v3 + Foundry 风格的 Solidity 测试.
 ---
 
 # Hardhat v3 Fork 单元测试规范

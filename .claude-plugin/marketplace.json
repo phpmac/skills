@@ -10,17 +10,6 @@
   },
   "plugins": [
     {
-      "name": "skills",
-      "description": "自己的技能库",
-      "version": "1.0.0",
-      "source": "./",
-      "author": {
-        "name": "a",
-        "email": "a@vc.sb"
-      },
-      "category": "productivity"
-    },
-    {
       "name": "hookify",
       "description": "通过分析对话模式或显式指令轻松创建自定义 hooks 以防止不良行为. 通过简单的 markdown 文件定义规则.",
       "version": "0.1.0",
@@ -29,17 +18,6 @@
         "email": "a@vc.sb"
       },
       "source": "./plugins/hookify",
-      "category": "productivity"
-    },
-    {
-      "name": "a-default",
-      "description": "强制第三方模型遵守 CLAUDE.md 规则",
-      "version": "1.0.0",
-      "source": "./plugins/a-default",
-      "author": {
-        "name": "a",
-        "email": "a@vc.sb"
-      },
       "category": "productivity"
     },
     {
