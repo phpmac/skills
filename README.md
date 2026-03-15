@@ -17,6 +17,9 @@ bunx skills add OpenZeppelin/openzeppelin-skills
 
 bunx skills add ~/Downloads/skills/skills
 
+bunx ctx7 setup
+
+
 ```
 
 [借鉴了官方应用市场](https://github.com/anthropics/claude-code)
