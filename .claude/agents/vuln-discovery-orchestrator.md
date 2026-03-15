@@ -108,6 +108,7 @@ license: MIT
 
    要求:
    - 为每个漏洞编写单元测试/PoC
+   - 使用 WebSearch/firecrawl_search 搜索现成的 PoC 脚本和 GitHub 案例作为参考
    - 证明漏洞可利用 (PoC || GTFO)
    - 输出: 验证报告 (仅包含已验证漏洞)
    ```
@@ -146,9 +147,10 @@ license: MIT
 
    要求:
    - 搭建测试环境 (Docker)
+   - 使用 WebSearch/firecrawl_search 搜索现成的 PoC 脚本和 GitHub 案例作为参考
    - 编写 PoC 验证每个漏洞
    - 证明实际安全影响
-   - 输出: 验证报告
+   - 输出: 验证报告 (仅包含已验证漏洞)
    ```
 
 #### 场景 C: 混合项目

@@ -563,5 +563,5 @@ CREATE TABLE audit_checklists (
 1. **静态分析必须**: 任何审计都必须先运行 Slither
 2. **框架适配**: 使用项目现有的测试框架编写验证
 3. **版本敏感**: Solidity 版本决定某些漏洞是否存在
-4. **不验证只报告**: 你的职责是发现疑似漏洞, 验证由 poc-verifier 负责
+4. **强制网络搜索验证**: 每个潜在漏洞必须使用 WebSearch/firecrawl_search/firecrawl_scrape 进行初步网络验证, 搜索类似攻击案例和修复方案, 未经网络验证的漏洞不得报告
 
