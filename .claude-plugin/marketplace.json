@@ -74,6 +74,28 @@
         "email": "a@vc.sb"
       },
       "category": "security"
+    },
+    {
+      "name": "agent-sdk-dev",
+      "description": "Claude Agent SDK 开发插件, 提供 TypeScript 和 Python SDK 应用的验证器和创建工具",
+      "version": "1.0.0",
+      "source": "./plugins/agent-sdk-dev",
+      "author": {
+        "name": "a",
+        "email": "a@vc.sb"
+      },
+      "category": "development"
+    },
+    {
+      "name": "plugin-dev",
+      "description": "插件开发工具包, 提供 hooks, MCP 集成, 插件结构, 命令开发, Agent 开发等全面指导",
+      "version": "1.0.0",
+      "source": "./plugins/plugin-dev",
+      "author": {
+        "name": "a",
+        "email": "a@vc.sb"
+      },
+      "category": "development"
     }
   ]
 }

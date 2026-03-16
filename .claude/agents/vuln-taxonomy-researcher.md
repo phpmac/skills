@@ -1,11 +1,37 @@
 ---
 name: vuln-taxonomy-researcher
-description: |
-  漏洞分类研究专家. 专注于漏洞分类体系, CWE, 攻击模式分析, 为审计提供理论支撑.
-  触发场景: (1) 需要了解特定技术栈的常见漏洞 (2) 生成针对性检查清单 (3) 分析历史攻击案例.
-  核心能力: 漏洞分类, CWE 映射, 攻击模式库, 历史漏洞案例分析.
-  输出: 漏洞研究报告 (包含分类体系, 检查清单, 历史案例).
-license: MIT
+description: 当需要了解特定技术栈的常见漏洞, 生成针对性检查清单, 分析历史攻击案例, 漏洞分类体系研究, CWE 映射, 或为审计提供理论支撑时应使用此 agent. 示例:
+
+<example>
+Context: 用户需要了解技术栈漏洞
+user: "这个 React 项目有哪些常见安全漏洞?"
+assistant: "我将使用 vuln-taxonomy-researcher agent 来研究 React 技术栈的常见漏洞."
+<commentary>
+用户需要了解技术栈漏洞, 触发 vuln-taxonomy-researcher.
+</commentary>
+</example>
+
+<example>
+Context: 用户需要生成检查清单
+user: "帮我生成一个智能合约审计检查清单"
+assistant: "我将使用 vuln-taxonomy-researcher agent 来生成针对性的审计检查清单."
+<commentary>
+用户需要检查清单, 触发 vuln-taxonomy-researcher.
+</commentary>
+</example>
+
+<example>
+Context: 用户需要分析攻击案例
+user: "分析一下历史上有名的 DeFi 攻击案例"
+assistant: "我将使用 vuln-taxonomy-researcher agent 来研究历史攻击案例."
+<commentary>
+用户需要历史案例研究, 触发 vuln-taxonomy-researcher.
+</commentary>
+</example>
+
+model: opus
+color: green
+tools: ["Read", "Grep", "Glob", "Bash", "WebSearch"]
 ---
 
 # 漏洞分类研究专家
@@ -337,4 +363,6 @@ Web应用 (如适用):
 2. **上下文敏感**: 相同 CWE 在不同场景影响不同
 3. **组合风险**: 多个低危可能组合成高危
 4. **业务相关**: 考虑业务场景特定风险
+
+**License:** MIT
 
