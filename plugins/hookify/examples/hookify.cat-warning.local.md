@@ -6,7 +6,7 @@ action: warn
 conditions:
   - field: content
     operator: regex_match
-    pattern: cat\s+[\>\|]|cat\s+\<|\`cat\s|cat\s+\`|
+    pattern: cat\s+[\>\|]|cat\s+\<|\`cat\s|cat\s+\`
 ---
 
 **检测到 cat 命令不当使用**
