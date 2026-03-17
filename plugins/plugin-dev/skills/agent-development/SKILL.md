@@ -1,5 +1,5 @@
 ---
-name: Agent 开发
+name: Agent Development
 description: 当用户要求 "create an agent", "add an agent", "write a subagent", "agent frontmatter", "when to use description", "agent examples", "agent tools", "agent colors", "autonomous agent", 或需要关于 agent 结构, system prompts, 触发条件或 Claude Code 插件 agent 开发最佳实践的指导时应使用此技能.
 version: 0.1.0
 ---

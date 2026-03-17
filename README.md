@@ -12,7 +12,7 @@
 /plugin marketplace add anthropics/claude-code
 
 # 一键复制 hookify 规则到 ~/.claude/ 目录下
-rm -f ~/.claude/hookify.* && cp plugins/hookify/examples/* ~/.claude/
+rm -rf ~/.claude/hookify.* && cp plugins/hookify/examples/* ~/.claude/
 
 bunx skills add OpenZeppelin/openzeppelin-skills
 
