@@ -1,0 +1,9 @@
+{
+  "name": "my-agents",
+  "version": "1.0.0",
+  "description": "我的 agents 技能库",
+  "author": {
+    "name": "phpmac",
+    "email": "a@vc.sb"
+  }
+}

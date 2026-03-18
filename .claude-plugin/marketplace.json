@@ -96,6 +96,17 @@
         "email": "a@vc.sb"
       },
       "category": "development"
+    },
+    {
+      "name": "my-agents",
+      "description": "我的 agents 技能库",
+      "version": "0.1.0",
+      "source": "./plugins/my-agents",
+      "author": {
+        "name": "phpmac",
+        "email": "a@vc.sb"
+      },
+      "category": "productivity"
     }
   ]
 }
