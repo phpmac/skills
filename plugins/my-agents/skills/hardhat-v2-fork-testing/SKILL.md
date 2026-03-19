@@ -9,7 +9,7 @@ description: Use when 使用 Hardhat v2 测试智能合约 (不兼容 Hardhat v3
 
 使用 Hardhat v2 Network 的 fork 功能, 在本地环境中模拟主网/测试网状态, 无需私钥即可模拟任何地址进行测试.
 
-**注意：Hardhat v3 语法不同, 本技能仅适用于 Hardhat v2**
+**注意: Hardhat v3 语法不同, 本技能仅适用于 Hardhat v2**
 
 ## When to Use
 
@@ -30,14 +30,14 @@ digraph when_fork {
 }
 ```
 
-**使用场景：**
+**使用场景:**
 
 - 测试与已部署合约的交互
 - 模拟任意地址（无需私钥）
 - 验证升级后的合约兼容性
 - 在真实链状态上测试复杂交互
 
-**不使用：**
+**不使用:**
 
 - 简单的单元测试（使用本地网络即可）
 - 不依赖链状态的逻辑测试
@@ -146,7 +146,7 @@ describe("Fork test", function () {
     contract = factory.attach(CONTRACT_ADDRESS);
 
     if (isHardhat) {
-      // Fork 环境：模拟账户
+      // Fork 环境: 模拟账户
       await ethers.provider.send("hardhat_impersonateAccount", [TARGET_ADDRESS]);
       user = await ethers.getSigner(TARGET_ADDRESS);
 
@@ -157,7 +157,7 @@ describe("Fork test", function () {
         value: parseEther("1"),
       });
     } else {
-      // 真实网络：使用配置的账户
+      // 真实网络: 使用配置的账户
       const signers = await ethers.getSigners();
       user = signers[0];
     }
@@ -242,7 +242,7 @@ await signer.sendTransaction({
 
 ## RPC 节点要求
 
-**必须使用归档节点**, 公共节点通常不支持 fork：
+**必须使用归档节点**, 公共节点通常不支持 fork:
 
 
 | 网络       | 推荐归档节点              |
