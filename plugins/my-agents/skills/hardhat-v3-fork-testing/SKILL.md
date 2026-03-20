@@ -40,7 +40,7 @@ digraph when_fork {
 
 - `*Fork.t.sol` - Fork 主网已部署合约测试 (验证真实环境)
 
-**注意**: Hardhat v3 Solidity 测试只识别 `.t.sol` 结尾的文件.
+**注意**: Hardhat 3 Solidity 测试只识别 `.t.sol` 结尾的文件.
 
 ## 测试文件格式
 
@@ -65,12 +65,14 @@ digraph when_fork {
 pragma solidity ^0.8.28;
 
 import {Test, console} from "forge-std/Test.sol";
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 // 接口定义在合约外部
 interface IERC20 {
     function name() external view returns (string memory);
     function symbol() external view returns (string memory);
     function decimals() external view returns (uint8);
+    function balanceOf(address) external view returns (uint256);
 }
 
 contract ForkTest is Test {
@@ -96,9 +98,12 @@ contract ForkTest is Test {
         string memory symbol = usdt.symbol();
         uint8 decimals = usdt.decimals();
 
-        console.log("USDT Name:", name);
-        console.log("USDT Symbol:", symbol);
-        console.log("USDT Decimals:", decimals);
+        // ✅ 正确: 用 string.concat + unicode 组合中文和字符串
+        console.log(string.concat(unicode"USDT 名称: ", name));
+        console.log(string.concat(unicode"USDT 符号: ", symbol));
+        console.log(string.concat(unicode"USDT 精度: ", vm.toString(decimals)));
+
+        // ❌ 错误: console.log(unicode"名称:", name) 会编译报错
 
         assertEq(symbol, "USDT");
     }
@@ -159,3 +164,32 @@ bunx hardhat test solidity contracts/TopAccountForkTest.t.sol -vv
 3. **主网状态变化**: Fork 的是特定区块, 主网状态变化不影响已执行的测试
 4. **无常方法**: 修改合约状态的测试在 Fork 中无效 (调用的是远程合约)
 
+## Resources
+
+### console.log 辅助函数
+
+**重要**: Forge console.log 不支持多参数混合输出 (字符串 + 数字)。
+
+必须使用 `string.concat(unicode"中文", vm.toString(value))` 格式。
+
+参考资源: [resources/console-helpers.sol](./resources/console-helpers.sol)
+
+**使用方式**: 复制 `resources/console-helpers.sol` 中的辅助函数到测试合约, 直接调用 `_logStage()` 和 `_logLine()`。
+
+**示例**:
+
+```solidity
+function test_Example() public {
+    _logStage(unicode"阶段1: 获取数据");
+    _logLine(unicode"    [用户余额]", beforeBalance, afterBalance);
+    _logStage(unicode"通过");
+}
+```
+
+**输出格式**:
+
+```
+  -> 阶段1: 获取数据
+    [用户余额] 0 +100 = 100
+  -> 通过
+```
