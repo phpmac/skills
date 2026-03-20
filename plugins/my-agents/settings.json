@@ -4,9 +4,9 @@
     "ANTHROPIC_AUTH_TOKEN": "a",
     "ANTHROPIC_BASE_URL": "http://ai:7",
     "ANTHROPIC_API_KEY": "",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-5-turbo",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "kimi-k2.5",
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "MiniMax-M2.7",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "kimi-k2.5"
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "MiniMax-M2.7"
   },
   "attribution": {
     "commit": "",
