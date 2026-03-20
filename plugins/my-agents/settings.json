@@ -31,8 +31,8 @@
     "security-guidance@phpmac-skills": true,
     "hookify@phpmac-skills": true,
     "plugin-dev@phpmac-skills": true,
-    "my-agents@phpmac-skills": true,
-    "agent-sdk-dev@phpmac-skills": true
+    "agent-sdk-dev@phpmac-skills": true,
+    "my-agents@phpmac-skills": true
   },
   "language": "中文",
   "syntaxHighlightingDisabled": false,
