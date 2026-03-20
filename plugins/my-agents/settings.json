@@ -1,0 +1,43 @@
+{
+  "env": {
+    "CLAUDE_CODE_ATTRIBUTION_HEADER": "0",
+    "ANTHROPIC_AUTH_TOKEN": "a",
+    "ANTHROPIC_BASE_URL": "http://ai:7",
+    "ANTHROPIC_API_KEY": "",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-5-turbo",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "MiniMax-M2.7",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "kimi-k2.5"
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "allow": [
+      "WebSearch"
+    ],
+    "deny": [
+      "Read(./.env)"
+    ],
+    "defaultMode": "default",
+    "allowEditHome": false
+  },
+  "model": "opusplan",
+  "enabledPlugins": {
+    "code-review@phpmac-skills": true,
+    "commit-commands@phpmac-skills": true,
+    "feature-dev@phpmac-skills": true,
+    "pr-review-toolkit@phpmac-skills": true,
+    "security-guidance@phpmac-skills": true,
+    "hookify@phpmac-skills": true,
+    "plugin-dev@phpmac-skills": true,
+    "my-agents@phpmac-skills": true,
+    "agent-sdk-dev@phpmac-skills": true
+  },
+  "language": "中文",
+  "syntaxHighlightingDisabled": false,
+  "autoUpdatesChannel": "stable",
+  "minimumVersion": "2.1.58",
+  "autoMemoryEnabled": true,
+  "skipDangerousModePermissionPrompt": false
+}
