@@ -24,15 +24,23 @@
   },
   "model": "opusplan",
   "enabledPlugins": {
-    "code-review@phpmac-skills": true,
-    "commit-commands@phpmac-skills": true,
-    "feature-dev@phpmac-skills": true,
-    "pr-review-toolkit@phpmac-skills": true,
-    "security-guidance@phpmac-skills": true,
     "hookify@phpmac-skills": true,
-    "plugin-dev@phpmac-skills": true,
     "agent-sdk-dev@phpmac-skills": true,
-    "my-agents@phpmac-skills": true
+    "commit-commands@phpmac-skills": true,
+    "code-review@phpmac-skills": true,
+    "feature-dev@phpmac-skills": true,
+    "my-agents@phpmac-skills": true,
+    "plugin-dev@phpmac-skills": true,
+    "pr-review-toolkit@phpmac-skills": true,
+    "security-guidance@phpmac-skills": true
+  },
+  "extraKnownMarketplaces": {
+    "phpmac-skills": {
+      "source": {
+        "source": "directory",
+        "path": "/Users/a/Downloads/skills"
+      }
+    }
   },
   "language": "中文",
   "syntaxHighlightingDisabled": false,

@@ -1,5 +1,5 @@
 ---
-name: Plugin Structure
+name: plugin-structure
 description: 当用户要求 "create a plugin", "scaffold a plugin", "understand plugin structure", "organize plugin components", "set up plugin.json", "use ${CLAUDE_PLUGIN_ROOT}", "add commands/agents/skills/hooks", "configure auto-discovery", 或需要关于插件目录布局, 清单配置, 组件组织, 文件命名约定或 Claude Code 插件架构最佳实践的指导时应使用此技能.
 version: 0.1.0
 ---

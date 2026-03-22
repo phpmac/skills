@@ -1,5 +1,5 @@
 ---
-name: MCP Integration
+name: mcp-integration
 description: 当用户要求 "add MCP server", "integrate MCP", "configure MCP in plugin", "use .mcp.json", "set up Model Context Protocol", "connect external service", 提到 "${CLAUDE_PLUGIN_ROOT} with MCP", 或讨论 MCP 服务器类型 (SSE, stdio, HTTP, WebSocket) 时应使用此技能. 提供将模型上下文协议服务器集成到 Claude Code 插件中以实现外部工具和服务集成的全面指导.
 version: 0.1.0
 ---

@@ -1,5 +1,5 @@
 ---
-name: Hook Development
+name: hook-development
 description: 当用户要求 "create a hook", "add a PreToolUse/PostToolUse/Stop hook", "validate tool use", "implement prompt-based hooks", "use ${CLAUDE_PLUGIN_ROOT}", "set up event-driven automation", "block dangerous commands", 或提到 hook 事件 (PreToolUse, PostToolUse, Stop, SubagentStop, SessionStart, SessionEnd, UserPromptSubmit, PreCompact, Notification) 时应使用此技能. 提供创建和实现 Claude Code 插件 hooks 的全面指导, 重点关注高级基于 prompt 的 hooks API.
 version: 0.1.0
 ---

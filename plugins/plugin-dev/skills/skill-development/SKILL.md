@@ -1,5 +1,5 @@
 ---
-name: Skill Development
+name: skill-development
 description: 当用户想 "create a skill", "add a skill to plugin", "write a new skill", "improve skill description", "organize skill content", 或需要关于技能结构, 渐进式披露或 Claude Code 插件技能开发最佳实践的指导时应使用此技能.
 version: 0.1.0
 ---
