@@ -162,19 +162,55 @@ bunx hardhat test solidity contracts/TopAccountForkTest.t.sol -vv
 1. **Fork 不持久**: 每个测试函数执行后 Fork 状态重置
 2. **RPC 稳定**: 确保 RPC 节点可用, 建议使用稳定的公共节点
 3. **主网状态变化**: Fork 的是特定区块, 主网状态变化不影响已执行的测试
-4. **无常方法**: 修改合约状态的测试在 Fork 中无效 (调用的是远程合约)
+4. **无常方法**: Fork 中修改合约状态无效 (调用的是远程合约)
+
+## 实战技巧
+
+### EOA 修饰符绕过
+
+部分合约使用 `onlyEOA` 修饰符检查 `tx.origin == _msgSender()`,此时单参数 `vm.prank` 无效.
+
+使用 `vm.startPrank(user, user)` 双参数版本,第一个参数是 `msg.sender`,第二个参数是 `tx.origin`.
+
+```solidity
+// 正确
+vm.startPrank(user, user);
+contract.someFunction();
+vm.stopPrank();
+
+// 错误
+vm.prank(user);
+contract.someFunction();
+```
+
+### console.log 换行问题
+
+多个参数会换行显示. 分开调用.
+
+```solidity
+// 正确
+console.log(unicode"用户:");
+console.log(user);
+
+// 错误
+console.log(unicode"用户:", user);
+```
+
+### 测试数据自给
+
+不要依赖主网已有数据,在测试中自己创建.
 
 ## Resources
 
 ### console.log 辅助函数
 
-**重要**: Forge console.log 不支持多参数混合输出 (字符串 + 数字)。
+**重要**: Forge console.log 不支持多参数混合输出 (字符串 + 数字).
 
-必须使用 `string.concat(unicode"中文", vm.toString(value))` 格式。
+必须使用 `string.concat(unicode"中文", vm.toString(value))` 格式.
 
 参考资源: [resources/console-helpers.sol](./resources/console-helpers.sol)
 
-**使用方式**: 复制 `resources/console-helpers.sol` 中的辅助函数到测试合约, 直接调用 `_logStage()` 和 `_logLine()`。
+**使用方式**: 复制 `resources/console-helpers.sol` 中的辅助函数到测试合约, 直接调用 `_logStage()` 和 `_logLine()`.
 
 **示例**:
 
