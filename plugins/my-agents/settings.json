@@ -5,7 +5,7 @@
     "ANTHROPIC_BASE_URL": "http://ai:7",
     "ANTHROPIC_API_KEY": "",
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "kimi-k2.5",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "MiniMax-M2.7",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "MiniMax-M2.7-highspeed",
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "MiniMax-M2.7"
   },
   "attribution": {
