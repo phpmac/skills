@@ -39,7 +39,8 @@
       "source": {
         "source": "directory",
         "path": "/Users/a/Downloads/skills"
-      }
+      },
+      "autoUpdate": true
     }
   },
   "language": "中文",
