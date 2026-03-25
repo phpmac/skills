@@ -8,3 +8,6 @@
 - [Agent Skills 规范](https://agentskills.io)
 - [Superpowers 技能库](https://github.com/obra/superpowers)
 
+## 规则
+
+- 发布新版本意思是只需要处理单个插件的新版本
