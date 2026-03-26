@@ -3,6 +3,10 @@ allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*)
 description: 创建 git commit
 ---
 
+## 规范
+
+- 内容使用中文, 标点符号必须使用英文标点
+
 ## 上下文
 
 - 当前 git 状态: !`git status`
