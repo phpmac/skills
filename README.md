@@ -64,7 +64,6 @@ claude mcp add --transport http exa --scope user "https://mcp.exa.ai/mcp?tools=w
 
 - 修改插件需要卸载重新安装
 
-
 ## 参考
 
 [借鉴了官方应用市场](https://github.com/anthropics/claude-code)
