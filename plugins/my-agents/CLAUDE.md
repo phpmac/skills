@@ -5,4 +5,4 @@
 代码注释必须使用中文,禁止使用英文注释,注释禁止使用中文标点符号包括，。、等
 
 ### 2. 全局规则
-严格遵守 [个人偏好](./rules/preferences.md) 中的内容
+严格遵守 [个人偏好](./rules/my_default_preferences.md) 中的内容
