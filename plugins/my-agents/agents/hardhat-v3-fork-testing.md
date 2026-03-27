@@ -1,64 +1,34 @@
 ---
 name: hardhat-v3-fork-testing
 description: Use when 在 Fork 主网环境下测试已部署合约. 适用于 Hardhat v3 + Foundry 风格的 Solidity 测试.
+model: sonnet
+color: blue
+tools: ["Read", "Grep", "Glob", "Edit", "Write", "Bash"]
 ---
 
-# Hardhat v3 Fork 单元测试规范
+# Hardhat v3 Fork 单元测试
 
-本规范适用于使用 Hardhat v3 + Foundry 风格在 Fork 主网环境下进行 Solidity 智能合约测试.
+使用 Hardhat v3 + Foundry 风格在 Fork 主网环境下进行 Solidity 智能合约测试.
 
 ## When to Use
 
-```dot
-digraph when_fork {
-    "需要测试已部署合约?" [shape=diamond];
-    "没有私钥?" [shape=diamond];
-    "需要真实链状态?" [shape=diamond];
-    "使用 Fork 测试" [shape=box];
-    "使用普通测试" [shape=box];
-
-    "需要测试已部署合约?" -> "没有私钥?";
-    "没有私钥?" -> "需要真实链状态?";
-    "需要真实链状态?" -> "使用 Fork 测试" [label="是"];
-    "需要真实链状态?" -> "使用普通测试" [label="否"];
-    "没有私钥?" -> "使用 Fork 测试" [label="是"];
-    "没有私钥?" -> "使用普通测试" [label="否"];
-}
-```
-
-**使用场景:**
 - 测试与已部署合约的交互
 - 模拟任意地址 (无需私钥)
 - 验证升级后的合约兼容性
 - 在真实链状态上测试复杂交互
 
 **不使用:**
+
 - 简单的单元测试 (使用本地网络即可)
 - 不依赖链状态的逻辑测试
 
-## 测试文件命名规范
+## 测试文件命名
 
 - `*Fork.t.sol` - Fork 主网已部署合约测试 (验证真实环境)
 
 **注意**: Hardhat 3 Solidity 测试只识别 `.t.sol` 结尾的文件.
 
-## 测试文件格式
-
-### 文件头部注释
-
-```solidity
-/**
- * @title MyContract Fork 测试
- * @notice 在 BSC 主网 Fork 环境下测试已部署合约功能
- *
- * 运行命令:
- *   bunx hardhat test solidity contracts/MyContractForkTest.t.sol -vv
- *
- * 注意: Fork 在 setUp() 中使用 vm.createSelectFork() 实现
- */
-```
-
-### 测试合约结构
+## 测试合约结构
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -98,12 +68,12 @@ contract ForkTest is Test {
         string memory symbol = usdt.symbol();
         uint8 decimals = usdt.decimals();
 
-        // ✅ 正确: 用 string.concat + unicode 组合中文和字符串
+        // [正确] 用 string.concat + unicode 组合中文和字符串
         console.log(string.concat(unicode"USDT 名称: ", name));
         console.log(string.concat(unicode"USDT 符号: ", symbol));
         console.log(string.concat(unicode"USDT 精度: ", vm.toString(decimals)));
 
-        // ❌ 错误: console.log(unicode"名称:", name) 会编译报错
+        // [错误] console.log(unicode"名称:", name) 会编译报错
 
         assertEq(symbol, "USDT");
     }
@@ -157,20 +127,13 @@ bunx hardhat test solidity contracts/MyContractForkTest.t.sol --grep "test_MyFun
 bunx hardhat test solidity contracts/TopAccountForkTest.t.sol -vv
 ```
 
-## 注意事项
-
-1. **Fork 不持久**: 每个测试函数执行后 Fork 状态重置
-2. **RPC 稳定**: 确保 RPC 节点可用, 建议使用稳定的公共节点
-3. **主网状态变化**: Fork 的是特定区块, 主网状态变化不影响已执行的测试
-4. **无常方法**: Fork 中修改合约状态无效 (调用的是远程合约)
-
 ## 实战技巧
 
 ### EOA 修饰符绕过
 
-部分合约使用 `onlyEOA` 修饰符检查 `tx.origin == _msgSender()`,此时单参数 `vm.prank` 无效.
+部分合约使用 `onlyEOA` 修饰符检查 `tx.origin == _msgSender()`, 此时单参数 `vm.prank` 无效.
 
-使用 `vm.startPrank(user, user)` 双参数版本,第一个参数是 `msg.sender`,第二个参数是 `tx.origin`.
+使用 `vm.startPrank(user, user)` 双参数版本, 第一个参数是 `msg.sender`, 第二个参数是 `tx.origin`.
 
 ```solidity
 // 正确
@@ -198,21 +161,17 @@ console.log(unicode"用户:", user);
 
 ### 测试数据自给
 
-不要依赖主网已有数据,在测试中自己创建.
+不要依赖主网已有数据, 在测试中自己创建.
 
-## Resources
-
-### console.log 辅助函数
+## console.log 辅助函数
 
 **重要**: Forge console.log 不支持多参数混合输出 (字符串 + 数字).
 
 必须使用 `string.concat(unicode"中文", vm.toString(value))` 格式.
 
-参考资源: [resources/console-helpers.sol](./resources/console-helpers.sol)
+参考资源: [console-helpers.sol](hardhat-v3-fork-testing/resources/console-helpers.sol)
 
 **使用方式**: 复制 `resources/console-helpers.sol` 中的辅助函数到测试合约, 直接调用 `_logStage()` 和 `_logLine()`.
-
-**示例**:
 
 ```solidity
 function test_Example() public {
@@ -229,3 +188,10 @@ function test_Example() public {
     [用户余额] 0 +100 = 100
   -> 通过
 ```
+
+## 注意事项
+
+1. **Fork 不持久**: 每个测试函数执行后 Fork 状态重置
+2. **RPC 稳定**: 确保 RPC 节点可用, 建议使用稳定的公共节点
+3. **主网状态变化**: Fork 的是特定区块, 主网状态变化不影响已执行的测试
+4. **无常方法**: Fork 中修改合约状态无效 (调用的是远程合约)

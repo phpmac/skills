@@ -16,8 +16,8 @@ rm -rf ~/.codex
 rm -rf ~/.agents
 rm -rf $HOME/.claude/cache/*
 rm -rf ~/.claude/agents ~/.claude/skills
-rm -rf ~/.claude/hookify.* && cp plugins/hookify/examples/* ~/.claude/
 rm -rf ~/.cursor/mcp.json && ln -s $HOME/.claude.json ~/.cursor/mcp.json
+rm -rf ~/.claude/hookify.* && ln -sf "$PWD"/plugins/hookify/examples/* ~/.claude/
 rm -rf ~/.claude/rules && ln -s ~/Downloads/skills/plugins/my-agents/rules $HOME/.claude/rules
 rm -rf ~/.claude/CLAUDE.md && ln -s ~/Downloads/skills/plugins/my-agents/CLAUDE.md ~/.claude/CLAUDE.md
 rm -rf ~/.claude/settings.json && ln -s ~/Downloads/skills/plugins/my-agents/settings.json ~/.claude/settings.json
@@ -50,8 +50,8 @@ INSTALL lance FROM community;
 INSTALL crypto FROM community;
 "
 
-claude mcp remove chrome-devtools
-claude mcp remove chrome-devtools -s user
+claude mcp remove serper
+claude mcp remove serper -s user
 
 claude mcp add cloudflare-api --transport http --scope user https://mcp.cloudflare.com/mcp
 claude mcp add -s user zai-mcp-server --env Z_AI_API_KEY=dbbcb136a5714cfb829e0b074a3e43aa.kfw0nT1CqXLzESs0 Z_AI_MODE=ZAI -- bunx -y "@z_ai/mcp-server"

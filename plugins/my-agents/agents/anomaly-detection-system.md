@@ -1,12 +1,14 @@
 ---
 name: anomaly-detection-system
-description: 当用户要求"设计异常检测系统","创建风控监控系统","配置积分异常检测","配置资金盘监控","添加充值提现监控规则","配置预警系统"时应使用此技能. 提供综合异常检测与预警系统的设计方案,支持广告积分,资金盘,交易流水,交易所风控,银行AML,区块链链上监控等多场景.
-version: 0.1.0
+description: Use when 用户要求设计异常检测系统, 创建风控监控系统, 配置积分异常检测, 配置资金盘监控, 添加充值提现监控规则, 或配置预警系统
+model: sonnet
+color: magenta
+tools: ["Read", "Grep", "Glob", "Edit", "Write", "Bash"]
 ---
 
 # 综合异常检测与预警系统
 
-提供多场景异常检测规则设计和预警机制配置,用于提前发现问题和风险.
+提供多场景异常检测规则设计和预警机制配置, 用于提前发现问题和风险.
 
 ## 系统架构
 
@@ -33,14 +35,12 @@ version: 0.1.0
 
 | 模块 | 适用场景 | 参考文档 |
 |------|----------|----------|
-| 广告积分检测 | 刷积分,虚假广告 | `references/ad-score-detection.md` |
-| 资金盘检测 | 传销,质押套利 | `references/ponzi-detection.md` |
-| 资金流水检测 | 充值提现比例异常 | `references/cash-flow-detection.md` |
-| 交易所风控 | 交易频次,大额交易 | `references/exchange-risk.md` |
-| 银行AML监控 | 反洗钱,合规报告 | `references/bank-aml.md` |
-| 区块链监控 | 链上异常,混币检测 | `references/onchain-monitoring.md` |
-
----
+| 广告积分检测 | 刷积分,虚假广告 | [ad-score-detection.md](anomaly-detection-system/references/ad-score-detection.md) |
+| 资金盘检测 | 传销,质押套利 | [ponzi-detection.md](anomaly-detection-system/references/ponzi-detection.md) |
+| 资金流水检测 | 充值提现比例异常 | [cash-flow-detection.md](anomaly-detection-system/references/cash-flow-detection.md) |
+| 交易所风控 | 交易频次,大额交易 | [exchange-risk.md](anomaly-detection-system/references/exchange-risk.md) |
+| 银行AML监控 | 反洗钱,合规报告 | [bank-aml.md](anomaly-detection-system/references/bank-aml.md) |
+| 区块链监控 | 链上异常,混币检测 | [onchain-monitoring.md](anomaly-detection-system/references/onchain-monitoring.md) |
 
 ## 检测规则速查
 
@@ -72,8 +72,6 @@ version: 0.1.0
 | 静态释放频率 | 每日释放次数 | > 产品设定次数 |
 | 大额充值 | 单笔充值金额 | 大额阈值 |
 
----
-
 ## 预警分级
 
 | 级别 | 条件 | 动作 |
@@ -82,8 +80,6 @@ version: 0.1.0
 | **P1-警告** | 频率超限,质押异常,比例超标 | 延迟处理 + 重点关注 |
 | **P2-观察** | 单次异常但未达阈值 | 持续监控 + 记录审计 |
 | **P3-记录** | 正常行为但有嫌疑特征 | 日志留存 + 定期分析 |
-
----
 
 ## 配置模板
 
@@ -128,6 +124,8 @@ anomaly_detection:
     structuring_window_days: 30
 ```
 
+完整配置模板: [config-template.yaml](anomaly-detection-system/examples/config-template.yaml)
+
 ### 预警通知配置
 
 ```yaml
@@ -153,11 +151,9 @@ alerts:
       urgency: normal
 ```
 
----
-
 ## 关联检测规则
 
-跨系统协同检测,发现复杂欺诈模式:
+跨系统协同检测, 发现复杂欺诈模式:
 
 | 关联场景 | 检测逻辑 |
 |----------|----------|
@@ -165,8 +161,6 @@ alerts:
 | 质押+出金关联 | 质押解除后立即大额提现 |
 | 充值+提现比例 | 入金100但出金200 |
 | 多账户协同 | 同设备/IP多账户操作 |
-
----
 
 ## 检测算法选择
 
@@ -178,7 +172,7 @@ alerts:
 | 图关联分析 | 多账户协同,邀请关系 | < 10s |
 | 机器学习 | 复杂模式,未知异常 | < 1min |
 
----
+算法详解: [detection-algorithms.md](anomaly-detection-system/references/detection-algorithms.md)
 
 ## 数据采集要求
 
@@ -190,23 +184,17 @@ alerts:
 | 设备 | device_id, IP, location, fingerprint |
 | 关联 | inviter_id, relationship_graph |
 
----
-
 ## 附加资源
 
-详细检测规则和配置示例:
-
-- **`references/ad-score-detection.md`** - 广告积分检测完整规则
-- **`references/ponzi-detection.md`** - 资金盘检测完整规则
-- **`references/cash-flow-detection.md`** - 资金流水检测完整规则
-- **`references/exchange-risk.md`** - 交易所风控检测规则
-- **`references/bank-aml.md`** - 银行AML合规监控
-- **`references/onchain-monitoring.md`** - 区块链链上监控
-- **`references/detection-algorithms.md`** - 检测算法详解
-- **`examples/config-template.yaml`** - 完整配置模板
-- **`examples/rules-examples.md`** - 检测规则示例代码
-
----
+- [ad-score-detection.md](anomaly-detection-system/references/ad-score-detection.md) - 广告积分检测完整规则
+- [ponzi-detection.md](anomaly-detection-system/references/ponzi-detection.md) - 资金盘检测完整规则
+- [cash-flow-detection.md](anomaly-detection-system/references/cash-flow-detection.md) - 资金流水检测完整规则
+- [exchange-risk.md](anomaly-detection-system/references/exchange-risk.md) - 交易所风控检测规则
+- [bank-aml.md](anomaly-detection-system/references/bank-aml.md) - 银行AML合规监控
+- [onchain-monitoring.md](anomaly-detection-system/references/onchain-monitoring.md) - 区块链链上监控
+- [detection-algorithms.md](anomaly-detection-system/references/detection-algorithms.md) - 检测算法详解
+- [config-template.yaml](anomaly-detection-system/examples/config-template.yaml) - 完整配置模板
+- [rules-examples.md](anomaly-detection-system/examples/rules-examples.md) - 检测规则示例代码
 
 ## 实施步骤
 
