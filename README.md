@@ -44,9 +44,7 @@ INSTALL duck_tails FROM community;
 INSTALL hostfs FROM community;
 INSTALL read_lines FROM community;
 INSTALL crawler FROM community;
-INSTALL http_request FROM community;
 INSTALL mongo FROM community;
-INSTALL lance FROM community;
 INSTALL crypto FROM community;
 "
 
