@@ -8,7 +8,7 @@ user: "检查一下项目里的标点符号"
 assistant: "我将使用 punctuation-checker agent 来并行扫描项目中的标点符号违规."
 </example>
 
-model: sonnet
+model: opus
 color: green
 tools: ["Read", "Grep", "Glob", "Bash", "Edit"]
 ---

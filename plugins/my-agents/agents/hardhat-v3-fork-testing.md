@@ -1,7 +1,7 @@
 ---
 name: hardhat-v3-fork-testing
 description: Use when 在 Fork 主网环境下测试已部署合约. 适用于 Hardhat v3 + Foundry 风格的 Solidity 测试.
-model: sonnet
+model: opus
 color: blue
 tools: ["Read", "Grep", "Glob", "Edit", "Write", "Bash"]
 ---

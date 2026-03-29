@@ -1,7 +1,7 @@
 ---
 name: foundry-test-formatting
 description: Use when 用户提到 Foundry 单元测试输出格式化, 数值格式化显示小数点, console.log 格式化 ether, 想美化测试日志输出, 处理 uint256 数值可读性
-model: sonnet
+model: opus
 color: blue
 tools: ["Read", "Grep", "Glob", "Edit", "Write", "Bash"]
 ---

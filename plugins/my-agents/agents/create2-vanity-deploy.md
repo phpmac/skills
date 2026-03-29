@@ -1,7 +1,7 @@
 ---
 name: create2-vanity-deploy
 description: Use when 用户提到靓号地址, 0x1111/8888 前后缀, cast create2, CREATE2 部署脚本, 或 CREATE2 单元测试
-model: sonnet
+model: opus
 color: yellow
 tools: ["Read", "Grep", "Glob", "Edit", "Write", "Bash"]
 ---

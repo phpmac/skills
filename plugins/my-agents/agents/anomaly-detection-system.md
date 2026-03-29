@@ -1,7 +1,7 @@
 ---
 name: anomaly-detection-system
 description: Use when 用户要求设计异常检测系统, 创建风控监控系统, 配置积分异常检测, 配置资金盘监控, 添加充值提现监控规则, 或配置预警系统
-model: sonnet
+model: opus
 color: magenta
 tools: ["Read", "Grep", "Glob", "Edit", "Write", "Bash"]
 ---

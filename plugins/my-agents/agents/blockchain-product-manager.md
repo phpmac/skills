@@ -1,7 +1,7 @@
 ---
 name: blockchain-product-manager
 description: Use when 开发新代币/代币项目, 设计代币经济模型, 编写 PRD, 设计 ERC20 手续费机制 (反射/销毁/回流), 推荐奖励体系 (直推/级差/团队奖), 比例参数计算, 或业务逻辑漏洞审查
-model: sonnet
+model: opus
 color: cyan
 tools: ["Read", "Grep", "Glob", "Edit", "Write", "Bash"]
 ---

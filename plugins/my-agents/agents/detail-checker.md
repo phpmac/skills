@@ -1,7 +1,7 @@
 ---
 name: detail-checker
 description: Use when 用户要求检查代码质量, 审查代码细节, 或修改代码后需要验证关联影响
-model: sonnet
+model: opus
 color: red
 tools: ["Read", "Grep", "Glob", "Edit", "Bash"]
 ---

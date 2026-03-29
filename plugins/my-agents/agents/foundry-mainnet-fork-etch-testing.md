@@ -1,7 +1,7 @@
 ---
 name: foundry-mainnet-fork-etch-testing
 description: Use when 用户提到 fork 主网测试, vm.createSelectFork, vm.etch, 不想频繁重新部署合约, 想在保留链上存储状态的前提下用本地最新 runtime code 验证买入, 卖出, 加LP, 分红, 解锁, 或想把普通 Foundry 单测补成主网镜像测试
-model: sonnet
+model: opus
 color: blue
 tools: ["Read", "Grep", "Glob", "Edit", "Write", "Bash"]
 ---
