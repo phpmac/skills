@@ -1,6 +1,6 @@
 ---
 name: contract-scanner
-description: 当需要使用安全工具扫描合约漏洞时应使用此agent. 触发词: slither, mythril, echidna, 静态分析, 符号执行, 模糊测试, fuzzing, 属性测试.
+description: 当需要使用安全工具扫描合约漏洞时应使用此agent. 触发词: solidity, foundry, forge, slither, mythril, echidna, 静态分析, 符号执行, 模糊测试, fuzzing, 属性测试.
 
 <example>
 Context: 快速扫描合约漏洞
@@ -44,7 +44,9 @@ tools: ["Read", "Grep", "Glob", "Bash"]
 |------|------|------|------|----------|----------|
 | **Slither** | 静态分析 | 快 | 常见漏洞模式 | 快速扫描第一道关卡 | `brew install slither-analyzer` |
 | **Mythril** | 符号执行 | 中 | 复杂逻辑漏洞 | 关键合约深度分析 | `uv venv --python 3.10 .mythril-env && source .mythril-env/bin/activate && uv pip install mythril "setuptools<70"` |
-| **Echidna** | 模糊测试 | 中 | 边界条件 | 属性不变量测试 | `brew install echidna` |
+| **Forge Fuzz** | 模糊测试 | 快 | 参数边界测试 | 函数级随机输入测试 | Foundry 内置, 零安装 |
+| **Forge Invariant** | 不变量测试 | 中 | 状态不变量 | 全局属性恒成立验证 | Foundry 内置, 零安装 |
+| **Echidna** | 模糊测试 | 中 | 复杂调用链 | 多步交互+属性不变量 | `brew install echidna` |
 
 > Mythril 需要 Python 3.7-3.10, 必须在项目目录下创建虚拟环境, 运行时也要从项目目录执行: `.mythril-env/bin/myth analyze ...`
 
@@ -107,6 +109,53 @@ function echidna_admin_always_set() public view returns (bool) {
 }
 ```
 
+## Forge 测试 (Foundry 内置)
+
+> 零安装, foundry 项目自带. 适合快速验证函数边界和状态不变量.
+
+### Fuzz 测试
+
+函数参数带类型时 forge 自动生成随机输入:
+
+```solidity
+// forge 自动为 amount 生成随机值
+function test_deposit_fuzz(uint256 amount) public {
+    vm.assume(amount > 0 && amount < 100 ether);
+    bank.deposit{value: amount}();
+    assertEq(address(bank).balance, amount);
+}
+```
+
+### Invariant 测试
+
+以 `invariant_` 开头的测试函数, forge 在每步操作后都检查:
+
+```solidity
+// 每次操作后都会检查总量守恒
+function invariant_total_supply_conserved() public {
+    assertEq(token.totalSupply(), expectedSupply);
+}
+```
+
+### 常用命令
+
+```bash
+forge test --match-test test_deposit_fuzz -vvv       # 运行 fuzz 测试
+forge test --match-test invariant -vvvv              # 运行 invariant 测试
+forge test --fuzz-runs 10000                          # 增加随机测试次数
+forge test --match-test invariant -vvvvv             # 详细输出含失败用例
+```
+
+### Forge vs Echidna
+
+| 对比 | Forge Fuzz/Invariant | Echidna |
+|------|---------------------|---------|
+| 安装 | 内置, 零成本 | brew 安装 |
+| 上手 | 简单, 写普通测试 | 需要写 echidna_ 函数 |
+| 调用链 | 单步或 setup 定义 | 多步复杂调用链 |
+| 配置 | foundry.toml | echidna.yaml |
+| 适合 | 函数边界, 简单不变量 | 复杂交互, 多合约联动 |
+
 ## 报告格式
 
 ```markdown
@@ -137,4 +186,4 @@ function echidna_admin_always_set() public view returns (bool) {
 2. Slither 有误报, 需要人工验证
 3. Mythril 分析较慢, 适合关键合约
 4. Echidna 属性函数命名必须以 `echidna_` 开头
-5. 多工具配合使用效果最佳: Slither快速扫描 -> Mythril深度分析 -> Echidna边界测试
+5. 多工具配合使用效果最佳: Forge测试(基础验证) -> Slither快速扫描 -> Mythril深度分析 -> Echidna边界测试

@@ -96,5 +96,3 @@ agent --stream-partial-output --output-format stream-json -p "<prompt>" --model 
 **注意事项:**
 1. 提供的方案不一定准确, 需要自己证实
 2. 不要写入文件, 对话可以看到返回内容
-
-**License:** MIT

@@ -124,5 +124,3 @@ find . -name "package.json" -o -name "composer.json" -o -name "requirements.txt"
 - 不要跳过 poc-verifier 的验证步骤
 - 不要将未经证实的猜测标记为漏洞
 - 不要让单个 Agent 超时太久
-
-**License:** MIT
