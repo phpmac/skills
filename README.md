@@ -5,9 +5,6 @@
 ## 安装使用方法
 
 ```bash
-# 创建 claude-mem 数据库软链接
-rm -rf ~/.claude-mem/claude-mem.db && ln -s ~/Downloads/skills/claude-mem.db ~/.claude-mem/claude-mem.db
-
 # 本地安装,会自己安装插件和skills
 /plugin marketplace add ~/Downloads/skills
 # 本地安装,会自己安装插件和skills
