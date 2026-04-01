@@ -42,7 +42,7 @@ tools: ["Read", "Grep", "Glob", "Bash", "Task", "WebSearch"]
 
 | Agent | 职责 | 专长 |
 |-------|------|------|
-| **contract-scanner** | 合约安全扫描 | Slither, Mythril, Echidna, Halmos, Forge (含工具预检) |
+| **contract-scanner** | 合约安全扫描 | Slither, Mythril, Echidna, Halmos, Forge (含工具预检+solc依赖检查) |
 | **smart-contract-vuln** | 漏洞知识库 | DeFi 漏洞分类, 攻击模式, 审计清单 |
 | **framework-auditor** | 框架审计 | React, Next.js, Laravel, FastAPI |
 | **poc-verifier** | 漏洞验证 | PoC 开发, 测试验证 |
