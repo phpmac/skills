@@ -114,64 +114,9 @@ firecrawl_search(query="sherlock [漏洞类型] audit finding")
 - Low 攻击条件难以满足或实际利用不可能
 - 禁止不分析攻击成本和收益就给等级
 
-## 检测工具（完整测试覆盖）
+## 工具扫描
 
-使用多层测试策略，每种工具都有其独特价值，缺一不可。
-
-### 静态分析
-
-```bash
-slither . --exclude-dependencies
-```
-
-**说明**: 静态分析无需运行合约，通过代码解析检测潜在漏洞。适合快速扫描，检测常见漏洞模式。
-
-- `--exclude-dependencies`: 排除第三方库依赖，只分析项目代码
-- 覆盖: 重入, 访问控制, 整数溢出等 92+ 种漏洞检测器
-
-### 动态分析/符号执行
-
-```bash
-myth analyze contracts/MyContract.sol
-myth aegis contracts/MyContract.sol --coverage
-```
-
-**说明**: 动态分析通过实际执行或符号执行探索合约状态空间，发现静态分析难以检测的复杂漏洞。
-
-- mythril: 符号执行工具, 检测 gas 耗尽, 业务逻辑漏洞
-- myth aegis: 更深入的覆盖导向分析
-
-### 模糊测试（必须执行）
-
-```bash
-forge test --fuzz-runs 10000
-echidna .
-```
-
-**说明**: 模糊测试通过生成大量随机/半随机输入来触发边界条件和异常路径。
-
-- `forge test --fuzz-runs N`: Foundry 内置模糊测试, N 为测试次数 (通常 10000+)
-- echidna: 专用模糊测试工具, 基于属性测试, 适合检测代币经济模型漏洞
-- 模糊测试能发现人类难以预料的输入组合攻击
-
-### 形式化验证（关键属性）
-
-```bash
-certora Coq证明验证
-```
-
-**说明**: 形式化验证通过数学证明验证合约属性永远成立，适合关键业务逻辑验证。
-
-- Certora: 编写 .cvl 规则文件, 证明如"余额永不为负"等关键属性
-- 覆盖率高但配置复杂，通常用于核心合约
-
-### 常用组合
-
-| 场景 | 命令 |
-|------|------|
-| 快速扫描 | `slither . --exclude-dependencies` |
-| 完整审计 | `slither . && myth analyze . && forge test --fuzz-runs 10000` |
-| 关键合约验证 | `certora证明` |
+本 agent 专注于漏洞知识库查询, 不直接运行安全工具. 需要工具扫描时, 由协调器委派给 `contract-scanner` agent 执行.
 
 ## 漏洞参考: 算术漏洞
 

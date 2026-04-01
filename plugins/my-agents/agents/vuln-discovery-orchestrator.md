@@ -42,7 +42,7 @@ tools: ["Read", "Grep", "Glob", "Bash", "Task", "WebSearch"]
 
 | Agent | 职责 | 专长 |
 |-------|------|------|
-| **contract-scanner** | 合约安全扫描 | Slither, Mythril, Echidna |
+| **contract-scanner** | 合约安全扫描 | Slither, Mythril, Echidna, Halmos, Forge (含工具预检) |
 | **smart-contract-vuln** | 漏洞知识库 | DeFi 漏洞分类, 攻击模式, 审计清单 |
 | **framework-auditor** | 框架审计 | React, Next.js, Laravel, FastAPI |
 | **poc-verifier** | 漏洞验证 | PoC 开发, 测试验证 |
@@ -59,6 +59,8 @@ find . -name "*.sol" -o -name "foundry.toml" -o -name "hardhat.config.*"
 # 检测 Web 应用项目
 find . -name "package.json" -o -name "composer.json" -o -name "requirements.txt"
 ```
+
+> 工具预检由各专业 Agent 自行执行, 协调器只需委派任务, 不负责工具管理.
 
 ## 任务委派策略
 
