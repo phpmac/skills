@@ -37,8 +37,7 @@
     "my-agents@phpmac-skills": true,
     "plugin-dev@phpmac-skills": true,
     "pr-review-toolkit@phpmac-skills": true,
-    "security-guidance@phpmac-skills": true,
-    "claude-mem@thedotmack": true
+    "security-guidance@phpmac-skills": true
   },
   "extraKnownMarketplaces": {
     "phpmac-skills": {
@@ -47,16 +46,11 @@
         "path": "/Users/a/Downloads/skills"
       },
       "autoUpdate": true
-    },
-    "thedotmack": {
-      "source": {
-        "source": "github",
-        "repo": "thedotmack/claude-mem"
-      }
     }
   },
   "language": "中文",
   "syntaxHighlightingDisabled": false,
+  "effortLevel": "high",
   "autoUpdatesChannel": "stable",
   "minimumVersion": "2.1.58",
   "autoMemoryEnabled": true,

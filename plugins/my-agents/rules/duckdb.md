@@ -1,3 +1,9 @@
+---
+paths:
+  - "**/*.sql"
+  - "**/duckdb/**/*.md"
+---
+
 # DuckDB 规范
 
 - 默认排除分析 node_modules/vendor 目录的文件

@@ -1,3 +1,10 @@
+---
+paths:
+  - "**/*.php"
+  - "**/composer.json"
+  - "**/artisan"
+---
+
 # PHP/Laravel 规范
 
 - 统一顶部使用 use

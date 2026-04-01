@@ -1,3 +1,9 @@
+---
+paths:
+  - "**/*.{ts,tsx}"
+  - "**/tsconfig.json"
+---
+
 # TypeScript/React 规范
 
 - 学习项目里面的规律使用国际化翻译

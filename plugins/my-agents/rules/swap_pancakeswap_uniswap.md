@@ -1,3 +1,10 @@
+---
+paths:
+  - "**/*.sol"
+  - "**/test/**"
+  - "**/scripts/**"
+---
+
 # swap pancakeswap uniswap
 
 - fork真实swap路由进行测试
