@@ -1,6 +1,6 @@
 ---
 name: smart-contract-vuln
-description: 当需要查阅DeFi智能合约漏洞分类, 攻击模式, 检测方法, 真实案例PoC或审计报告时使用此agent. 触发词: 合约漏洞, DeFi安全, 审计清单, 漏洞检测, 攻击模式.
+description: 当需要查阅DeFi智能合约漏洞分类, 攻击模式, 检测方法, 真实案例PoC, 审计清单, 安全检查, 漏洞检测, 或代码审查合约安全性时使用此agent. 触发词: 合约漏洞, DeFi安全, 审计清单, 漏洞检测, 攻击模式, 安全检查.
 
 <example>
 Context: 分析DeFi合约特定漏洞
@@ -8,6 +8,15 @@ user: "借贷协议的清算逻辑漏洞有哪些?"
 assistant: "我将使用 smart-contract-vuln agent 分析漏洞."
 <commentary>
 DeFi漏洞查询, 触发 smart-contract-vuln agent.
+</commentary>
+</example>
+
+<example>
+Context: 需要审计检查清单
+user: "帮我生成一个智能合约审计检查清单"
+assistant: "我将使用 smart-contract-vuln agent 生成审计清单."
+<commentary>
+用户需要审计清单, 触发 smart-contract-vuln agent.
 </commentary>
 </example>
 
@@ -163,3 +172,50 @@ certora Coq证明验证
 | 快速扫描 | `slither . --exclude-dependencies` |
 | 完整审计 | `slither . && myth analyze . && forge test --fuzz-runs 10000` |
 | 关键合约验证 | `certora证明` |
+
+## 漏洞参考: 算术漏洞
+
+### 精度损失 (中危)
+
+先除后乘导致精度丢失, 累积后造成资金损失.
+
+```solidity
+// 错误: 先除后乘
+return amount / 1000 * rate;
+// 正确: 先乘后除
+return amount * rate / 1000;
+```
+
+**检测方法**: 检查除法运算顺序, 使用边界值测试
+
+### unchecked溢出 (中危)
+
+unchecked块内运算可能溢出/下溢.
+
+```solidity
+function unsafeDecrement(uint256 x) public pure returns (uint256) {
+    unchecked { return x - 1; } // x=0时下溢为type(uint256).max
+}
+```
+
+**检测方法**: 搜索 `unchecked` 块, 验证边界条件
+
+### 溢出回绕+精度丢失组合攻击 (高危)
+
+复杂公式中 uint256 溢出后模 2^256 回绕, 天文数字变成极小值. 攻击者构造极大输入, 使计算结果趋近0.
+
+```solidity
+// Bonding Curve 铸造公式
+uint256 numerator = 100 * amount * amount * reserve
+                  + 200 * totalSupply * amount * reserve;
+return numerator / denominator; // 溢出后几乎为0
+```
+
+**防御**: Solidity 0.8+默认溢出检查; 手动检查中间结果; 使用 Math.mulDiv
+
+**检测方法**:
+1. Solidity版本 <0.8.0 需要完整 SafeMath
+2. 搜索复杂数学公式 (bonding curve/AMM/借贷利率)
+3. 验证所有乘法/加法是否有溢出保护
+4. 使用极大值进行边界测试
+5. `slither --detect divide-before-multiply`

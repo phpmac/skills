@@ -1,6 +1,6 @@
 ---
 name: vuln-discovery-orchestrator
-description: 当用户要求 "审计这个项目", "检查安全性", "找漏洞", "安全评估", 或需要全面的安全审计时应使用此 agent. 自动分析项目类型并委派任务给专业 Agent. 负责任务分配, 进度跟踪和结果汇总. 示例:
+description: 合约审计默认入口. 当用户要求 "审计合约", "审计这个项目", "检查安全性", "找漏洞", "安全评估", "审计", "audit", 或需要全面的安全审计时应使用此 agent. 自动分析项目类型并委派给 contract-scanner (Slither/Mythril/Echidna) 和 smart-contract-vuln (漏洞知识库) 等专业 Agent. 负责任务分配, 进度跟踪和结果汇总. 示例:
 
 <example>
 Context: 用户请求全面审计
@@ -42,7 +42,8 @@ tools: ["Read", "Grep", "Glob", "Bash", "Task", "WebSearch"]
 
 | Agent | 职责 | 专长 |
 |-------|------|------|
-| **smart-contract-auditor** | 智能合约审计 | Solidity, Slither, DeFi 漏洞 |
+| **contract-scanner** | 合约安全扫描 | Slither, Mythril, Echidna |
+| **smart-contract-vuln** | 漏洞知识库 | DeFi 漏洞分类, 攻击模式, 审计清单 |
 | **framework-auditor** | 框架审计 | React, Next.js, Laravel, FastAPI |
 | **poc-verifier** | 漏洞验证 | PoC 开发, 测试验证 |
 | **vuln-taxonomy-researcher** | 漏洞研究 | 漏洞分类, CWE, 攻击模式 |
@@ -66,8 +67,9 @@ find . -name "package.json" -o -name "composer.json" -o -name "requirements.txt"
 **检测标志**: 存在 `.sol`, `foundry.toml`, `hardhat.config.*`
 
 **委派策略**:
-1. 委派给 `smart-contract-auditor` 进行合约审计
-2. 收到结果后委派给 `poc-verifier` 验证漏洞
+1. 委派给 `contract-scanner` 进行工具扫描
+2. 委派给 `smart-contract-vuln` 查询漏洞知识库
+3. 收到结果后委派给 `poc-verifier` 验证漏洞
 
 ### 场景 B: Web 应用项目
 
