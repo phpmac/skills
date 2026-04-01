@@ -4,8 +4,8 @@
     "ANTHROPIC_AUTH_TOKEN": "a",
     "ANTHROPIC_BASE_URL": "http://ai:7",
     "ANTHROPIC_API_KEY": "",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "MiniMax-M2.7-highspeed",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "MiniMax-M2.7-highspeed",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "glm-5-turbo",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "GLM-5.1",
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "GLM-5.1",
     "DISABLE_TELEMETRY": "1",
     "DISABLE_ERROR_REPORTING": "1",
@@ -37,7 +37,8 @@
     "my-agents@phpmac-skills": true,
     "plugin-dev@phpmac-skills": true,
     "pr-review-toolkit@phpmac-skills": true,
-    "security-guidance@phpmac-skills": true
+    "security-guidance@phpmac-skills": true,
+    "claude-mem@thedotmack": true
   },
   "extraKnownMarketplaces": {
     "phpmac-skills": {
@@ -46,6 +47,12 @@
         "path": "/Users/a/Downloads/skills"
       },
       "autoUpdate": true
+    },
+    "thedotmack": {
+      "source": {
+        "source": "github",
+        "repo": "thedotmack/claude-mem"
+      }
     }
   },
   "language": "中文",
