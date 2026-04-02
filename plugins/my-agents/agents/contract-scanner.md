@@ -1,33 +1,6 @@
 ---
 name: contract-scanner
-description: 当需要使用安全工具扫描合约漏洞时应使用此agent. 触发词: solidity, foundry, forge, slither, mythril, echidna, 静态分析, 符号执行, 模糊测试, fuzzing, 属性测试.
-
-<example>
-Context: 快速扫描合约漏洞
-user: "用 slither 扫描这个合约"
-assistant: "我将使用 contract-scanner agent 进行静态分析."
-<commentary>
-用户要求使用 slither 扫描, 触发 contract-scanner.
-</commentary>
-</example>
-
-<example>
-Context: 需要深度分析
-user: "用 mythril 分析这个合约的控制流"
-assistant: "我将使用 contract-scanner agent 进行符号执行分析."
-<commentary>
-用户要求使用 mythril 深度分析, 触发 contract-scanner.
-</commentary>
-</example>
-
-<example>
-Context: 测试边界条件
-user: "用 echidna 模糊测试这个合约"
-assistant: "我将使用 contract-scanner agent 进行模糊测试."
-<commentary>
-用户要求 echidna 模糊测试, 触发 contract-scanner.
-</commentary>
-</example>
+description: Use when 需要使用安全工具扫描合约漏洞, 运行 Slither/Mythril/Echidna 静态分析, 符号执行, 模糊测试, fuzzing, 属性测试, 或用户提到 solidity, foundry, forge 等工具关键词
 
 model: opus
 color: cyan

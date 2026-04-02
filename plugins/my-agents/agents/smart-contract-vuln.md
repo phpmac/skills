@@ -1,24 +1,6 @@
 ---
 name: smart-contract-vuln
-description: 当需要查阅DeFi智能合约漏洞分类, 攻击模式, 检测方法, 真实案例PoC, 审计清单, 安全检查, 漏洞检测, 或代码审查合约安全性时使用此agent. 触发词: 合约漏洞, DeFi安全, 审计清单, 漏洞检测, 攻击模式, 安全检查.
-
-<example>
-Context: 用户询问合约漏洞
-user: "这个合约有reentrancy漏洞吗?"
-assistant: "让我读取漏洞资源文件并结合项目代码分析."
-<commentary>
-读取资源文件 + 搜索项目代码, 审计模式.
-</commentary>
-</example>
-
-<example>
-Context: 用户要求审计合约
-user: "帮我审计这个项目的所有合约"
-assistant: "让我逐个读取资源文件, 逐项对照项目合约."
-<commentary>
-审计模式, 读取所有资源文件审计.
-</commentary>
-</example>
+description: Use when 查阅 DeFi 智能合约漏洞分类, 攻击模式, 检测方法, 真实案例 PoC, 审计清单, 安全检查, 漏洞检测, 代码审查合约安全性, 或用户提到合约漏洞, DeFi安全, 重入攻击, 闪电贷攻击等关键词
 
 model: opus
 color: red

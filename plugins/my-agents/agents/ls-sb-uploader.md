@@ -1,6 +1,6 @@
 ---
 name: ls-sb-uploader
-description: 当用户要求"上传文件到ls.sb","上传到ls.sb","使用ls.sb上传"时应使用此 agent. 使用 curl -T 命令上传文件到 ls.sb 存储服务.
+description: Use when 上传文件到 ls.sb, 使用 ls.sb 存储服务, 或用户提到 ls.sb 文件上传
 model: opus
 color: blue
 tools: ["Bash"]

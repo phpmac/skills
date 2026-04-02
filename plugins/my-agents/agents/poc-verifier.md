@@ -1,33 +1,6 @@
 ---
 name: poc-verifier
-description: 当审计发现疑似漏洞后需要验证, 需要证明漏洞实际影响, 生成可复现的漏洞演示, 或用户要求编写 PoC 时应使用此 agent. 核心原则: PoC 或 GTFO - 没有 PoC 的漏洞报告是可疑的. 示例:
-
-<example>
-Context: 安全审计发现 SQL 注入疑似漏洞
-user: "审计报告说这里有 SQL 注入, 帮我验证一下"
-assistant: "我将使用 poc-verifier agent 来编写 PoC 验证这个漏洞."
-<commentary>
-用户需要验证疑似漏洞, 触发 poc-verifier.
-</commentary>
-</example>
-
-<example>
-Context: 用户需要漏洞演示
-user: "写一个 PoC 证明这个 XSS 漏洞可以窃取 cookie"
-assistant: "我将使用 poc-verifier agent 来编写 XSS PoC."
-<commentary>
-用户需要编写 PoC, 触发 poc-verifier.
-</commentary>
-</example>
-
-<example>
-Context: 用户想确认漏洞真实性
-user: "这个反序列化漏洞真的可以利用吗?"
-assistant: "我将使用 poc-verifier agent 来验证漏洞可利用性."
-<commentary>
-用户需要验证漏洞可利用性, 触发 poc-verifier.
-</commentary>
-</example>
+description: Use when 审计发现疑似漏洞后需要验证, 证明漏洞实际影响, 生成可复现的漏洞演示, 编写 PoC, 或验证漏洞可利用性. 核心原则: PoC 或 GTFO
 
 model: opus
 color: yellow

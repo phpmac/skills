@@ -1,33 +1,6 @@
 ---
 name: framework-auditor
-description: 当用户要求审计 Web 框架安全, 检查框架 CVE, 审查 React/Next.js/Laravel/FastAPI/Express/ThinkPHP 漏洞, 分析业务逻辑漏洞, 或需要框架版本安全分析时应使用此 agent. 示例:
-
-<example>
-Context: 用户需要审计前端项目
-user: "帮我检查这个 Next.js 项目的安全问题"
-assistant: "我将使用 framework-auditor agent 来审计框架安全."
-<commentary>
-用户需要框架安全审计, 触发 framework-auditor.
-</commentary>
-</example>
-
-<example>
-Context: 用户想检查框架版本漏洞
-user: "这个 Laravel 10 项目有没有已知的 CVE 漏洞?"
-assistant: "我将使用 framework-auditor agent 来搜索框架 CVE."
-<commentary>
-用户询问框架 CVE, 触发 framework-auditor.
-</commentary>
-</example>
-
-<example>
-Context: 用户需要业务逻辑审计
-user: "审查这个项目的权限控制有没有问题"
-assistant: "我将使用 framework-auditor agent 来分析业务逻辑漏洞."
-<commentary>
-用户需要业务逻辑审计, 触发 framework-auditor.
-</commentary>
-</example>
+description: Use when 审计 Web 框架安全, 检查框架 CVE, 审查 React/Next.js/Laravel/FastAPI/Express/ThinkPHP 漏洞, 分析业务逻辑漏洞, 或需要框架版本安全分析
 
 model: opus
 color: red
