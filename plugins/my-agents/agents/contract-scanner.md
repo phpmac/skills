@@ -171,17 +171,58 @@ function echidna_admin_always_set() public view returns (bool) {
 brew install medusa
 ```
 
-**前提条件**: 合约中需要 `echidna` 或 `property` 前缀的测试函数, 或者 assert 语句.
+### 关键限制: 不支持 Fork 测试
 
-**配置生成**: 从 foundry.toml 的 remappings 和 compiler 设置自动生成 `medusa.json`.
+**Medusa 不支持 Foundry 的 fork 测试**, 即 `vm.createSelectFork` / `vm.createFork` 在 Medusa 中会
+导致部署失败. Medusa 使用独立的 EVM 环境, 没有网络访问能力.
+
+**解决方案**: 使用 mock 合约代替 fork. 创建 MockRouter / MockFactory / MockPair / MockERC20
+等合约, 在 `setUp()` 中本地部署, 而非依赖链上状态.
+
+**注意**: 如果合约中使用了 hardcoded 的主网地址常量 (如 WBNB / USDT), 需要用 `vm.etch` 在
+对应地址部署 mock 字节码. `vm.etch` 在 Medusa 中可用, 区别于不受支持的 fork 操作.
+
+### 配置生成
+
+用 `medusa init` 自动生成默认配置:
 
 ```bash
-# 初始化配置
 medusa init
-
-# 运行模糊测试
-medusa fuzz
 ```
+
+生成的 `medusa.json` 是可靠的, 不要手动写. 如需调整参数, 参照 `medusa fuzz --help` 的可用选项.
+
+**常用覆盖选项**:
+
+```bash
+medusa fuzz --config medusa.json --workers 10 --timeout 300 --target-contracts YourTestContract
+```
+
+### 依赖管理
+
+Medusa 依赖 crytic-compile 和 slither 进行编译:
+
+```bash
+# 检查依赖
+which crytic-compile
+which slither
+solc --version
+
+# 如缺失, 用 uv 安装
+uv tool install slither-analyzer  # 包含 crytic-compile
+```
+
+### 常见错误
+
+| 错误 | 原因 | 修复 |
+|------|------|------|
+| `VM failed to deploy target` | setUp() 中使用了 vm.createSelectFork | 改用 mock 合约 |
+| `crytic-compile not found` | 未安装或路径不对 | uv tool install slither-analyzer |
+| `Undeclared identifier` | solc 版本不对 | foundryup 或指定版本 |
+
+### Mock 合约编写规范
+
+当目标合约依赖外部协议时, 需创建 mock 合约代替 fork, 使用 `vm.etch` 在指定地址部署.
 
 ## Halmos (符号测试)
 
