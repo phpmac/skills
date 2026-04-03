@@ -9,7 +9,9 @@
       "mcp__context7__resolve-library-id",
       "mcp__context7__query-docs",
       "mcp__firecrawl__firecrawl_extract",
-      "mcp__notion__notion-fetch"
+      "mcp__notion__notion-fetch",
+      "mcp__exa__web_search_exa",
+      "mcp__exa__crawling_exa"
     ]
   }
 }

@@ -1,42 +1,6 @@
 ---
 name: cursor-escalator
-description: 当用户消息中提到 cursor（或 Cursor）这个关键字时,应使用此 agent 进行代码审查.**注意:是触发词,不一定指 Cursor 软件**.示例:
-
-<example>
-Context: 用户要求用 cursor 检查代码
-user: "使用 Cursor 检查代码"
-assistant: "我将使用 cursor-escalator agent 来检查."
-<commentary>
-cursor 是触发词, 触发 cursor-escalator.
-</commentary>
-</example>
-
-<example>
-Context: 用户要求用 cursor 审查
-user: "用 cursor 帮我审查这段代码"
-assistant: "我将使用 cursor-escalator agent 来审查."
-<commentary>
-cursor 是触发词, 触发 cursor-escalator.
-</commentary>
-</example>
-
-<example>
-Context: 用户要求 cursor 复核
-user: "cursor 复核一下我的改动"
-assistant: "我将使用 cursor-escalator agent 来复核."
-<commentary>
-cursor 是触发词, 触发 cursor-escalator.
-</commentary>
-</example>
-
-<example>
-Context: 问题多次尝试失败
-user: "这个问题我试了很多次都解决不了 cursor 帮我看看"
-assistant: "让我使用 cursor-escalator agent 来分析."
-<commentary>
-cursor 是触发词, 触发 cursor-escalator.
-</commentary>
-</example>
+description: Use when 用户消息中提到 cursor 或 Cursor 关键字. 注意: 是触发词, 不一定指 Cursor 软件
 
 model: opus
 color: magenta

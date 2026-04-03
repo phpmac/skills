@@ -27,7 +27,7 @@
     "defaultMode": "default",
     "allowEditHome": false
   },
-  "model": "opus[1m]",
+  "model": "sonnet[1m]",
   "enabledPlugins": {
     "hookify@phpmac-skills": true,
     "agent-sdk-dev@phpmac-skills": true,
@@ -48,7 +48,7 @@
       "autoUpdate": true
     }
   },
-  "language": "中文",
+  "language": "所有回复必须使用英文标点符号,逗号/句号/分号/引号等禁止使用中文标点符号\n代码注释必须使用中文,禁止使用英文注释,注释禁止使用中文标点符号包括，。、等",
   "syntaxHighlightingDisabled": false,
   "autoUpdatesChannel": "stable",
   "minimumVersion": "2.1.58",

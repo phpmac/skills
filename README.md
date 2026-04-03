@@ -16,11 +16,11 @@ bunx skills add OpenZeppelin/openzeppelin-skills
 
 rm -rf ~/.codex
 rm -rf ~/.agents
+rm -rf ~/.claude/rules
 rm -rf $HOME/.claude/cache/*
 rm -rf ~/.claude/agents ~/.claude/skills
 rm -rf ~/.cursor/mcp.json && ln -s $HOME/.claude.json ~/.cursor/mcp.json
 rm -rf ~/.claude/hookify.* && ln -sf "$PWD"/plugins/hookify/examples/* ~/.claude/
-rm -rf ~/.claude/rules && ln -s ~/Downloads/skills/plugins/my-agents/rules $HOME/.claude/rules
 rm -rf ~/.claude/CLAUDE.md && ln -s ~/Downloads/skills/plugins/my-agents/CLAUDE.md ~/.claude/CLAUDE.md
 rm -rf ~/.claude/settings.json && ln -s ~/Downloads/skills/plugins/my-agents/settings.json ~/.claude/settings.json
 
@@ -35,6 +35,7 @@ claude mcp add --scope user context7 -- bunx -y @upstash/context7-mcp --api-key 
 claude mcp add --scope user supermemory --transport sse https://mcp.supermemory.ai/mcp
 claude mcp add --transport http notion --scope user https://mcp.notion.com/mcp
 claude mcp add --scope user duckdb --transport stdio ~/Downloads/skills/plugins/my-agents/duckdb-mcp-server.sh
+claude mcp add --transport http exa --scope user https://mcp.exa.ai/mcp
 
 
 claude mcp add --scope user chrome-devtools -- bunx chrome-devtools-mcp@latest --autoConnect --channel=beta
@@ -50,8 +51,8 @@ INSTALL mongo FROM community;
 INSTALL crypto FROM community;
 "
 
-claude mcp remove serper
-claude mcp remove serper -s user
+claude mcp remove exa
+claude mcp remove exa -s user
 
 claude mcp add cloudflare-api --transport http --scope user https://mcp.cloudflare.com/mcp
 claude mcp add -s user zai-mcp-server --env Z_AI_API_KEY=dbbcb136a5714cfb829e0b074a3e43aa.kfw0nT1CqXLzESs0 Z_AI_MODE=ZAI -- bunx -y "@z_ai/mcp-server"

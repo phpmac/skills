@@ -1,33 +1,6 @@
 ---
 name: vuln-discovery-orchestrator
-description: 合约审计默认入口. 当用户要求 "审计合约", "审计这个项目", "检查安全性", "找漏洞", "安全评估", "审计", "audit", 或需要全面的安全审计时应使用此 agent. 自动分析项目类型并委派给 contract-scanner (Slither/Mythril/Echidna) 和 smart-contract-vuln (漏洞知识库) 等专业 Agent. 负责任务分配, 进度跟踪和结果汇总. 示例:
-
-<example>
-Context: 用户请求全面审计
-user: "帮我审计这个项目的安全性"
-assistant: "我将使用 vuln-discovery-orchestrator agent 来协调整体审计."
-<commentary>
-用户需要全面安全审计, 触发 vuln-discovery-orchestrator.
-</commentary>
-</example>
-
-<example>
-Context: 用户想找漏洞
-user: "检查这个 DeFi 项目有没有漏洞"
-assistant: "我将使用 vuln-discovery-orchestrator agent 来协调漏洞发现."
-<commentary>
-用户要求找漏洞, 触发 vuln-discovery-orchestrator.
-</commentary>
-</example>
-
-<example>
-Context: 用户需要安全评估
-user: "评估这个 Web 应用的安全风险"
-assistant: "我将使用 vuln-discovery-orchestrator agent 来进行全面评估."
-<commentary>
-用户需要安全评估, 触发 vuln-discovery-orchestrator.
-</commentary>
-</example>
+description: Use when 审计合约, 审计项目安全性, 检查安全性, 找漏洞, 安全评估, audit, 或需要全面的安全审计. 自动委派给 contract-scanner 和 smart-contract-vuln 等专业 Agent 进行任务分配和结果汇总
 
 model: opus
 color: cyan

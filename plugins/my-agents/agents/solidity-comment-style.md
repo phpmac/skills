@@ -1,6 +1,6 @@
 ---
 name: solidity-comment-style
-description: 当用户要求"清理Solidity注释","精简合约注释","规范代码注释","提升可读性","移除冗余注释"时应使用此 agent.
+description: Use when 清理 Solidity 注释, 精简合约注释, 规范代码注释, 提升可读性, 移除冗余注释, 或优化合约注释风格
 model: opus
 color: orange
 tools: ["Read", "Grep", "Glob", "Edit", "Bash"]

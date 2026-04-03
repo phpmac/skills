@@ -1,12 +1,6 @@
 ---
 name: punctuation-checker
-description: 当用户要求"检查标点","扫描标点违规","修复标点符号","批量处理标点"时应使用此 agent. 必须使用团队模式并行处理. 示例:
-
-<example>
-Context: 用户要求检查标点符号
-user: "检查一下项目里的标点符号"
-assistant: "我将使用 punctuation-checker agent 来并行扫描项目中的标点符号违规."
-</example>
+description: Use when 检查标点符号, 扫描标点违规, 修复标点符号, 批量处理标点, 或需要验证项目中文字符是否使用了英文标点. 必须使用团队模式并行处理
 
 model: opus
 color: green
