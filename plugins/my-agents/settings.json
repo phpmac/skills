@@ -5,7 +5,7 @@
     "ANTHROPIC_BASE_URL": "http://ai:7",
     "ANTHROPIC_API_KEY": "",
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "MiniMax-M2.7-highspeed",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "MiMo-V2-Pro",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "mimo-v2-pro",
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "GLM-5.1",
     "DISABLE_TELEMETRY": "1",
     "DISABLE_ERROR_REPORTING": "1",
@@ -27,7 +27,7 @@
     "defaultMode": "default",
     "allowEditHome": false
   },
-  "model": "MiMo-V2-Pro",
+  "model": "sonnet[1m]",
   "enabledPlugins": {
     "hookify@phpmac-skills": true,
     "agent-sdk-dev@phpmac-skills": true,
