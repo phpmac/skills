@@ -27,7 +27,7 @@
     "defaultMode": "default",
     "allowEditHome": false
   },
-  "model": "kimi-for-coding",
+  "model": "sonnet[1m]",
   "enabledPlugins": {
     "hookify@phpmac-skills": true,
     "agent-sdk-dev@phpmac-skills": true,
