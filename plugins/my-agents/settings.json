@@ -27,7 +27,7 @@
     "defaultMode": "default",
     "allowEditHome": false
   },
-  "model": "sonnet[1m]",
+  "model": "opus[1m]",
   "enabledPlugins": {
     "hookify@phpmac-skills": true,
     "agent-sdk-dev@phpmac-skills": true,
