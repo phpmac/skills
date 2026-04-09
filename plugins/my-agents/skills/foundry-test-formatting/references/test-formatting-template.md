@@ -1,6 +1,6 @@
 # Foundry 测试格式化模板
 
-这是一个完整的测试文件模板,包含所有数值格式化辅助函数.
+这是一个完整的测试文件模板, 包含所有数值格式化辅助函数.
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -29,7 +29,7 @@ contract FormattedTestTemplate is Test {
         uint256 integerPart = value / 1e18;
         uint256 decimalPart = value % 1e18;
 
-        // 如果小数部分为0,只返回整数
+        // 如果小数部分为0, 只返回整数
         if (decimalPart == 0) {
             return vm.toString(integerPart);
         }
@@ -37,7 +37,7 @@ contract FormattedTestTemplate is Test {
         // 将小数部分转换为字符串并去除末尾的0
         string memory decimalStr = _trimTrailingZeros(decimalPart);
 
-        // 如果小数部分全是0,返回整数
+        // 如果小数部分全是0, 返回整数
         if (bytes(decimalStr).length == 0) {
             return vm.toString(integerPart);
         }
@@ -74,7 +74,7 @@ contract FormattedTestTemplate is Test {
     }
 
     /**
-     * @dev 将数字转换为固定长度的字符串,不足位在前面补0
+     * @dev 将数字转换为固定长度的字符串, 不足位在前面补0
      */
     function _toStringPadded(uint256 value, uint256 length) internal pure returns (string memory) {
         string memory str = vm.toString(value);
@@ -197,7 +197,7 @@ contract FormattedTestTemplate is Test {
 
 ## 快速复制版本
 
-如果你只需要核心函数,复制这个:
+只需要核心函数时复制:
 
 ```solidity
 // 核心格式化函数
