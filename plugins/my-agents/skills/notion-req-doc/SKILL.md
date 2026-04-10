@@ -1,6 +1,6 @@
 ---
 name: notion-req-doc
-description: 当用户要求 "整理需求到Notion", "编写技术需求文档", "格式化产品需求到Notion页面", "Notion文档排版", "整理到Notion", "格式化需求", 或用户提到需求文档/PRD/Notion格式化时应使用此技能. 将原始需求整理为结构化的Notion技术开发需求文档
+description: 当用户要求 "整理需求到Notion", "编写技术需求文档", "格式化产品需求到Notion页面", "Notion文档排版", "整理到Notion", "格式化需求", 或用户提到需求文档/PRD/Notion格式化时应使用此技能
 ---
 
 # Notion 技术需求文档整理
