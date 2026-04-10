@@ -9,6 +9,7 @@ paths:
 
 - 禁止使用 `slot` 读取,这个需要和人工沟通
 - 默认不要添加 `--private-key $PRIVATE_KEY` 参数
+- 审计合约的时候需要的工具必须全部安装,否则禁止执行审计
 
 ## Solidity 测试输出规范
 

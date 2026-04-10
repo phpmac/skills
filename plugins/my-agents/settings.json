@@ -27,7 +27,7 @@
     "defaultMode": "default",
     "allowEditHome": false
   },
-  "model": "opus[1m]",
+  "model": "GLM-5.1",
   "enabledPlugins": {
     "hookify@phpmac-skills": true,
     "agent-sdk-dev@phpmac-skills": true,
