@@ -7,6 +7,7 @@ paths:
 
 # forge/foundry/solidity 规范
 
+- 禁止使用 `slot` 读取,这个需要和人工沟通
 - 默认不要添加 `--private-key $PRIVATE_KEY` 参数
 
 ## Solidity 测试输出规范

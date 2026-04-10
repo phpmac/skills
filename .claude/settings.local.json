@@ -12,7 +12,14 @@
       "mcp__notion__notion-fetch",
       "mcp__exa__web_search_exa",
       "mcp__exa__crawling_exa",
-      "mcp__exa__web_fetch_exa"
+      "mcp__exa__web_fetch_exa",
+      "Bash(cast storage:*)",
+      "Bash(cast logs:*)",
+      "Bash(cast source:*)",
+      "Bash(cast erc20-token:*)",
+      "Bash(cast implementation:*)",
+      "Bash(cast selectors:*)",
+      "Bash(cast index:*)"
     ]
   }
 }
