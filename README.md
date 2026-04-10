@@ -16,11 +16,12 @@ bunx skills add OpenZeppelin/openzeppelin-skills
 
 rm -rf ~/.codex
 rm -rf ~/.agents
-rm -rf ~/.claude/rules
+
 rm -rf $HOME/.claude/cache/*
 rm -rf ~/.claude/agents ~/.claude/skills
 rm -rf ~/.cursor/mcp.json && ln -s $HOME/.claude.json ~/.cursor/mcp.json
 rm -rf ~/.claude/hookify.* && ln -sf "$PWD"/plugins/hookify/examples/* ~/.claude/
+rm -rf ~/.claude/rules && ln -sf ~/Downloads/skills/plugins/my-agents/rules ~/.claude/rules
 rm -rf ~/.claude/CLAUDE.md && ln -s ~/Downloads/skills/plugins/my-agents/CLAUDE.md ~/.claude/CLAUDE.md
 rm -rf ~/.claude/settings.json && ln -s ~/Downloads/skills/plugins/my-agents/settings.json ~/.claude/settings.json
 
