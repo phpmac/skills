@@ -1,0 +1,66 @@
+default_profile = "ollama-launch"
+model = "glm-5.1:cloud"
+openai_base_url = "http://127.0.0.1:11434/v1/"
+model_provider = "ollama-launch"
+developer_instructions = "所有回复必须使用英文标点符号,逗号/句号/分号/引号等禁止使用中文标点符号\n代码注释必须使用中文,禁止使用英文注释,注释禁止使用中文标点符号包括，。、等"
+project_doc_fallback_filenames = ["CLAUDE.md", ".agents.md"]
+
+[profiles.ollama-launch]
+openai_base_url = "http://127.0.0.1:11434/v1/"
+forced_login_method = "api"
+model_provider = "ollama-launch"
+[profiles.ollama-launch.features]
+js_repl = false
+image_detail_original = false
+guardian_approval = false
+prevent_idle_sleep = false
+
+[model_providers.ollama-launch]
+name = "Ollama"
+base_url = "http://127.0.0.1:11434/v1/"
+[projects."/Users/a/Downloads/skills"]
+trust_level = "trusted"
+
+[projects."/Users/a/Downloads/laravel"]
+trust_level = "trusted"
+
+[memories]
+use_memories = true
+generate_memories = true
+max_rollout_age_days = 30
+min_rollout_idle_hours = 12
+max_raw_memories_for_consolidation = 512
+max_unused_days = 21
+max_rollouts_per_startup = 9
+extract_model = "glm-5.1:cloud"
+consolidation_model = "glm-5.1:cloud"
+no_memories_if_mcp_or_web_search = false
+
+[tui]
+theme = "coldark-dark"
+
+[mcp_servers.notion]
+url = "https://mcp.notion.com/mcp"
+
+[mcp_servers.firecrawl]
+command = "bunx"
+args = ["-y", "firecrawl-mcp"]
+
+[mcp_servers.firecrawl.env]
+FIRECRAWL_API_KEY = "fc-80cea7731f86442e8471cab13deca196"
+
+[mcp_servers.firecrawl.tools.firecrawl_map]
+approval_mode = "approve"
+
+[mcp_servers.context7]
+command = "bunx"
+args = ["-y", "@upstash/context7-mcp", "--api-key", "ctx7sk-86b4a09c-599d-4460-9854-d3ce26edd3e0"]
+
+[mcp_servers.duckdb]
+command = "/Users/a/Downloads/skills/plugins/my-agents/duckdb-mcp-server.sh"
+
+[mcp_servers.exa]
+url = "https://mcp.exa.ai/mcp?tools=web_search_exa,get_code_context_exa,crawling_exa,company_research_exa,linkedin_search_exa,deep_researcher_start,deep_researcher_check&exaApiKey=b0de283e-7daf-4745-bc4d-a1e0b530c17c"
+
+[features]
+memories = true
