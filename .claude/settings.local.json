@@ -19,7 +19,8 @@
       "Bash(cast erc20-token:*)",
       "Bash(cast implementation:*)",
       "Bash(cast selectors:*)",
-      "Bash(cast index:*)"
+      "Bash(cast index:*)",
+      "WebFetch(domain:github.com)"
     ]
   }
 }
