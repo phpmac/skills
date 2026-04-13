@@ -8,11 +8,6 @@
 # 本地安装,会自己安装插件和skills
 /plugin marketplace add ~/Downloads/skills
 
-# codex插件
-/plugin marketplace add openai/codex-plugin-cc
-/plugin install codex@openai-codex
-
-
 /plugin marketplace add anthropics/claude-plugins-official
 /plugin install discord@claude-plugins-official
 mkdir -p ~/.claude/channels/discord && echo "DISCORD_BOT_TOKEN=xxxx" > ~/.claude/channels/discord/.env
