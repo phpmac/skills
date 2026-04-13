@@ -41,7 +41,6 @@
     "pr-review-toolkit@phpmac-skills": true,
     "security-guidance@phpmac-skills": true,
     "discord@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": true,
     "x-search@phpmac-skills": true,
     "duckdb@phpmac-skills": true
   },
