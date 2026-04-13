@@ -280,14 +280,23 @@ Web应用 (如适用):
 - **CAPEC**: https://capec.mitre.org/
 - **ATT&CK**: https://attack.mitre.org/
 
-### 搜索关键词
+### 搜索工具与关键词
+
+**漏洞案例搜索优先使用 x-search** (推特上安全研究员发布的 AI 处理结果, 包含原理/案例/损失):
 
 ```
-技术栈漏洞搜索:
-"{framework} vulnerability 2024"
-"{framework} CVE"
-"{framework} exploit"
-"{framework} security best practices"
+x-search 搜索模板:
+"{漏洞类型} exploit" - 搜索攻击原理
+"{协议名} hack loss" - 搜索真实损失案例
+"{漏洞类型} attack analysis" - 搜索深度分析
+"{框架名} vulnerability CVE" - 搜索框架漏洞
+```
+
+**GitHub 仓库目录爬取使用 firecrawl** (一次性抓取仓库结构):
+
+```
+firecrawl 爬取模板:
+"https://github.com/{org}/{repo}" - 爬取漏洞资源仓库目录
 ```
 
 ## 注意事项

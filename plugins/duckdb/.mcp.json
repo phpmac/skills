@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "duckdb": {
+      "command": "duckdb",
+      "args": ["-c", "LOAD duckdb_mcp; SELECT mcp_server_start('stdio');"]
+    }
+  }
+}

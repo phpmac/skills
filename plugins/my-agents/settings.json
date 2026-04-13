@@ -40,7 +40,10 @@
     "plugin-dev@phpmac-skills": true,
     "pr-review-toolkit@phpmac-skills": true,
     "security-guidance@phpmac-skills": true,
-    "discord@claude-plugins-official": true
+    "discord@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true,
+    "x-search@phpmac-skills": true,
+    "duckdb@phpmac-skills": true
   },
   "extraKnownMarketplaces": {
     "phpmac-skills": {

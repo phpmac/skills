@@ -16,6 +16,7 @@
 /plugin marketplace add anthropics/claude-plugins-official
 /plugin install discord@claude-plugins-official
 mkdir -p ~/.claude/channels/discord && echo "DISCORD_BOT_TOKEN=xxxx" > ~/.claude/channels/discord/.env
+mkdir -p ~/.claude/channels/x-search && echo 'XAI_API_KEY=xxx' > ~/.claude/channels/x-search/.env
 mkdir -p ~/.claude/channels/discord && rm -f ~/.claude/channels/discord/access.json && ln -s ~/Downloads/skills/plugins/my-agents/discord/access.json ~/.claude/channels/discord/access.json
 
 bunx skills add OpenZeppelin/openzeppelin-skills
@@ -43,22 +44,11 @@ claude mcp add --transport http notion --scope user https://mcp.notion.com/mcp
 claude mcp add --transport http exa --scope user https://mcp.exa.ai/mcp
 
 # 暂时不用
-claude mcp add --scope user duckdb --transport stdio ~/Downloads/skills/plugins/my-agents/scripts/duckdb-mcp-server.sh
 claude mcp add --scope user chrome-devtools -- bunx chrome-devtools-mcp@latest --autoConnect --channel=beta
 
-duckdb -c "
-INSTALL duckdb_mcp FROM community;
-INSTALL duck_tails FROM community;
-INSTALL hostfs FROM community;
-INSTALL read_lines FROM community;
-INSTALL crawler FROM community;
-INSTALL mongo FROM community;
-INSTALL crypto FROM community;
-"
-
 # 移除 MCP
-claude mcp remove duckdb
-claude mcp remove duckdb -s user
+claude mcp remove chrome-devtools
+claude mcp remove chrome-devtools -s user
 
 # 暂时不用
 claude mcp add cloudflare-api --transport http --scope user https://mcp.cloudflare.com/mcp
@@ -84,7 +74,6 @@ rm -rf ~/.codex/memories && ln -sf ~/Downloads/skills/plugins/my-agents/rules ~/
 codex mcp add firecrawl --env FIRECRAWL_API_KEY=fc-80cea7731f86442e8471cab13deca196 -- bunx -y firecrawl-mcp
 codex mcp add context7 -- bunx -y @upstash/context7-mcp --api-key ctx7sk-86b4a09c-599d-4460-9854-d3ce26edd3e0
 codex mcp add notion --url https://mcp.notion.com/mcp
-codex mcp add duckdb -- ~/Downloads/skills/plugins/my-agents/duckdb-mcp-server.sh
 codex mcp add exa --url "https://mcp.exa.ai/mcp?tools=web_search_exa,get_code_context_exa,crawling_exa,company_research_exa,linkedin_search_exa,deep_researcher_start,deep_researcher_check&exaApiKey=b0de283e-7daf-4745-bc4d-a1e0b530c17c"
 
 

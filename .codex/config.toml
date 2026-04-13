@@ -56,9 +56,6 @@ approval_mode = "approve"
 command = "bunx"
 args = ["-y", "@upstash/context7-mcp", "--api-key", "ctx7sk-86b4a09c-599d-4460-9854-d3ce26edd3e0"]
 
-[mcp_servers.duckdb]
-command = "/Users/a/Downloads/skills/plugins/my-agents/duckdb-mcp-server.sh"
-
 [mcp_servers.exa]
 url = "https://mcp.exa.ai/mcp?tools=web_search_exa,get_code_context_exa,crawling_exa,company_research_exa,linkedin_search_exa,deep_researcher_start,deep_researcher_check&exaApiKey=b0de283e-7daf-4745-bc4d-a1e0b530c17c"
 

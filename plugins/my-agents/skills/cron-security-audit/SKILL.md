@@ -128,48 +128,7 @@ git show <hash>:<file_path>
 
 ## Discord 报告格式
 
-发现中等及以上级别漏洞时, 必须按以下格式发送到 Discord, **全部使用中文描述(包括等级)**:
-
-```
-**[安全审计报告] <严重程度> <漏洞名称>**
-
----
-
-**仓库信息**
-- 仓库名称: <仓库名>
-- 仓库链接: <GitHub URL>
-- 开发人员: <author> (<email>)
-- 提交记录: <short hash> (<commit message>)
-
----
-
-**[<严重程度>] <漏洞名称>**
-
-**涉及文件:**
-- `<文件路径>` (第 X-Y 行)
-
-**漏洞代码:**
-<必须显示具体代码片段>
-
-**攻击路径流程图:**
-<ASCII 流程图展示攻击路径或数据流>
-
-**实际攻击路径:**
-<中文描述攻击者如何利用>
-
-**影响:**
-<中文描述实际损失>
-```
-
-### 获取报告所需信息的命令
-
-```bash
-# 仓库URL
-git remote get-url origin
-
-# 开发人员信息
-git show <hash> --format="%H|%an|%ae|%ad|%s" --no-patch
-```
+发现中等及以上级别漏洞时, 按 `references/discord-report-template.md` 的格式发送到 Discord.
 
 ---
 

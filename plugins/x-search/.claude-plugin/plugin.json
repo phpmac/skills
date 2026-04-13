@@ -1,0 +1,6 @@
+{
+  "name": "x-search",
+  "description": "X (Twitter) search via xAI API - search tweets, find posts by topic or user",
+  "version": "1.0.0",
+  "keywords": ["x", "twitter", "search", "xai", "mcp"]
+}

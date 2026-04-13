@@ -107,6 +107,28 @@
         "email": "a@vc.sb"
       },
       "category": "productivity"
+    },
+    {
+      "name": "x-search",
+      "description": "通过 xAI Grok API 搜索 X (Twitter) 帖子, 支持用户过滤, 日期范围, 图片/视频理解",
+      "version": "1.0.0",
+      "source": "./plugins/x-search",
+      "author": {
+        "name": "a",
+        "email": "a@vc.sb"
+      },
+      "category": "search"
+    },
+    {
+      "name": "duckdb",
+      "description": "DuckDB MCP Server - 通过 duckdb_mcp 社区扩展提供 SQL 查询能力",
+      "version": "1.0.0",
+      "source": "./plugins/duckdb",
+      "author": {
+        "name": "a",
+        "email": "a@vc.sb"
+      },
+      "category": "database"
     }
   ]
 }

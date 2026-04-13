@@ -1,0 +1,10 @@
+{
+  "name": "duckdb",
+  "description": "DuckDB MCP Server - 通过 duckdb_mcp 社区扩展提供 SQL 查询能力",
+  "version": "1.0.0",
+  "keywords": ["duckdb", "sql", "database", "mcp"],
+  "author": {
+    "name": "a",
+    "email": "a@vc.sb"
+  }
+}
