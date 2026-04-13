@@ -1,6 +1,7 @@
 ---
 name: foundry-test-formatting
 description: 当用户要求 "Foundry 单元测试输出格式化", "数值格式化显示小数点", "console.log 格式化 ether", "美化测试日志输出", "处理 uint256 数值可读性", 或 "格式化测试输出" 时应使用此技能
+allowed-tools: Read, Grep, Glob, Edit, Bash
 ---
 
 # Foundry 测试输出格式化

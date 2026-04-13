@@ -1,6 +1,7 @@
 ---
 name: cast-chain-reader
 description: 当用户要求 "读取链上合约", "查看合约数据", "链上数据读取", "cast call", "合约信息", "读取合约状态", "链上查询", "读取存储槽", "查看事件日志", "读取代币信息" 时应使用此技能. 使用 cast 工具读取 EVM 链上合约数据, 支持多链 RPC 自动切换
+allowed-tools: Read, Grep, Glob, Bash
 ---
 
 # 链上合约数据读取

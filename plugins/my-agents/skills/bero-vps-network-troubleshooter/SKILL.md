@@ -1,6 +1,7 @@
 ---
 name: bero-vps-network-troubleshooter
 description: 当用户要求 "排查 SSH 连不上", "修复 Debian 13 网络配置", "检查 Bero 服务器网络", "分析公网 IP 和内网 DHCP 冲突", "修复默认路由错误", "排查 kex_exchange_identification", 或提到 Debian 13、Bero、VPS、SSH closed、Address already assigned、networking.service failed 等问题时应使用此技能
+allowed-tools: Read, Grep, Glob, Bash
 ---
 
 # Bero VPS 网络与 SSH 排障

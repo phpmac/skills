@@ -1,6 +1,7 @@
 ---
 name: contract-audit
 description: 当用户要求 "审计智能合约", "合约安全审计", "安全检查" 时应使用此技能. 引导用户选择审计 Agent, 生成含边界审计的审计方案, 然后执行审计
+metadata: {"clawdbot":{"emoji":"shield","os":["darwin","linux"],"requires":{"bins":["forge","solc"]},"install":[{"id":"solc","kind":"brew","formula":"solidity","bins":["solc"],"label":"安装 solc (Slither/Mythril 基础依赖)"},{"id":"slither","kind":"bash","raw":"uv tool install slither-analyzer","bins":["slither"],"label":"安装 Slither 静态分析"},{"id":"halmos","kind":"bash","raw":"uv tool install --python 3.12 halmos","bins":["halmos"],"label":"安装 Halmos 符号测试"},{"id":"echidna","kind":"brew","formula":"echidna","bins":["echidna"],"label":"安装 Echidna 模糊测试"},{"id":"medusa","kind":"brew","formula":"medusa","bins":["medusa"],"label":"安装 Medusa 模糊测试"},{"id":"mythril","kind":"bash","raw":"uv python install 3.12 && uv venv --python 3.12 --clear .venv && uv pip install --python .venv/bin/python mythril 'setuptools<67'","bins":["myth"],"label":"安装 Mythril 符号执行 (Python 3.12 venv)"},{"id":"forge","kind":"bash","raw":"curl -L https://foundry.paradigm.xyz | bash && foundryup","bins":["forge"],"label":"安装 Foundry (forge/cast)"}]}}
 ---
 
 # 合约审计

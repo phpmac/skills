@@ -1,6 +1,7 @@
 ---
 name: solidity-comment-style
 description: 当用户要求 "清理 Solidity 注释", "精简合约注释", "规范代码注释", "提升可读性", "移除冗余注释", 或 "优化合约注释风格" 时应使用此技能
+allowed-tools: Read, Grep, Glob, Edit, Bash
 ---
 
 # Solidity 注释清理

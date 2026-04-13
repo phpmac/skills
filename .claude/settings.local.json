@@ -22,7 +22,13 @@
       "Bash(cast index:*)",
       "WebFetch(domain:github.com)",
       "mcp__plugin_discord_discord__fetch_messages",
-      "mcp__plugin_discord_discord__reply"
+      "mcp__plugin_discord_discord__reply",
+      "WebFetch(domain:docs.x.ai)",
+      "Bash(remindctl today:*)",
+      "Bash(remindctl --help)",
+      "Bash(remindctl show:*)",
+      "Bash(gh issue:*)",
+      "Bash(gh search:*)"
     ]
   }
 }

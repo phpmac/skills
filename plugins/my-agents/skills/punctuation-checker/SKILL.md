@@ -1,6 +1,7 @@
 ---
 name: punctuation-checker
 description: 当用户要求 "检查标点符号", "扫描标点违规", "修复标点符号", "批量处理标点", "验证中文标点", 或需要验证项目中文字符是否使用了英文标点时应使用此技能
+allowed-tools: Read, Grep, Glob, Edit, Bash
 ---
 
 # 标点符号检查

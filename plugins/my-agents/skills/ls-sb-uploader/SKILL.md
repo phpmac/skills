@@ -1,6 +1,7 @@
 ---
 name: ls-sb-uploader
 description: 当用户要求 "上传文件到 ls.sb", "使用 ls.sb 存储服务", "ls.sb 上传", 或用户明确提到 ls.sb 文件上传时应使用此技能
+allowed-tools: Bash
 ---
 
 # ls.sb 文件上传
