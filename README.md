@@ -7,8 +7,6 @@
 ```bash
 # 本地安装,会自己安装插件和skills
 /plugin marketplace add ~/Downloads/skills
-# 本地安装,会自己安装插件和skills
-/plugin marketplace add ~/Downloads/skills
 
 # codex插件
 /plugin marketplace add openai/codex-plugin-cc
@@ -18,7 +16,7 @@
 /plugin marketplace add anthropics/claude-plugins-official
 /plugin install discord@claude-plugins-official
 mkdir -p ~/.claude/channels/discord && echo "DISCORD_BOT_TOKEN=xxxx" > ~/.claude/channels/discord/.env
-rm ~/.claude/channels/discord/access.json && ln -s ~/Downloads/skills/plugins/my-agents/discord/access.json ~/.claude/channels/discord/access.json
+mkdir -p ~/.claude/channels/discord && rm -f ~/.claude/channels/discord/access.json && ln -s ~/Downloads/skills/plugins/my-agents/discord/access.json ~/.claude/channels/discord/access.json
 
 bunx skills add OpenZeppelin/openzeppelin-skills
 
@@ -27,7 +25,7 @@ rm -rf ~/.agents
 
 rm -rf $HOME/.claude/cache/*
 rm -rf ~/.claude/agents ~/.claude/skills
-rm -rf ~/.cursor/mcp.json && ln -s $HOME/.claude.json ~/.cursor/mcp.json
+mkdir -p ~/.cursor && rm -f ~/.cursor/mcp.json && ln -s $HOME/.claude.json ~/.cursor/mcp.json
 rm -rf ~/.claude/hookify.* && ln -sf "$PWD"/plugins/hookify/examples/* ~/.claude/
 rm -rf ~/.claude/rules && ln -sf ~/Downloads/skills/plugins/my-agents/rules ~/.claude/rules
 rm -rf ~/.claude/CLAUDE.md && ln -s ~/Downloads/skills/plugins/my-agents/CLAUDE.md ~/.claude/CLAUDE.md
@@ -75,7 +73,7 @@ claude mcp add --transport http exa --scope user "https://mcp.exa.ai/mcp?tools=w
 
 ```sh
 # 配置文件
-rm ~/.codex/config.toml && ln -s ~/Downloads/skills/.codex/config.toml ~/.codex/config.toml
+mkdir -p ~/.codex && rm -f ~/.codex/config.toml && ln -s ~/Downloads/skills/.codex/config.toml ~/.codex/config.toml
 rm -rf ~/.codex/AGENTS.md && ln -s ~/Downloads/skills/plugins/my-agents/CLAUDE.md ~/.codex/AGENTS.md
 # 启用记忆功能
 codex features enable memories
