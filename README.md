@@ -17,7 +17,7 @@
 
 /plugin marketplace add anthropics/claude-plugins-official
 /plugin install discord@claude-plugins-official
-mkdir -p ~/.claude/channels/discord && echo "DISCORD_BOT_TOKEN=MTI1NzIxMzk4MjUyMDExOTMyNw.GMA2nJ.uohUjfPUGBOjGC0u6Gvnr3RMn6h-9y6PGZmDkg" > ~/.claude/channels/discord/.env
+mkdir -p ~/.claude/channels/discord && echo "DISCORD_BOT_TOKEN=xxxx" > ~/.claude/channels/discord/.env
 rm ~/.claude/channels/discord/access.json && ln -s ~/Downloads/skills/plugins/my-agents/discord/access.json ~/.claude/channels/discord/access.json
 
 bunx skills add OpenZeppelin/openzeppelin-skills
