@@ -44,7 +44,8 @@ find . -name "package.json" -o -name "composer.json" -o -name "requirements.txt"
 **委派策略**:
 1. 委派给 `contract-scanner` 进行工具扫描
 2. 委派给 `smart-contract-vuln` 查询漏洞知识库
-3. 收到结果后委派给 `poc-verifier` 验证漏洞
+3. **委派给 `smart-contract-vuln` 进行业务流程审计**: 要求梳理核心业务功能的完整调用链路(管道式), 再分析不同流程间的交叉影响(交叉式), 逐环节分析流程逻辑是否存在漏洞
+4. 收到结果后委派给 `poc-verifier` 验证漏洞
 
 ### 场景 B: Web 应用项目
 
@@ -62,7 +63,7 @@ find . -name "package.json" -o -name "composer.json" -o -name "requirements.txt"
 
 收到所有 Agent 报告后:
 
-1. **整合发现**: 合并所有漏洞, 去重
+1. **整合发现**: 合并所有漏洞, 去重, 流程审计发现的逻辑漏洞优先标记
 2. **风险评级**: 按严重程度排序
 3. **生成综合报告**
 

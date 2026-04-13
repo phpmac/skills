@@ -39,7 +39,8 @@
     "my-agents@phpmac-skills": true,
     "plugin-dev@phpmac-skills": true,
     "pr-review-toolkit@phpmac-skills": true,
-    "security-guidance@phpmac-skills": true
+    "security-guidance@phpmac-skills": true,
+    "discord@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "phpmac-skills": {
@@ -48,6 +49,12 @@
         "path": "/Users/a/Downloads/skills"
       },
       "autoUpdate": true
+    },
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
     }
   },
   "language": "所有回复必须使用英文标点符号,逗号/句号/分号/引号等禁止使用中文标点符号\n代码注释必须使用中文,禁止使用英文注释,注释禁止使用中文标点符号包括，。、等",
