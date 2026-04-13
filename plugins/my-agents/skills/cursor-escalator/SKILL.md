@@ -1,6 +1,6 @@
 ---
 name: cursor-escalator
-description: 当用户消息中提到 "cursor" 或 "Cursor" 关键字时应使用此技能. 注意: cursor 是触发词, 不一定指 Cursor 软件
+description: 当用户提到 "Cursor IDE", "Cursor 编辑器", "用 Cursor 审查", "cursor 复核", 或明确要求将分析结果转交 Cursor 处理时应使用此技能. 不触发: SQL cursor, CSS cursor, 终端 cursor 等编程上下文
 ---
 
 # Cursor 任务升级

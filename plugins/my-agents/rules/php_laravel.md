@@ -12,7 +12,7 @@ paths:
 - 禁止使用 `vendor/bin/sail` 应该使用 `php` 替换
 - 优先使用 `throw_if` 和 `throw_unless` 而不是 `throw`
 - 自定义异常类必须包含参数和消息,这样异常才能丰富记录错误详情
-- 不要编写大量的垃圾代码,有的时候是设计问题,所以你应该先强调设计思路
+- 不要编写大量的垃圾代码, 有的时候是设计问题, 所以你应该先强调设计思路
 - 后台管理使用的是 laravel nova 框架, 所以需要遵循 laravel nova 的规范
 - Nova Resource 字段必须使用 Panel 分组展示, 禁止平铺所有字段. 参考: 余额/收益归一个Panel, 业绩归一个Panel, 状态/权限归一个Panel
 - nova-components 本地包必须包含 `version` 字段, 否则 Composer 无法正确引用

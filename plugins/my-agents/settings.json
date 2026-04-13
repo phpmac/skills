@@ -5,7 +5,7 @@
     "ANTHROPIC_BASE_URL": "http://ai:7",
     "ANTHROPIC_API_KEY": "",
     "ANTHROPIC_DEFAULT_HAIKU_MODEL": "kimi-for-coding",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "GLM-5.1",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "MiniMax-M2.7",
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "GLM-5.1",
     "DISABLE_TELEMETRY": "1",
     "DISABLE_ERROR_REPORTING": "1",
@@ -29,7 +29,6 @@
     "defaultMode": "default",
     "allowEditHome": false
   },
-  "model": "opus",
   "enabledPlugins": {
     "hookify@phpmac-skills": true,
     "agent-sdk-dev@phpmac-skills": true,
