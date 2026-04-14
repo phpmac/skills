@@ -37,7 +37,8 @@
       "mcp__plugin_x-search_x-search__x_web_search",
       "mcp__answeroverflow__search_servers",
       "mcp__answeroverflow__search_answeroverflow",
-      "Skill(commit-commands:commit)"
+      "Skill(commit-commands:commit)",
+      "Skill(hookify:list)"
     ]
   }
 }

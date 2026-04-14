@@ -29,6 +29,7 @@
     "defaultMode": "default",
     "allowEditHome": false
   },
+  "model": "haiku",
   "enabledPlugins": {
     "hookify@phpmac-skills": true,
     "agent-sdk-dev@phpmac-skills": true,
