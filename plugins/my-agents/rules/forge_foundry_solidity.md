@@ -21,7 +21,8 @@ paths:
 - 多行输出使用模板字符串配合反引号保持缩进对齐
 - 测试输出使用 `[测试] 功能: 验证点` 格式开头, 关键数据单独一行, 结尾标注 `通过`
 - Solidity 字符串中使用中文需加 `unicode` 前缀 (如 `console.log(unicode"中文")`)
-- 合约编写好要执行 `forge fmt && forge clean && forge build` ,commit之前必须执行,同时要关注命令输出的提示内容
+- 合约通用格式化命令 `forge fmt && forge clean && forge build` 
+- commit之前必须执行格式化命令,同时要关注命令输出的提示内容
 
 ## 常用过滤关键词
 
