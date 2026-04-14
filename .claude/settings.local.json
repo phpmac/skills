@@ -34,7 +34,9 @@
       "mcp__firecrawl__firecrawl_map",
       "WebFetch(domain:ai-sdk.dev)",
       "mcp__plugin_x-search_x-search__x_read_tweet",
-      "mcp__plugin_x-search_x-search__x_web_search"
+      "mcp__plugin_x-search_x-search__x_web_search",
+      "mcp__answeroverflow__search_servers",
+      "mcp__answeroverflow__search_answeroverflow"
     ]
   }
 }

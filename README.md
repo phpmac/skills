@@ -37,6 +37,7 @@ claude mcp add firecrawl --scope user -e FIRECRAWL_API_KEY=fc-80cea7731f86442e84
 claude mcp add --scope user context7 -- bunx -y @upstash/context7-mcp --api-key ctx7sk-86b4a09c-599d-4460-9854-d3ce26edd3e0
 claude mcp add --transport http notion --scope user https://mcp.notion.com/mcp
 claude mcp add --transport http exa --scope user https://mcp.exa.ai/mcp
+claude mcp add --transport http answeroverflow --scope user https://www.answeroverflow.com/mcp
 
 # 暂时不用
 claude mcp add --scope user chrome-devtools -- bunx chrome-devtools-mcp@latest --autoConnect --channel=beta
