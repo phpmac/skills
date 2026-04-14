@@ -29,6 +29,7 @@
     "defaultMode": "default",
     "allowEditHome": false
   },
+  "model": "opus",
   "enabledPlugins": {
     "hookify@phpmac-skills": true,
     "agent-sdk-dev@phpmac-skills": true,
@@ -64,6 +65,5 @@
   "minimumVersion": "2.1.58",
   "autoMemoryEnabled": true,
   "autoDreamEnabled": true,
-  "skipDangerousModePermissionPrompt": false,
-  "model": "opus"
+  "skipDangerousModePermissionPrompt": false
 }
