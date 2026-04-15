@@ -29,7 +29,7 @@
     "defaultMode": "default",
     "allowEditHome": false
   },
-  "model": "haiku",
+  "model": "opus",
   "enabledPlugins": {
     "hookify@phpmac-skills": true,
     "agent-sdk-dev@phpmac-skills": true,
