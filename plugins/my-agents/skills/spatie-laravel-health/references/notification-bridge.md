@@ -12,26 +12,53 @@ namespace App\Notifications;
 
 use Guanguans\LaravelExceptionNotify\Facades\ExceptionNotify;
 use Spatie\Health\Checks\Result;
+use Spatie\Health\Enums\Status;
 use Spatie\Health\Notifications\CheckFailedNotification;
 
 class HealthCheckFailedDiscordNotification extends CheckFailedNotification
 {
     public function via(): array
     {
-        ExceptionNotify::reportContent($this->buildContent());
+        // 过滤掉 OK 状态的结果, 只通知非 OK
+        $nonOkResults = array_filter(
+            $this->results,
+            fn (Result $result) => $result->status !== Status::ok()
+        );
+
+        if (empty($nonOkResults)) {
+            return [];
+        }
+
+        ExceptionNotify::reportContent($this->buildContent($nonOkResults));
+
         return [];
     }
 
-    private function buildContent(): string
+    /**
+     * @param  array<int, Result>  $results
+     */
+    private function buildContent(array $results): string
     {
-        $lines = ['**健康检查告警**', '应用: '.config('app.name').' ('.app()->environment().')', '-----------------------------------'];
-        foreach ($this->results as $result) {
-            /** @var Result $result */
+        $lines = [
+            '**健康检查告警**',
+            '应用: '.config('app.name').' ('.app()->environment().')',
+            '-----------------------------------',
+        ];
+
+        foreach ($results as $result) {
             $lines[] = sprintf('**[%s] %s**', strtoupper((string) $result->status->value), $result->check->getLabel());
-            if ($result->getNotificationMessage()) { $lines[] = $result->getNotificationMessage(); }
-            if ($result->shortSummary) { $lines[] = '摘要: '.$result->shortSummary; }
+
+            if ($result->getNotificationMessage()) {
+                $lines[] = $result->getNotificationMessage();
+            }
+
+            if ($result->shortSummary) {
+                $lines[] = '摘要: '.$result->shortSummary;
+            }
+
             $lines[] = '';
         }
+
         return implode("\n", $lines);
     }
 }
@@ -50,3 +77,4 @@ class HealthCheckFailedDiscordNotification extends CheckFailedNotification
 - 保留 `shouldSend()` 的 `enabled` 开关和 throttle 限流逻辑
 - `via()` 中直接调用 `ExceptionNotify::reportContent()`, **不要**写死 `->driver('discord')`, 让它跟随 exception-notify 的默认通知配置
 - 返回 `[]` 阻止 Laravel 继续调用 `toMail()` / `toSlack()`
+- **OK 状态禁止触发通知**: 必须在 `via()` 中用 `Status::ok()` 显式过滤, 因为 `Result::ok('message')` 会设置 notificationMessage 导致 OK 结果被 spatie 的 `sendNotification()` 包含
