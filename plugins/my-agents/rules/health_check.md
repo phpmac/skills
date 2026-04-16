@@ -31,7 +31,9 @@
 ## Laravel 项目额外要求 (基于 spatie/laravel-health)
 
 - 使用 spatie/laravel-health 包, 在 ServiceProvider 中通过 `Health::checks([...])` 注册
-- 必须注册的内置检查: DatabaseCheck/CacheCheck/ScheduleCheck/QueueCheck
+- 必须注册的内置检查: DatabaseCheck/CacheCheck/ScheduleCheck
+- QueueCheck 依赖异步队列消费(sync 驱动下心跳缓存不会被写入), 仅在 `queue.default !== 'sync'` 时注册
+- DebugModeCheck 仅在非 local 环境注册, 本地开发 APP_DEBUG=true 是正常状态, 不应触发告警
 - 自定义 Check 类放在 `app/Health/Checks/` 目录, 继承 `Spatie\Health\Checks\Check`, 实现 `run(): Result`
 - Result 三态: `Result::ok()` / `Result::warning()` / `Result::failed()`, 传入字符串才会触发通知, 不传字符串只记录不通知
 - 每个检查独立控制频率: `->daily()` / `->dailyAt('02:00')` / `->hourly()` / `->timezone('Asia/Shanghai')`, 按数据重要性分层
