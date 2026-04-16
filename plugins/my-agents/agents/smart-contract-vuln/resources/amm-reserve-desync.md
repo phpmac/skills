@@ -236,3 +236,5 @@ function safeDeposit(uint amount0, uint amount1) external {
 | Vesper Finance | 2021-03 | ~$150K | harvest 公开调用 + 无滑点保护 | 操纵 AMM 价格 + 触发 harvest |
 | BT Finance | 2021-03 | ~$150K | 同上模式 | 同上 |
 | DefiPlaza | 2024-07-05 | 全部用户资金 | swap 逻辑漏洞 + 储备不同步 | 单 tx 攻击 |
+| TMM/USDT (BSC) | 2026-04-05 | $1.665M | `to==0xdead`白名单绕过+swap(to=0xdead)烧毁Pair的TMM+sync()锁定虚假储备 | 闪电贷 → removeLP → swap(to=0xdead)烧6.8B TMM → pair.swap()提干BSC-USD |
+| MONA/USDT (BSC) | 2026-04-14 | ~$60,950 | 延迟烧毁(sellMona)与swap不同步, burnsellMona()事后从Pair扣币+sync() | 闪电贷+Venus → 刷10K MONA → 卖9900制造延迟凭证 → 买空MONA → 零值transferFrom触发burn → Pair归零 → 卖100提干 |
