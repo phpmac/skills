@@ -34,6 +34,10 @@
 - 必须注册的内置检查: DatabaseCheck/CacheCheck/ScheduleCheck
 - QueueCheck 依赖异步队列消费(sync 驱动下心跳缓存不会被写入), 仅在 `queue.default !== 'sync'` 时注册
 - DebugModeCheck 仅在非 local 环境注册, 本地开发 APP_DEBUG=true 是正常状态, 不应触发告警
+- ScheduleCheck 和 QueueCheck 都是心跳机制, 必须在 routes/console.php 中注册对应的 heartbeat 命令:
+  - `health:schedule-check-heartbeat` → 写入调度器心跳缓存, 供 ScheduleCheck 读取
+  - `health:queue-check-heartbeat` → 派发 HealthQueueJob 到队列, 由 worker 消费后写入心跳缓存, 供 QueueCheck 读取
+  - 两个 heartbeat 命令频率应与 health:check 一致, 且必须在 health:check 之前注册
 - 自定义 Check 类放在 `app/Health/Checks/` 目录, 继承 `Spatie\Health\Checks\Check`, 实现 `run(): Result`
 - Result 三态: `Result::ok()` / `Result::warning()` / `Result::failed()`, 传入字符串才会触发通知, 不传字符串只记录不通知
 - 每个检查独立控制频率: `->daily()` / `->dailyAt('02:00')` / `->hourly()` / `->timezone('Asia/Shanghai')`, 按数据重要性分层
