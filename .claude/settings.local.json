@@ -38,7 +38,13 @@
       "mcp__answeroverflow__search_servers",
       "mcp__answeroverflow__search_answeroverflow",
       "Skill(commit-commands:commit)",
-      "Skill(hookify:list)"
+      "Skill(hookify:list)",
+      "Bash(cast call:*)",
+      "Bash(cast tx:*)",
+      "Bash(cast code:*)",
+      "Bash(cast receipt:*)",
+      "Bash(cast balance:*)",
+      "WebFetch(domain:www.clarahacks.com)"
     ]
   }
 }
