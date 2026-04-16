@@ -29,7 +29,6 @@
     "defaultMode": "default",
     "allowEditHome": false
   },
-  "model": "glm-5.1:cloud",
   "enabledPlugins": {
     "hookify@phpmac-skills": true,
     "agent-sdk-dev@phpmac-skills": true,
@@ -65,5 +64,6 @@
   "minimumVersion": "2.1.58",
   "autoMemoryEnabled": true,
   "autoDreamEnabled": true,
-  "skipDangerousModePermissionPrompt": false
+  "skipDangerousModePermissionPrompt": false,
+  "model": "opus"
 }
