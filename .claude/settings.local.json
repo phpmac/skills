@@ -44,7 +44,8 @@
       "Bash(cast code:*)",
       "Bash(cast receipt:*)",
       "Bash(cast balance:*)",
-      "WebFetch(domain:www.clarahacks.com)"
+      "WebFetch(domain:www.clarahacks.com)",
+      "Bash(cast sig:*)"
     ]
   }
 }

@@ -40,6 +40,7 @@
       ->appendOutputTo(storage_path('logs/health_check.log'));
   ```
 - **所有 Schedule 调度必须加 `withoutOverlapping()` 和 `onOneServer()`**, 防止多实例重复执行.
+- **必须使用 `->name('中文名')` 而不是 `->label('中文名')`**: `name()` 写入 `check_name` 字段, `label()` 写入 `check_label` 字段. Nova 默认展示 `check_name`, 用错会导致显示英文类名.
 
 ## HealthServiceProvider 示例
 
@@ -61,12 +62,12 @@ class HealthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Health::checks([
-            DatabaseCheck::new()->label('数据库连接'),
-            CacheCheck::new()->label('缓存服务'),
-            ScheduleCheck::new()->label('定时任务调度'),
-            QueueCheck::new()->label('队列服务'),
+            DatabaseCheck::new()->name('数据库连接'),
+            CacheCheck::new()->name('缓存服务'),
+            ScheduleCheck::new()->name('定时任务调度'),
+            QueueCheck::new()->name('队列服务'),
             UsedDiskSpaceCheck::new()
-                ->label('磁盘空间')
+                ->name('磁盘空间')
                 ->warnWhenUsedSpaceIsAbovePercentage(70)
                 ->failWhenUsedSpaceIsAbovePercentage(90)
                 ->daily(),
