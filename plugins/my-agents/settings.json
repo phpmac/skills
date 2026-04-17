@@ -42,7 +42,8 @@
     "security-guidance@phpmac-skills": true,
     "discord@claude-plugins-official": true,
     "x-search@phpmac-skills": true,
-    "duckdb@phpmac-skills": true
+    "duckdb@phpmac-skills": true,
+    "clangd-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "phpmac-skills": {
