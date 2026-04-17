@@ -29,6 +29,7 @@
     "defaultMode": "default",
     "allowEditHome": false
   },
+  "model": "GLM-5.1",
   "enabledPlugins": {
     "hookify@phpmac-skills": true,
     "agent-sdk-dev@phpmac-skills": true,
@@ -58,12 +59,11 @@
       }
     }
   },
-  "language": "所有回复必须使用英文标点符号,逗号/句号/分号/引号等禁止使用中文标点符号\n代码注释必须使用中文,禁止使用英文注释,注释禁止使用中文标点符号包括，。！？；：“‘【】《》、等\n禁止中途切换到英文,禁止在中文输出中混入英文句子,技术术语保持原文即可\n所有中文内容必须使用英文标点符号",
+  "language": "禁止使用emoji,所有回复必须使用英文标点符号,逗号/句号/分号/引号等禁止使用中文标点符号\n代码注释必须使用中文,禁止使用英文注释,注释禁止使用中文标点符号包括，。！？；：“‘【】《》、等\n禁止中途切换到英文,禁止在中文输出中混入英文句子,技术术语保持原文即可\n所有中文内容必须使用英文标点符号",
   "syntaxHighlightingDisabled": false,
   "autoUpdatesChannel": "stable",
   "minimumVersion": "2.1.58",
   "autoMemoryEnabled": true,
   "autoDreamEnabled": true,
-  "skipDangerousModePermissionPrompt": false,
-  "model": "opus"
+  "skipDangerousModePermissionPrompt": false
 }
