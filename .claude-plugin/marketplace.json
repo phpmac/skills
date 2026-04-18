@@ -140,6 +140,39 @@
         "email": "a@vc.sb"
       },
       "category": "database"
+    },
+    {
+      "name": "arl",
+      "description": "ARL资产侦察灯塔MCP Server, 任务管理/站点查询/域名查询/IP查询/WIH敏感信息查询",
+      "version": "1.0.0",
+      "source": "./plugins/arl",
+      "author": {
+        "name": "phpmac",
+        "email": "a@vc.sb"
+      },
+      "category": "security"
+    },
+    {
+      "name": "hacker-tools",
+      "description": "资产侦查和渗透工具集 MCP Server, 集成 FOFA/Hunter/Censys/NVD/VirusTotal/DNSDumpster 等工具",
+      "version": "1.0.0",
+      "source": "./plugins/hacker-tools",
+      "author": {
+        "name": "phpmac",
+        "email": "a@vc.sb"
+      },
+      "category": "security"
+    },
+    {
+      "name": "kali",
+      "description": "Kali Linux远程MCP服务器, 通过SSH alias连接, 提供渗透测试工具链",
+      "version": "1.0.0",
+      "source": "./plugins/kali",
+      "author": {
+        "name": "phpmac",
+        "email": "a@vc.sb"
+      },
+      "category": "security"
     }
   ]
 }

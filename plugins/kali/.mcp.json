@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "kali": {
+      "command": "ssh",
+      "args": ["kali", "mcp-server"]
+    }
+  }
+}

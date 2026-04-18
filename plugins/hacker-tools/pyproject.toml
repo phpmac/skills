@@ -1,0 +1,9 @@
+[project]
+name = "hacker-tools-mcp"
+version = "1.0.0"
+description = "资产侦查和渗透工具集 MCP Server"
+requires-python = ">=3.11"
+dependencies = [
+    "fastmcp>=0.1.0",
+    "httpx>=0.27.0",
+]

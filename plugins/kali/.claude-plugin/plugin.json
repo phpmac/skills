@@ -1,0 +1,5 @@
+{
+  "name": "kali",
+  "version": "1.0.0",
+  "description": "Kali Linux远程MCP服务器, 通过SSH alias 'kali' 连接"
+}

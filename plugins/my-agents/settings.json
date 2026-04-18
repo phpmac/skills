@@ -44,7 +44,10 @@
     "x-search@phpmac-skills": true,
     "duckdb@phpmac-skills": true,
     "clangd-lsp@claude-plugins-official": true,
-    "ave-api@phpmac-skills": true
+    "ave-api@phpmac-skills": true,
+    "arl@phpmac-skills": true,
+    "hacker-tools@phpmac-skills": true,
+    "kali@phpmac-skills": true
   },
   "extraKnownMarketplaces": {
     "phpmac-skills": {
