@@ -45,7 +45,12 @@
       "Bash(cast receipt:*)",
       "Bash(cast balance:*)",
       "WebFetch(domain:www.clarahacks.com)",
-      "Bash(cast sig:*)"
+      "Bash(cast sig:*)",
+      "mcp__plugin_ave-api_ave-api__ave_new_tokens",
+      "mcp__plugin_ave-api_ave-api__ave_hot_tokens",
+      "mcp__plugin_ave-api_ave-api__ave_search",
+      "mcp__plugin_ave-api_ave-api__ave_gainers",
+      "mcp__plugin_ave-api_ave-api__ave_token_info"
     ]
   }
 }

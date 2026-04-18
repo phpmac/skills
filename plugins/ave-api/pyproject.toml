@@ -1,0 +1,9 @@
+[project]
+name = "ave-api-mcp"
+version = "1.0.0"
+description = "Ave.ai MCP Server"
+requires-python = ">=3.11"
+dependencies = [
+    "mcp>=1.0.0",
+    "httpx>=0.27.0",
+]

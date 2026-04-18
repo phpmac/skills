@@ -1,22 +1,19 @@
 ---
 name: create2-vanity-deploy
-description: Use when 用户提到靓号地址, 0x1111/8888 前后缀, cast create2, CREATE2 部署脚本, 或 CREATE2 单元测试
-model: opus
-color: yellow
-tools: ["Read", "Grep", "Glob", "Edit", "Write", "Bash"]
+description: 当用户提到靓号地址, 0x1111/8888 前后缀, cast create2, CREATE2 部署脚本, 或 CREATE2 单元测试时应使用此技能
+metadata: {"clawdbot":{"emoji":"yellow","os":["darwin","linux"],"requires":{"bins":["forge","cast"]},"install":[{"id":"forge","kind":"bash","raw":"curl -L https://foundry.paradigm.xyz | bash && foundryup","bins":["forge","cast"],"label":"安装 Foundry (forge/cast)"}]}}
 ---
 
-# CREATE2 靓号部署专家
+# CREATE2 靓号部署
 
-你是 CREATE2 靓号部署专家, 负责完成靓号 salt 搜索, 部署脚本编写, 单元测试验证.
+## 工具预检
 
-## 框架说明
+| 工具 | 用途 | 检测命令 |
+|------|------|----------|
+| forge | 编译/测试/部署 | `which forge` |
+| cast | 链上交互 | `which cast` |
 
-> **所有示例和模板均基于 Foundry 框架.**
-> 如果用户使用 Hardhat 等其他框架, 需要参考 Foundry 方案自行研究转换:
-> - 核心原理 (CREATE2 地址计算, initCode 构造) 是通用的
-> - 脚本和测试需要用 ethers.js/hardhat 语法重写
-> - `ethers.utils.getCreate2Address()` 等效于 Solidity 的 CREATE2 计算
+- 任何工具缺失 -> 立即停止, 报告用户安装后再继续
 
 ## 标准流程
 
@@ -40,7 +37,7 @@ forge script script/<path>/DeployVanity.s.sol --broadcast
 PRIVATE_KEY=0x...
 VANITY_SALT=0x...  # 由 FindVanitySalt 脚本生成
 
-# 可选 (FindVanitySalt 脚本)
+# 可选
 VANITY_TARGET=0x1111          # 目标后缀 (默认 0x1111)
 VANITY_MAX_ITER=500000        # 最大迭代次数 (默认 500000)
 VANITY_MODE=suffix            # suffix(后缀) 或 prefix(前缀)
@@ -53,6 +50,14 @@ VANITY_MODE=suffix            # suffix(后缀) 或 prefix(前缀)
 | `FindVanitySalt.s.sol` | 搜索 salt |
 | `DeployVanity.s.sol` | 使用 salt 部署合约 |
 | `Create2Vanity.t.sol` | 验证 CREATE2 地址计算 |
+
+## 模板文件
+
+参考 `resources/` 目录下的模板:
+
+- [find-salt-script-template.md](create2-vanity-deploy/resources/find-salt-script-template.md) - 搜索 salt 脚本
+- [deploy-script-template.md](create2-vanity-deploy/resources/deploy-script-template.md) - 部署脚本
+- [create2-vanity-test-template.md](create2-vanity-deploy/resources/create2-vanity-test-template.md) - 单元测试
 
 ## CREATE2 地址计算
 
@@ -81,19 +86,10 @@ bytes memory initCode = abi.encodePacked(
 bytes32 initCodeHash = keccak256(initCode);
 ```
 
-## 脚本模板
-
-详细模板见 resources 目录:
-
-- [find-salt-script-template.md](create2-vanity-deploy/resources/find-salt-script-template.md) - 搜索 salt 脚本
-- [deploy-script-template.md](create2-vanity-deploy/resources/deploy-script-template.md) - 部署脚本
-- [create2-vanity-test-template.md](create2-vanity-deploy/resources/create2-vanity-test-template.md) - 单元测试
-
-## 安全补充
+## 安全要点
 
 见: [permissionless-security-notes.md](create2-vanity-deploy/resources/permissionless-security-notes.md)
 
-核心要点:
 - CREATE2 工厂不加 access control 是行业通用设计
 - 地址由 `deployer + salt + initCodeHash` 决定, 与调用者身份无关
 - `same salt + same initCode` 只能部署一次
@@ -106,7 +102,7 @@ bytes32 initCodeHash = keccak256(initCode);
 - 测试和部署必须使用相同的 deployer (私钥)
 - initCode = creationCode + abi.encode(constructor args)
 
-## 最小检查清单
+## 检查清单
 
 - [ ] 已搜索 salt 并获取 VANITY_SALT
 - [ ] 已验证部署地址符合目标靓号 (前后缀匹配)

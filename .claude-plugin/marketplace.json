@@ -2,7 +2,7 @@
   "name": "phpmac-skills",
   "metadata": {
     "description": "自己的技能库",
-    "version": "1.0.0"
+    "version": "1.0.1"
   },
   "owner": {
     "name": "a",
@@ -118,6 +118,17 @@
         "email": "a@vc.sb"
       },
       "category": "search"
+    },
+    {
+      "name": "ave-api",
+      "description": "Ave.ai MCP Server - 代币收录数据查询与监控, 支持新收录/详情/热门/涨幅/搜索/合约审计",
+      "version": "1.0.0",
+      "source": "./plugins/ave-api",
+      "author": {
+        "name": "phpmac",
+        "email": "a@vc.sb"
+      },
+      "category": "crypto"
     },
     {
       "name": "duckdb",

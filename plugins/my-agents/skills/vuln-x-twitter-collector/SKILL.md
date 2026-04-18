@@ -1,5 +1,5 @@
 ---
-name: vuln-tweet-collector
+name: vuln-x-twitter-collector
 description: 当用户发送X/Twitter漏洞推文链接, 需要研究漏洞, 收集整理到安全知识库时应使用此技能
 metadata: {"clawdbot":{"emoji":"fire","os":["darwin","linux"],"requires":{"bins":["cast"]},"install":[{"id":"forge","kind":"bash","raw":"curl -L https://foundry.paradigm.xyz | bash && foundryup","bins":["forge","cast"],"label":"安装 Foundry (forge/cast)"}]}}
 ---

@@ -1,14 +1,20 @@
 ---
 name: hardhat-v3-fork-testing
-description: Use when 在 Fork 主网环境下测试已部署合约. 适用于 Hardhat v3 + Foundry 风格的 Solidity 测试.
-model: opus
-color: blue
-tools: ["Read", "Grep", "Glob", "Edit", "Write", "Bash"]
+description: 当用户使用 Hardhat v3 + Foundry 风格在 Fork 主网环境下测试已部署合约时应使用此技能
+metadata: {"clawdbot":{"emoji":"blue","os":["darwin","linux"],"requires":{"bins":["bun"]},"install":[{"id":"bun","kind":"bash","raw":"curl -fsSL https://bun.sh/install | bash","bins":["bun"],"label":"安装 bun"}]}}
 ---
 
 # Hardhat v3 Fork 单元测试
 
 使用 Hardhat v3 + Foundry 风格在 Fork 主网环境下进行 Solidity 智能合约测试.
+
+## 工具预检
+
+| 工具 | 用途 | 检测命令 |
+|------|------|----------|
+| bun | 包管理/运行测试 | `which bun` |
+
+- 任何工具缺失 -> 立即停止, 报告用户安装后再继续
 
 ## When to Use
 
@@ -17,27 +23,31 @@ tools: ["Read", "Grep", "Glob", "Edit", "Write", "Bash"]
 - 验证升级后的合约兼容性
 - 在真实链状态上测试复杂交互
 
-**不使用:**
-
-- 简单的单元测试 (使用本地网络即可)
-- 不依赖链状态的逻辑测试
+**不使用:** 简单的单元测试 / 不依赖链状态的逻辑测试
 
 ## 测试文件命名
 
-- `*Fork.t.sol` - Fork 主网已部署合约测试 (验证真实环境)
+- `*Fork.t.sol` - Fork 主网已部署合约测试
+- Hardhat 3 Solidity 测试只识别 `.t.sol` 结尾的文件
 
-**注意**: Hardhat 3 Solidity 测试只识别 `.t.sol` 结尾的文件.
+## 核心原则
 
-## 测试合约结构
+1. **Fork 创建**: 在 `setUp()` 中使用 `vm.createSelectFork(rpcUrl)`
+2. **合约地址**: 使用主网真实合约地址作为常量
+3. **接口定义**: 在测试合约外部定义接口
+4. **模拟账户**: 使用 `vm.deal()` 给主网地址充值 ETH/BNB
+5. **完整模拟**: 使用 `vm.prank(sender, origin)` 完整模拟合约调用
+6. **注释**: 使用中文注释说明测试目的
+7. **console.log**: 使用中文输出关键信息
+
+## 测试合约模板
 
 ```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.28;
 
 import {Test, console} from "forge-std/Test.sol";
-import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-// 接口定义在合约外部
 interface IERC20 {
     function name() external view returns (string memory);
     function symbol() external view returns (string memory);
@@ -46,10 +56,8 @@ interface IERC20 {
 }
 
 contract ForkTest is Test {
-    // 主网 USDT 地址
     address public constant USDT = 0x55d398326f99059fF775485246999027B3197955;
 
-    // 合约接口
     IERC20 public usdt;
 
     function setUp() public {
@@ -66,30 +74,14 @@ contract ForkTest is Test {
     function test_ReadUSDTInfo() public view {
         string memory name = usdt.name();
         string memory symbol = usdt.symbol();
-        uint8 decimals = usdt.decimals();
 
-        // [正确] 用 string.concat + unicode 组合中文和字符串
         console.log(string.concat(unicode"USDT 名称: ", name));
         console.log(string.concat(unicode"USDT 符号: ", symbol));
-        console.log(string.concat(unicode"USDT 精度: ", vm.toString(decimals)));
-
-        // [错误] console.log(unicode"名称:", name) 会编译报错
 
         assertEq(symbol, "USDT");
     }
 }
 ```
-
-## 核心原则
-
-1. **Fork 创建**: 在 `setUp()` 中使用 `vm.createSelectFork(rpcUrl)`
-2. **合约地址**: 使用主网真实合约地址作为常量
-3. **接口定义**: 在测试合约外部定义接口
-4. **模拟账户**: 使用 `vm.deal()` 给主网地址充值 ETH/BNB
-5. **完整模拟**: 使用 `vm.prank(sender, origin)` 完整模拟合约调用
-6. **简洁**: 只保留核心功能, 不要写多余的验证和断言
-7. **注释**: 使用中文注释说明测试目的
-8. **console.log**: 使用中文输出关键信息
 
 ## 关键 Cheatcodes
 
@@ -100,16 +92,6 @@ contract ForkTest is Test {
 | `vm.prank(sender, origin)` | 完整模拟 (sender, origin) 调用 |
 | `vm.roll(blockNumber)` | 设置区块高度 |
 | `vm.warp(timestamp)` | 设置区块时间戳 |
-
-## Fork 测试 vs 本地测试
-
-| | Fork 测试 | 本地测试 |
-|--|-----------|----------|
-| **环境** | 主网真实状态 | 本地模拟状态 |
-| **合约** | 使用已部署合约地址 | 部署新合约实例 |
-| **速度** | 慢 (需要 RPC 请求) | 快 |
-| **用途** | 验证真实环境行为 | 验证逻辑正确性 |
-| **创建方式** | `vm.createSelectFork()` | 直接 new 合约 |
 
 ## 运行测试
 
@@ -124,16 +106,14 @@ bunx hardhat test solidity contracts/MyContractForkTest.t.sol
 bunx hardhat test solidity contracts/MyContractForkTest.t.sol --grep "test_MyFunction"
 
 # 显示详细输出
-bunx hardhat test solidity contracts/TopAccountForkTest.t.sol -vv
+bunx hardhat test solidity contracts/MyContractForkTest.t.sol -vv
 ```
 
 ## 实战技巧
 
 ### EOA 修饰符绕过
 
-部分合约使用 `onlyEOA` 修饰符检查 `tx.origin == _msgSender()`, 此时单参数 `vm.prank` 无效.
-
-使用 `vm.startPrank(user, user)` 双参数版本, 第一个参数是 `msg.sender`, 第二个参数是 `tx.origin`.
+合约使用 `onlyEOA` 检查 `tx.origin == _msgSender()` 时, 使用双参数 `vm.startPrank`:
 
 ```solidity
 // 正确
@@ -146,9 +126,9 @@ vm.prank(user);
 contract.someFunction();
 ```
 
-### console.log 换行问题
+### console.log 注意事项
 
-多个参数会换行显示. 分开调用.
+多个参数会换行显示, 分开调用:
 
 ```solidity
 // 正确
@@ -159,19 +139,11 @@ console.log(user);
 console.log(unicode"用户:", user);
 ```
 
-### 测试数据自给
-
-不要依赖主网已有数据, 在测试中自己创建.
-
-## console.log 辅助函数
-
-**重要**: Forge console.log 不支持多参数混合输出 (字符串 + 数字).
-
-必须使用 `string.concat(unicode"中文", vm.toString(value))` 格式.
+### console.log 辅助函数
 
 参考资源: [console-helpers.sol](hardhat-v3-fork-testing/resources/console-helpers.sol)
 
-**使用方式**: 复制 `resources/console-helpers.sol` 中的辅助函数到测试合约, 直接调用 `_logStage()` 和 `_logLine()`.
+复制辅助函数到测试合约, 直接调用:
 
 ```solidity
 function test_Example() public {
@@ -181,8 +153,7 @@ function test_Example() public {
 }
 ```
 
-**输出格式**:
-
+输出:
 ```
   -> 阶段1: 获取数据
     [用户余额] 0 +100 = 100
