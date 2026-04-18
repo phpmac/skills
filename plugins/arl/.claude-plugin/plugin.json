@@ -1,5 +1,5 @@
 {
   "name": "arl",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "ARL资产侦察灯塔MCP插件, 从 ~/.claude/arl/.env 读取配置"
 }

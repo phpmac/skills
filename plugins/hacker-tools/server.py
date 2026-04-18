@@ -529,7 +529,7 @@ async def dnsdumpster_query(domain: str) -> dict[str, Any]:
             if response.status_code != 200:
                 return {
                     "error": True,
-                    "errmsg": f"DNSDumpster API 请求失败: {response.status_code}",
+                    "errmsg": f"DNSDumpster API {response.status_code}: {_parse_error(response)}",
                     "data": None,
                 }
 
@@ -570,7 +570,7 @@ async def virustotal_query(domain: str) -> dict[str, Any]:
             if response.status_code != 200:
                 return {
                     "error": True,
-                    "errmsg": f"VirusTotal API 请求失败: {response.status_code}",
+                    "errmsg": f"VirusTotal API {response.status_code}: {_parse_error(response)}",
                     "data": None,
                 }
 
@@ -614,7 +614,7 @@ async def ip_query(
             if response.status_code != 200:
                 return {
                     "error": True,
-                    "errmsg": f"IP API 请求失败: {response.status_code}",
+                    "errmsg": f"IP API {response.status_code}: {_parse_error(response)}",
                     "data": None,
                 }
 

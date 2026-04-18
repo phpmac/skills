@@ -38,7 +38,7 @@ def _headers() -> dict:
 
 def _check():
     if not ARL_URL or not ARL_TOKEN:
-        return "错误: ARL未配置, 请在 ~/.claude/arl/.env 中设置 ARL_URL 和 ARL_TOKEN"
+        return {"error": True, "message": "ARL未配置, 请在 ~/.claude/arl/.env 中设置 ARL_URL 和 ARL_TOKEN"}
     return None
 
 
@@ -50,23 +50,22 @@ async def get_tasks(
     status: str | None = None, task_id: str | None = None,
     task_tag: str | None = None,
     page: int = 1, size: int = 10, order: str = "-_id",
-) -> str:
+) -> dict:
     """查询ARL任务列表"""
     if e := _check(): return e
     params = {k: v for k, v in locals().items() if v is not None and k not in ("e",)}
-    # MCP参数名映射到ARL API参数名
     if "task_id" in params:
         params["_id"] = params.pop("task_id")
     async with httpx.AsyncClient(timeout=TIMEOUT_S) as c:
         r = await c.get(f"{ARL_URL}/api/task/", headers=_headers(), params=params)
-        return r.text
+        return r.json()
 
 
 @mcp.tool()
 async def get_policies(
     name: str | None = None, policy_id: str | None = None,
     page: int = 1, size: int = 10, order: str = "-_id",
-) -> str:
+) -> dict:
     """查询ARL策略列表"""
     if e := _check(): return e
     params = {k: v for k, v in locals().items() if v is not None and k not in ("e",)}
@@ -74,7 +73,7 @@ async def get_policies(
         params["_id"] = params.pop("policy_id")
     async with httpx.AsyncClient(timeout=TIMEOUT_S) as c:
         r = await c.get(f"{ARL_URL}/api/policy/", headers=_headers(), params=params)
-        return r.text
+        return r.json()
 
 
 @mcp.tool()
@@ -86,13 +85,13 @@ async def get_sites(
     favicon_hash: int | None = None, task_id: str | None = None,
     tag: str | None = None,
     page: int = 1, size: int = 10, order: str = "-_id",
-) -> str:
+) -> dict:
     """查询ARL站点信息"""
     if e := _check(): return e
     params = {k: v for k, v in locals().items() if v is not None and k not in ("e",)}
     async with httpx.AsyncClient(timeout=TIMEOUT_S) as c:
         r = await c.get(f"{ARL_URL}/api/site/", headers=_headers(), params=params)
-        return r.text
+        return r.json()
 
 
 @mcp.tool()
@@ -101,13 +100,13 @@ async def get_domains(
     type: str | None = None, ips: str | None = None,
     source: str | None = None, task_id: str | None = None,
     page: int = 1, size: int = 10, order: str = "-_id",
-) -> str:
+) -> dict:
     """查询ARL域名信息"""
     if e := _check(): return e
     params = {k: v for k, v in locals().items() if v is not None and k not in ("e",)}
     async with httpx.AsyncClient(timeout=TIMEOUT_S) as c:
         r = await c.get(f"{ARL_URL}/api/domain/", headers=_headers(), params=params)
-        return r.text
+        return r.json()
 
 
 @mcp.tool()
@@ -120,13 +119,13 @@ async def get_ips(
     asn_number: int | None = None, asn_org: str | None = None,
     region_name: str | None = None,
     page: int = 1, size: int = 10, order: str = "-_id",
-) -> str:
+) -> dict:
     """查询ARL IP信息"""
     if e := _check(): return e
     params = {k: v for k, v in locals().items() if v is not None and k not in ("e",)}
     async with httpx.AsyncClient(timeout=TIMEOUT_S) as c:
         r = await c.get(f"{ARL_URL}/api/ip/", headers=_headers(), params=params)
-        return r.text
+        return r.json()
 
 
 @mcp.tool()
@@ -134,13 +133,13 @@ async def get_wihs(
     task_id: str | None = None, content: str | None = None,
     record_type: str | None = None,
     page: int = 1, size: int = 10, order: str = "-_id",
-) -> str:
+) -> dict:
     """查询ARL WIH敏感信息"""
     if e := _check(): return e
     params = {k: v for k, v in locals().items() if v is not None and k not in ("e",)}
     async with httpx.AsyncClient(timeout=TIMEOUT_S) as c:
         r = await c.get(f"{ARL_URL}/api/wih/", headers=_headers(), params=params)
-        return r.text
+        return r.json()
 
 
 # ── 任务操作 ──────────────────────────────────────────
@@ -158,33 +157,33 @@ async def add_task(
     ssl_cert: bool = False, dns_query_plugin: bool = False,
     skip_scan_cdn_ip: bool = False, nuclei_scan: bool = False,
     findvhost: bool = False, web_info_hunter: bool = False,
-) -> str:
+) -> dict:
     """添加ARL扫描任务(直接参数模式)"""
     if e := _check(): return e
     body = {k: v for k, v in locals().items() if v is not None and k != "e"}
     async with httpx.AsyncClient(timeout=TIMEOUT_S) as c:
         r = await c.post(f"{ARL_URL}/api/task/", headers=_headers(), json=body)
-        return r.text
+        return r.json()
 
 
 @mcp.tool()
 async def task_by_policy(
     name: str, task_tag: str, policy_id: str,
     target: str | None = None, result_set_id: str | None = None,
-) -> str:
+) -> dict:
     """通过策略添加ARL扫描任务"""
     if e := _check(): return e
     body = {k: v for k, v in locals().items() if v is not None and k != "e"}
     async with httpx.AsyncClient(timeout=TIMEOUT_S) as c:
         r = await c.post(f"{ARL_URL}/api/task/policy/", headers=_headers(), json=body)
-        return r.text
+        return r.json()
 
 
 @mcp.tool()
 async def restart_tasks(
     task_id: list[str], del_old_task: bool | None = None,
     del_task_data: bool = False,
-) -> str:
+) -> dict:
     """按任务ID重启ARL任务"""
     if e := _check(): return e
     body: dict = {"task_id": task_id, "del_task_data": del_task_data}
@@ -192,20 +191,20 @@ async def restart_tasks(
         body["del_old_task"] = del_old_task
     async with httpx.AsyncClient(timeout=TIMEOUT_S) as c:
         r = await c.post(f"{ARL_URL}/api/task/restart/", headers=_headers(), json=body)
-        return r.text
+        return r.json()
 
 
 @mcp.tool()
 async def restart_tasks_by_status(
     status: str, limit: int = 100,
     del_old_task: bool = True, del_task_data: bool = False,
-) -> str:
+) -> dict:
     """按状态批量重启ARL任务"""
     if e := _check(): return e
     body = {"status": status, "limit": limit, "del_old_task": del_old_task, "del_task_data": del_task_data}
     async with httpx.AsyncClient(timeout=TIMEOUT_S) as c:
         r = await c.post(f"{ARL_URL}/api/task/restart/by_status/", headers=_headers(), json=body)
-        return r.text
+        return r.json()
 
 
 if __name__ == "__main__":

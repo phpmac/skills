@@ -59,8 +59,8 @@ claude mcp add --scope user chrome-devtools -- bunx chrome-devtools-mcp@latest -
 claude mcp add --transport http answeroverflow --scope user https://www.answeroverflow.com/mcp
 
 # 移除 MCP
-claude mcp remove censys
-claude mcp remove censys -s user
+claude mcp remove hunter
+claude mcp remove hunter -s user
 
 # 暂时不用
 claude mcp add cloudflare-api --transport http --scope user https://mcp.cloudflare.com/mcp
