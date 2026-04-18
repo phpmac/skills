@@ -1,6 +1,5 @@
 # vibe/代码/编码/开发规范
 
-- 禁止使用cat代替文件写入操作
 - 执行包管理器命令前必须先确认项目使用的是 npm/yarn/bun/pnpm, 禁止假设
 - Shell 命令中注意引号转义, 特别是远程执行和 fish shell 环境下
 - 我默认使用的是 fish 而不是 bash/sh/zsh
