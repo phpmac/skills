@@ -50,7 +50,13 @@
       "mcp__plugin_ave-api_ave-api__ave_hot_tokens",
       "mcp__plugin_ave-api_ave-api__ave_search",
       "mcp__plugin_ave-api_ave-api__ave_gainers",
-      "mcp__plugin_ave-api_ave-api__ave_token_info"
+      "mcp__plugin_ave-api_ave-api__ave_token_info",
+      "mcp__plugin_hacker-tools_hacker-tools__censys_search",
+      "mcp__plugin_hacker-tools_hacker-tools__dnsdumpster_query",
+      "mcp__plugin_hacker-tools_hacker-tools__fofa_search",
+      "mcp__plugin_hacker-tools_hacker-tools__hunter_search",
+      "mcp__plugin_hacker-tools_hacker-tools__virustotal_query",
+      "mcp__plugin_arl_arl__get_tasks"
     ]
   }
 }

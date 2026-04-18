@@ -1,6 +1,4 @@
-# [CLAUDE.md](http://CLAUDE.md)
-
-当前项目是 fork 自 [anthropics/skills](https://github.com/anthropics/skills) 仓库, 用于存储自己的技能库.
+一个自己的技能库, 封装了很多自己的技能.
 
 ## 参考资源
 
@@ -11,4 +9,4 @@
 ## 规则
 
 - 发布新版本意思是只需要处理单个插件的新版本
-- 注意理解偏差,如果存在理解偏差就得主动询问确认
+- 插件目录下都得有 `README.md` 文件, 用于描述插件的作用和使用方法

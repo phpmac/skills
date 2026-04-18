@@ -44,7 +44,7 @@ def _parse_error(response: httpx.Response) -> str:
 
 
 # 创建一个自定义的 httpx 客户端,忽略 SSL 证书验证
-def get_http_client(timeout: int = 30) -> httpx.AsyncClient:
+def get_http_client(timeout: int = 10) -> httpx.AsyncClient:
     """创建忽略SSL证书验证的HTTP客户端"""
     return httpx.AsyncClient(
         timeout=timeout,
@@ -97,7 +97,7 @@ async def fofa_search(
             return {"error": False, "data": response.json()}
 
     except httpx.TimeoutException:
-        return {"error": True, "errmsg": "FOFA API 请求超时 (30秒)", "data": None}
+        return {"error": True, "errmsg": "FOFA API 请求超时", "data": None}
     except Exception as e:
         return {"error": True, "errmsg": f"未知错误: {type(e).__name__}: {str(e) or repr(e)}", "data": None}
 
@@ -156,7 +156,7 @@ async def hunter_search(
             return {"error": False, "data": response.json()}
 
     except httpx.TimeoutException:
-        return {"error": True, "errmsg": "Hunter API 请求超时 (30秒)", "data": None}
+        return {"error": True, "errmsg": "Hunter API 请求超时", "data": None}
     except Exception as e:
         return {"error": True, "errmsg": f"未知错误: {type(e).__name__}: {str(e) or repr(e)}", "data": None}
 
@@ -167,7 +167,25 @@ async def censys_search(query: str) -> dict[str, Any]:
     Censys 网络空间测绘搜索引擎 (Platform API v3)
 
     参数:
-        query: CenQL 搜索语句, 例如: "host.name: example.com" 或 "services.port: 443"
+        query: CenQL 搜索语句, 例如: "host.name: example.com" 或 "host.services.port: 443"
+
+    两种搜索方式:
+        1. 全文本搜索: 直接用引号包裹关键词, 如 "example.com" 搜索所有记录
+        2. 字段查询: 使用 host./web./cert. 前缀精确匹配
+
+    常用字段:
+        Host: host.ip, host.services.port, host.services.protocol, host.location.country,
+              host.services.software.product, host.services.banner, host.autonomous_system.asn
+        Web:  web.hostname, web.endpoints.http.body, web.endpoints.http.html_title
+        Cert: cert.names, cert.parsed.subject.common_name
+
+    语法示例:
+        - "example.com"                                    (全文本搜索)
+        - host.ip="1.1.1.1"                               (精确匹配)
+        - host.services.port=443                          (端口过滤)
+        - host.services:(port="22" and protocol="SSH")   (嵌套字段)
+        - web.hostname: "example.com"                     (web属性)
+        - host.services.scan_time > "now-1d"              (相对时间)
 
     返回:
         查询结果字典
@@ -202,7 +220,7 @@ async def censys_search(query: str) -> dict[str, Any]:
             return {"error": False, "data": response.json()}
 
     except httpx.TimeoutException:
-        return {"error": True, "errmsg": "Censys API 请求超时 (30秒)", "data": None}
+        return {"error": True, "errmsg": "Censys API 请求超时", "data": None}
     except Exception as e:
         return {"error": True, "errmsg": f"未知错误: {type(e).__name__}: {str(e) or repr(e)}", "data": None}
 
@@ -277,7 +295,7 @@ async def http_request(
             return {
                 "status": 0,
                 "headers": {},
-                "body": f"错误: 请求超时 (30秒) - {target_url}",
+                "body": f"错误: 请求超时 - {target_url}",
                 "url": target_url,
                 "originalUrl": target_url,
             }
@@ -441,7 +459,7 @@ async def nvd_search(
             }
 
     except httpx.TimeoutException:
-        return {"error": True, "errmsg": "NVD API 请求超时 (30秒)", "data": None}
+        return {"error": True, "errmsg": "NVD API 请求超时", "data": None}
     except Exception as e:
         return {"error": True, "errmsg": f"未知错误: {type(e).__name__}: {str(e) or repr(e)}", "data": None}
 
@@ -518,7 +536,7 @@ async def dnsdumpster_query(domain: str) -> dict[str, Any]:
             return {"error": False, "data": response.json()}
 
     except httpx.TimeoutException:
-        return {"error": True, "errmsg": "DNSDumpster API 请求超时 (30秒)", "data": None}
+        return {"error": True, "errmsg": "DNSDumpster API 请求超时", "data": None}
     except Exception as e:
         return {"error": True, "errmsg": f"未知错误: {type(e).__name__}: {str(e) or repr(e)}", "data": None}
 
@@ -559,7 +577,7 @@ async def virustotal_query(domain: str) -> dict[str, Any]:
             return {"error": False, "data": response.json()}
 
     except httpx.TimeoutException:
-        return {"error": True, "errmsg": "VirusTotal API 请求超时 (30秒)", "data": None}
+        return {"error": True, "errmsg": "VirusTotal API 请求超时", "data": None}
     except Exception as e:
         return {"error": True, "errmsg": f"未知错误: {type(e).__name__}: {str(e) or repr(e)}", "data": None}
 
@@ -603,7 +621,7 @@ async def ip_query(
             return {"error": False, "data": response.json()}
 
     except httpx.TimeoutException:
-        return {"error": True, "errmsg": "IP API 请求超时 (30秒)", "data": None}
+        return {"error": True, "errmsg": "IP API 请求超时", "data": None}
     except Exception as e:
         return {"error": True, "errmsg": f"未知错误: {type(e).__name__}: {str(e) or repr(e)}", "data": None}
 

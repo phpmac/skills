@@ -15,9 +15,10 @@
 # 待配置
 mkdir -p ~/.claude/channels/discord && echo "DISCORD_BOT_TOKEN=xxxx" > ~/.claude/channels/discord/.env
 mkdir -p ~/.claude/channels/x-search && echo 'XAI_API_KEY=xxx' > ~/.claude/channels/x-search/.env
-mkdir -p ~/.claude/channels/arl && echo 'ARL_TOKEN=xxx' > ~/.claude/channels/arl/.env
+mkdir -p ~/.claude/arl && echo 'ARL_URL=http://45.82.121.205:5002
+ARL_TOKEN=xxx' > ~/.claude/arl/.env
 mkdir -p ~/.claude/channels/discord && rm -f ~/.claude/channels/discord/access.json && ln -s ~/Downloads/skills/plugins/my-agents/discord/access.json ~/.claude/channels/discord/access.json
-mkdir -p ~/.claude/channels/hacker-tools && echo 'FOFA_KEY=xxx
+mkdir -p ~/.claude/hacker-tools && echo 'FOFA_KEY=xxx
 SHODAN_API_KEY=xxx
 ZOOMEYE_API_KEY=xxx
 DNSDUMPSTER_API_KEY=xxx
@@ -27,7 +28,7 @@ CENSYS_TOKEN=xxx
 VULDB_API_KEY=xxx
 HUNTER_HOW_API_KEY=xxx
 CVE_API_KEY=xxx
-ST_API=xxx' > ~/.claude/channels/hacker-tools/.env
+ST_API=xxx' > ~/.claude/hacker-tools/.env
 
 bunx skills add OpenZeppelin/openzeppelin-skills
 
@@ -52,17 +53,14 @@ claude mcp add firecrawl --scope user -e FIRECRAWL_API_KEY=fc-80cea7731f86442e84
 claude mcp add --scope user context7 -- bunx -y @upstash/context7-mcp --api-key ctx7sk-86b4a09c-599d-4460-9854-d3ce26edd3e0
 claude mcp add --transport http notion --scope user https://mcp.notion.com/mcp
 claude mcp add --transport http exa --scope user https://mcp.exa.ai/mcp
-claude mcp add --transport http censys --scope user https://mcp.asm.censys.io/asm/mcp/
-claude mcp add --transport http hunter --scope user https://mcp.hunter.io
-
 
 # 暂时不用
 claude mcp add --scope user chrome-devtools -- bunx chrome-devtools-mcp@latest --autoConnect --channel=beta
 claude mcp add --transport http answeroverflow --scope user https://www.answeroverflow.com/mcp
 
 # 移除 MCP
-claude mcp remove answeroverflow
-claude mcp remove answeroverflow -s user
+claude mcp remove censys
+claude mcp remove censys -s user
 
 # 暂时不用
 claude mcp add cloudflare-api --transport http --scope user https://mcp.cloudflare.com/mcp
