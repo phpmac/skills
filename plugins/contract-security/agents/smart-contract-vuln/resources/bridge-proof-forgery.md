@@ -1,6 +1,6 @@
 # 跨链桥证明伪造漏洞
 
-**关键词**: bridge-proof-forgery, MMR-verification-bypass, merkle-proof-forgery, leaf-index-out-of-bounds, cross-chain-message-forgery, overlayRoot-replay, light-client-bypass, ISMP-proof, proof-decoupling
+**关键词**: bridge-proof-forgery, MMR-verification-bypass, merkle-proof-forgery, leaf-index-out-of-bounds, cross-chain-message-forgery, overlayRoot-replay, light-client-bypass, ISMP-proof, proof-decoupling, LayerZero-DVN-compromise, OFT-single-DVN, validator-set-compromise
 
 **来源URL**:
 - BlockSec Phalcon 根因分析: https://x.com/Phalcon_xyz/status/2043601549893738970
@@ -10,6 +10,12 @@
 - Hyperbridge 补充说明: https://x.com/hyperbridge/status/2043676789948461358
 - Routescan 链上分析: https://x.com/routescan_io/status/2043608597138129346
 - Officer_Secret 技术分析: https://x.com/officer_secret/status/2043603394300911789
+- PeckShield KelpDAO 告警: https://x.com/PeckShieldAlert/status/2045600655184740457
+- PeckShield 初次发现: https://x.com/peckshield/status/2045582425007231404
+- Crypto_Goblinz 技术分析: https://x.com/Crypto_Goblinz/status/2045627262393811228
+- QuillAudits AI 分析: https://x.com/QuillAudits_AI/status/2045634053832155293
+- D2_Finance 分析: https://x.com/D2_Finance/status/2045610222677528681
+- cryptounfolded 分析: https://x.com/cryptounfolded/status/2045584079400128607
 
 **适用范围**: 所有使用 Merkle/MMR 证明验证跨链消息的桥协议, 包括:
 - MMR (Merkle Mountain Range) 证明验证
@@ -225,6 +231,11 @@ function verifyProof(
 - 差异: 利用 proof 数组过短或过长绕过验证
 - 检测要点: 验证 `proof.length == expectedPathLength(leafIndex, leafCount)`
 
+**变种5: DVN 密钥泄露 + 单一验证者配置 (LayerZero OFT)**
+- 跨链消息验证者 (DVN) 密钥被泄露, 配合应用层仅配置 1 个 requiredDVN 的单点故障
+- 差异: proof 本身不是密码学上的伪造, 而是验证者身份被攻陷后签发了"合法"但虚假的消息; OFT Adapter 按设计运行, 无代码漏洞
+- 检测要点: LayerZero OFT getConfig() 的 requiredDVNCount 是否 >= 2; DVN 多签阈值是否足够 (3-of-5+); 是否配置 optional DVN 备份
+
 ## 审计检查清单
 
 | # | 检查项 | 风险等级 |
@@ -241,6 +252,9 @@ function verifyProof(
 | 10 | wrapped asset 合约是否有铸币上限 | 中 |
 | 11 | MMR/Merkle 库是否使用经过审计/形式化验证的实现 | 高 |
 | 12 | 是否有 pause/emergency 机制可快速阻止恶意消息执行 | 中 |
+| 13 | LayerZero OFT 跨链路径是否配置 >= 2 个独立 required DVN | 严重 |
+| 14 | DVN 多签阈值是否足够高 (建议 3-of-5+), 密钥是否冷存储 | 高 |
+| 15 | 跨链铸造/释放是否设置单笔金额上限或日累计上限 | 高 |
 
 ## 检测方法
 
@@ -314,3 +328,4 @@ function verifyProof(
 | [Ronin Bridge](https://etherscan.io/tx/0xc13a67a24c90f5b3e9c1a0d3c0f9b1c6f9e2d0a1b2c3d4e5f6a7b8c9d0e1f2) | 2022-03-29 | $625M | 验证节点私钥泄露 (非代码漏洞, 但验证模型被绕过) | [Ronin Post-mortem](https://roninblockchain.substack.com/p/ronin-bridge-post-mortem) / [Chainalysis](https://blog.chainalysis.com/reports/ronin-bridge-chainalysis/) |
 | [Wormhole](https://solscan.io/tx/2zCz2GNLSoGCVoSg1K9KsmovSVKj3t7WqiTb62BS2jAoXQLW23vmFFTFzjnTX3fRgsXcXH5qmtvTmBkJ2xbBzRHf) | 2022-02-02 | $326M | Guardian 集合更新逻辑漏洞, 攻击者绕过签名验证伪造 VAA | [rekt.news](https://rekt.news/wormhole-rekt/) / [Certus One 分析](https://medium.com/immunefi/wormhole-uninitialized-proxy-bugfix-review-9024e5ed8b5c) |
 | [BSC Token Hub](https://bscscan.com/tx/0xc5a6e0e6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4) | 2022-07-07 | $586M | 跨链消息中缺少验证, relay 函数未校验包来源 | [rekt.news](https://rekt.news/bnb-bridge-rekt/) / [Halborn 分析](https://www.halborn.com/blog/post/halborn-discovers-critical-vulnerability-in-bsc-bridge) |
+| [KelpDAO rsETH](https://etherscan.io/tx/0x1ae232da212c45f35c1525f851e4c41d529bf18af862d9ce9fd40bf709db4222) | 2026-04-18 | ~$290M | LayerZero OFT 配置 1/1 DVN + DVN 密钥泄露, 伪造 Unichain->ETH 跨链消息凭空释放 116,500 rsETH, 存入 AaveV3/CompoundV3/Euler 借出 >$236M WETH | [PeckShield](https://x.com/PeckShieldAlert/status/2045600655184740457) / [Crypto_Goblinz](https://x.com/Crypto_Goblinz/status/2045627262393811228) / [QuillAudits](https://x.com/QuillAudits_AI/status/2045634053832155293) |
