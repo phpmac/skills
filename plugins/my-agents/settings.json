@@ -40,15 +40,17 @@
     "plugin-dev@phpmac-skills": true,
     "pr-review-toolkit@phpmac-skills": true,
     "security-guidance@phpmac-skills": true,
-    "discord@claude-plugins-official": true,
     "x-search@phpmac-skills": true,
     "duckdb@phpmac-skills": true,
-    "clangd-lsp@claude-plugins-official": true,
     "ave-api@phpmac-skills": true,
     "arl@phpmac-skills": true,
     "hacker-tools@phpmac-skills": true,
     "kali@phpmac-skills": true,
-    "skill-creator@claude-plugins-official": true
+    "contract-security@phpmac-skills": true,
+    "laravel@phpmac-skills": true,
+    "discord@phpmac-skills": true,
+    "skill-creator@phpmac-skills": true,
+    "pyright-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "phpmac-skills": {

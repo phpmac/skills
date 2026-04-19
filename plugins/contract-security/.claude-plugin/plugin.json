@@ -1,0 +1,5 @@
+{
+  "name": "contract-security",
+  "version": "1.0.0",
+  "description": "智能合约安全审计插件, 包含漏洞扫描/分类研究/审计编排/测试验证"
+}

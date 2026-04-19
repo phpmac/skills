@@ -1,0 +1,5 @@
+{
+  "name": "discord",
+  "version": "1.0.0",
+  "description": "Discord 频道消息桥接, 内置访问控制. 支持配对/白名单/频道策略管理"
+}

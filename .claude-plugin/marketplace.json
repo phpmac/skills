@@ -164,6 +164,17 @@
       "category": "security"
     },
     {
+      "name": "contract-security",
+      "description": "智能合约安全审计插件, 漏洞扫描/分类研究/审计编排/测试验证/部署工具",
+      "version": "1.0.0",
+      "source": "./plugins/contract-security",
+      "author": {
+        "name": "phpmac",
+        "email": "a@vc.sb"
+      },
+      "category": "security"
+    },
+    {
       "name": "kali",
       "description": "Kali Linux远程MCP服务器, 通过SSH alias连接, 提供渗透测试工具链",
       "version": "1.0.0",
@@ -173,6 +184,39 @@
         "email": "a@vc.sb"
       },
       "category": "security"
+    },
+    {
+      "name": "laravel",
+      "description": "Laravel开发插件, 需求转技术方案/Spatie Health集成/健康管理",
+      "version": "1.0.0",
+      "source": "./plugins/laravel",
+      "author": {
+        "name": "phpmac",
+        "email": "a@vc.sb"
+      },
+      "category": "development"
+    },
+    {
+      "name": "discord",
+      "description": "Discord频道消息桥接, 内置访问控制, 支持配对/白名单/频道策略",
+      "version": "1.0.0",
+      "source": "./plugins/discord",
+      "author": {
+        "name": "phpmac",
+        "email": "a@vc.sb"
+      },
+      "category": "communication"
+    },
+    {
+      "name": "skill-creator",
+      "description": "创建/改进/测试/基准测试 Claude Code 技能",
+      "version": "1.0.0",
+      "source": "./plugins/skill-creator",
+      "author": {
+        "name": "phpmac",
+        "email": "a@vc.sb"
+      },
+      "category": "development"
     }
   ]
 }

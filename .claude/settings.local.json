@@ -60,5 +60,6 @@
       "mcp__plugin_hacker-tools_hacker-tools__ip_query",
       "mcp__plugin_arl_arl__get_domains"
     ]
-  }
+  },
+  "enabledPlugins": {}
 }

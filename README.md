@@ -59,13 +59,14 @@ claude mcp add --scope user chrome-devtools -- bunx chrome-devtools-mcp@latest -
 claude mcp add --transport http answeroverflow --scope user https://www.answeroverflow.com/mcp
 
 # 移除 MCP
-claude mcp remove answeroverflow
-claude mcp remove answeroverflow -s user
+claude mcp remove firecrawl -s user
+claude mcp remove context7 -s user
+claude mcp remove notion -s user
+claude mcp remove exa -s user
+claude mcp remove chrome-devtools -s user
 
 # 暂时不用
 claude mcp add cloudflare-api --transport http --scope user https://mcp.cloudflare.com/mcp
-claude mcp add -s user zai-mcp-server --env Z_AI_API_KEY=dbbcb136a5714cfb829e0b074a3e43aa.kfw0nT1CqXLzESs0 Z_AI_MODE=ZAI -- bunx -y "@z_ai/mcp-server"
-claude mcp add --transport http exa --scope user "https://mcp.exa.ai/mcp?tools=web_search_exa,get_code_context_exa,crawling_exa,company_research_exa,linkedin_search_exa,deep_researcher_start,deep_researcher_check&exaApiKey=b0de283e-7daf-4745-bc4d-a1e0b530c17c"
 
 
 ```
