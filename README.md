@@ -5,6 +5,10 @@
 ## claude code 安装使用方法
 
 ```bash
+
+# 安装最新稳定版
+curl -fsSL https://claude.ai/install.sh | bash -s stable
+
 # 本地安装,会自己安装插件和skills
 /plugin marketplace add ~/Downloads/skills
 
@@ -42,19 +46,6 @@ mkdir -p ~/.cursor && rm -f ~/.cursor/mcp.json && ln -s $HOME/.claude.json ~/.cu
 cd /Users/a/Downloads/skills/plugins/hookify/examples; ln -sf (pwd)/hookify.*.local.md ~/.claude/
 rm -rf ~/.claude/CLAUDE.md && ln -s ~/Downloads/skills/plugins/my-agents/CLAUDE.md ~/.claude/CLAUDE.md
 rm -rf ~/.claude/settings.json && ln -s ~/Downloads/skills/plugins/my-agents/settings.json ~/.claude/settings.json
-
-
-# 安装最新稳定版
-curl -fsSL https://claude.ai/install.sh | bash -s stable
-
-
-# 移除 MCP
-claude mcp remove firecrawl -s user
-claude mcp remove context7 -s user
-claude mcp remove notion -s user
-claude mcp remove exa -s user
-claude mcp remove chrome-devtools -s user
-claude mcp remove flare-api -s user
 
 
 ```
