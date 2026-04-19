@@ -64,18 +64,7 @@
       },
       "category": "security"
     },
-    {
-      "name": "agent-sdk-dev",
-      "description": "Claude Agent SDK 开发插件, 提供 TypeScript 和 Python SDK 应用的验证器和创建工具",
-      "version": "1.0.0",
-      "source": "./plugins/agent-sdk-dev",
-      "author": {
-        "name": "a",
-        "email": "a@vc.sb"
-      },
-      "category": "development"
-    },
-    {
+{
       "name": "my-agents",
       "description": "我的 agents 技能库",
       "version": "0.1.0",

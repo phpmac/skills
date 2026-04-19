@@ -58,7 +58,9 @@
       "mcp__plugin_hacker-tools_hacker-tools__virustotal_query",
       "mcp__plugin_arl_arl__get_tasks",
       "mcp__plugin_hacker-tools_hacker-tools__ip_query",
-      "mcp__plugin_arl_arl__get_domains"
+      "mcp__plugin_arl_arl__get_domains",
+      "mcp__plugin_my-agents_exa__web_search_exa",
+      "Bash(ls /Users/a/Downloads/skills/.claude/hookify.*)"
     ]
   },
   "enabledPlugins": {}

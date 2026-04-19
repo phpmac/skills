@@ -32,7 +32,6 @@
   "model": "GLM-5.1",
   "enabledPlugins": {
     "hookify@phpmac-skills": true,
-    "agent-sdk-dev@phpmac-skills": true,
     "commit-commands@phpmac-skills": true,
     "code-review@phpmac-skills": true,
     "feature-dev@phpmac-skills": true,
