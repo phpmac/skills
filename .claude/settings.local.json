@@ -60,7 +60,11 @@
       "mcp__plugin_hacker-tools_hacker-tools__ip_query",
       "mcp__plugin_arl_arl__get_domains",
       "mcp__plugin_my-agents_exa__web_search_exa",
-      "Bash(ls /Users/a/Downloads/skills/.claude/hookify.*)"
+      "mcp__plugin_serena_serena__activate_project",
+      "mcp__plugin_serena_serena__list_dir",
+      "mcp__plugin_serena_serena__get_current_config",
+      "mcp__plugin_serena_serena__list_memories",
+      "mcp__plugin_serena_serena__initial_instructions"
     ]
   },
   "enabledPlugins": {}
