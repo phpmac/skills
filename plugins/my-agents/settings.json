@@ -37,8 +37,6 @@
     "code-review@phpmac-skills": true,
     "feature-dev@phpmac-skills": true,
     "my-agents@phpmac-skills": true,
-    "plugin-dev@phpmac-skills": true,
-    "pr-review-toolkit@phpmac-skills": true,
     "security-guidance@phpmac-skills": true,
     "x-search@phpmac-skills": true,
     "duckdb@phpmac-skills": true,
@@ -49,8 +47,19 @@
     "contract-security@phpmac-skills": true,
     "laravel@phpmac-skills": true,
     "discord@phpmac-skills": true,
-    "skill-creator@phpmac-skills": true,
-    "pyright-lsp@claude-plugins-official": true
+    "pyright-lsp@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "php-lsp@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "csharp-lsp@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": true,
+    "elixir-ls-lsp@claude-plugins-official": true,
+    "jdtls-lsp@claude-plugins-official": true,
+    "clangd-lsp@claude-plugins-official": true,
+    "swift-lsp@claude-plugins-official": true,
+    "kotlin-lsp@claude-plugins-official": true,
+    "ruby-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "phpmac-skills": {
@@ -67,7 +76,7 @@
       }
     }
   },
-  "language": "所有回复必须使用英文标点符号,逗号/句号/分号/引号等禁止使用中文标点符号\n代码注释必须使用中文,禁止使用英文注释,注释禁止使用中文标点符号包括，。！？；：“‘【】《》、等\n禁止中途切换到英文,禁止在中文输出中混入英文句子,技术术语保持原文即可\n所有中文内容必须使用英文标点符号",
+  "language": "所有回复必须使用英文标点符号,逗号/句号/分号/引号等禁止使用中文标点符号和emoji表情符号\n代码注释必须使用中文,禁止使用英文注释,注释禁止使用中文标点符号包括，。！？；：“‘【】《》、等\n禁止中途切换到英文,禁止在中文输出中混入英文句子,技术术语保持原文即可\n所有中文内容必须使用英文标点符号",
   "syntaxHighlightingDisabled": false,
   "autoUpdatesChannel": "stable",
   "minimumVersion": "2.1.58",

@@ -1,9 +1,0 @@
-{
-  "name": "pr-review-toolkit",
-  "version": "1.0.0",
-  "description": "全面的 PR 审查 Agent 工具集, 专注于注释, 测试, 错误处理, 类型设计, 代码质量和代码简化",
-  "author": {
-    "name": "Daisy",
-    "email": "daisy@anthropic.com"
-  }
-}

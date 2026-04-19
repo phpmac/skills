@@ -54,17 +54,6 @@
       "category": "productivity"
     },
     {
-      "name": "pr-review-toolkit",
-      "description": "全面的 PR 审查 Agent 工具集, 专注于注释, 测试, 错误处理, 类型设计, 代码质量和代码简化",
-      "version": "1.0.0",
-      "source": "./plugins/pr-review-toolkit",
-      "author": {
-        "name": "a",
-        "email": "a@vc.sb"
-      },
-      "category": "productivity"
-    },
-    {
       "name": "security-guidance",
       "description": "安全提醒钩子, 在编辑文件时警告潜在的安全问题, 包括命令注入, XSS 和不安全的代码模式",
       "version": "1.0.0",
@@ -80,17 +69,6 @@
       "description": "Claude Agent SDK 开发插件, 提供 TypeScript 和 Python SDK 应用的验证器和创建工具",
       "version": "1.0.0",
       "source": "./plugins/agent-sdk-dev",
-      "author": {
-        "name": "a",
-        "email": "a@vc.sb"
-      },
-      "category": "development"
-    },
-    {
-      "name": "plugin-dev",
-      "description": "插件开发工具包, 提供 hooks, MCP 集成, 插件结构, 命令开发, Agent 开发等全面指导",
-      "version": "1.0.0",
-      "source": "./plugins/plugin-dev",
       "author": {
         "name": "a",
         "email": "a@vc.sb"
@@ -206,17 +184,6 @@
         "email": "a@vc.sb"
       },
       "category": "communication"
-    },
-    {
-      "name": "skill-creator",
-      "description": "创建/改进/测试/基准测试 Claude Code 技能",
-      "version": "1.0.0",
-      "source": "./plugins/skill-creator",
-      "author": {
-        "name": "phpmac",
-        "email": "a@vc.sb"
-      },
-      "category": "development"
     }
   ]
 }
