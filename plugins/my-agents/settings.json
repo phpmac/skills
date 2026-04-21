@@ -4,9 +4,9 @@
     "ANTHROPIC_AUTH_TOKEN": "a",
     "ANTHROPIC_BASE_URL": "http://ai:7",
     "ANTHROPIC_API_KEY": "",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "kimi-code/kimi-k2.6-code-preview",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "kimi-code",
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "MiniMax-M2.7",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "glm-5.1:cloud",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "GLM-5.1",
     "DISABLE_TELEMETRY": "1",
     "DISABLE_ERROR_REPORTING": "1",
     "DISABLE_FEEDBACK_COMMAND": "1",
@@ -29,7 +29,7 @@
     "defaultMode": "default",
     "allowEditHome": false
   },
-  "model": "opus",
+  "model": "glm-5.1:cloud",
   "enabledPlugins": {
     "hookify@phpmac-skills": true,
     "commit-commands@phpmac-skills": true,
@@ -82,7 +82,7 @@
       }
     }
   },
-  "language": "所有回复必须使用英文标点符号,逗号/句号/分号/引号等禁止使用中文标点符号和emoji表情符号\n代码注释必须使用中文,禁止使用英文注释,注释禁止使用中文标点符号包括，。！？；：“‘【】《》、等\n禁止中途切换到英文,禁止在中文输出中混入英文句子,技术术语保持原文即可\n所有中文内容必须使用英文标点符号",
+  "language": "所有回复必须使用英文标点符号,逗号/句号/分号/引号等禁止使用中文标点符号\n代码注释必须使用中文,禁止使用英文注释,注释禁止使用中文标点符号包括，。！？；：“‘【】《》、等\n禁止中途切换到英文,禁止在中文输出中混入英文句子,技术术语保持原文即可\n所有中文内容必须使用英文标点符号",
   "syntaxHighlightingDisabled": false,
   "autoUpdatesChannel": "stable",
   "minimumVersion": "2.1.58",
