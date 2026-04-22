@@ -65,7 +65,12 @@
       "mcp__plugin_serena_serena__get_current_config",
       "mcp__plugin_serena_serena__list_memories",
       "mcp__plugin_serena_serena__initial_instructions",
-      "mcp__plugin_greptile_greptile__list_code_reviews"
+      "mcp__plugin_greptile_greptile__list_code_reviews",
+      "Bash(ls:*)",
+      "mcp__plugin_my-agents_exa__web_fetch_exa",
+      "mcp__plugin_my-agents_firecrawl__firecrawl_map",
+      "mcp__plugin_my-agents_firecrawl__firecrawl_scrape",
+      "mcp__plugin_my-agents_firecrawl__firecrawl_crawl"
     ]
   },
   "enabledPlugins": {}
