@@ -1,94 +1,94 @@
 ---
-description: Create hooks to prevent unwanted behaviors from conversation analysis or explicit instructions
-argument-hint: Optional specific behavior to address
+description: 通过分析对话模式或从明确指令创建 hooks 以防止不良行为
+argument-hint: 可选, 指定要处理的具体行为
 allowed-tools: ["Read", "Write", "AskUserQuestion", "Task", "Grep", "TodoWrite", "Skill"]
 ---
 
-# Hookify - Create Hooks from Unwanted Behaviors
+# Hookify - 从不良行为创建 Hooks
 
-**FIRST: Load the hookify:writing-rules skill** using the Skill tool to understand rule file format and syntax.
+**首先: 使用 Skill 工具加载 hookify:writing-rules 技能** 以了解规则文件格式和语法.
 
-Create hook rules to prevent problematic behaviors by analyzing the conversation or from explicit user instructions.
+通过分析对话或根据用户明确指令, 创建 hook 规则以阻止问题行为.
 
-## Your Task
+## 你的任务
 
-You will help the user create hookify rules to prevent unwanted behaviors. Follow these steps:
+你将帮助用户创建 hookify 规则以防止不良行为. 按以下步骤执行:
 
-### Step 1: Gather Behavior Information
+### 步骤 1: 收集行为信息
 
-**If $ARGUMENTS is provided:**
-- User has given specific instructions: `$ARGUMENTS`
-- Still analyze recent conversation (last 10-15 user messages) for additional context
-- Look for examples of the behavior happening
+**如果提供了 $ARGUMENTS:**
+- 用户已给出明确指令: `$ARGUMENTS`
+- 仍需分析最近的对话 (最近 10-15 条用户消息) 以获取额外上下文
+- 查找该行为发生的示例
 
-**If $ARGUMENTS is empty:**
-- Launch the conversation-analyzer agent to find problematic behaviors
-- Agent will scan user prompts for frustration signals
-- Agent will return structured findings
+**如果 $ARGUMENTS 为空:**
+- 启动 conversation-analyzer Agent 以发现问题行为
+- Agent 将扫描用户提示中的不满信号
+- Agent 将返回结构化的分析结果
 
-**To analyze conversation:**
-Use the Task tool to launch conversation-analyzer agent:
+**分析对话时:**
+使用 Task 工具启动 conversation-analyzer Agent:
 ```
 {
   "subagent_type": "general-purpose",
-  "description": "Analyze conversation for unwanted behaviors",
-  "prompt": "You are analyzing a Claude Code conversation to find behaviors the user wants to prevent.
+  "description": "分析对话中的不良行为",
+  "prompt": "你正在分析一个 Claude Code 对话, 以找出用户想要阻止的行为.
 
-Read user messages in the current conversation and identify:
-1. Explicit requests to avoid something (\"don't do X\", \"stop doing Y\")
-2. Corrections or reversions (user fixing Claude's actions)
-3. Frustrated reactions (\"why did you do X?\", \"I didn't ask for that\")
-4. Repeated issues (same problem multiple times)
+阅读当前对话中的用户消息, 识别:
+1. 明确要求避免某事 (\"不要做 X\", \"停止做 Y\")
+2. 纠正或回退 (用户修复 Claude 的操作)
+3. 不满的反应 (\"你为什么要做 X?\", \"我没要求那个\")
+4. 重复出现的问题 (同一问题多次出现)
 
-For each issue found, extract:
-- What tool was used (Bash, Edit, Write, etc.)
-- Specific pattern or command
-- Why it was problematic
-- User's stated reason
+对每个发现的问题, 提取:
+- 使用了什么工具 (Bash, Edit, Write 等)
+- 具体的模式或命令
+- 为什么有问题
+- 用户说明的原因
 
-Return findings as a structured list with:
-- category: Type of issue
-- tool: Which tool was involved
-- pattern: Regex or literal pattern to match
-- context: What happened
+以结构化列表返回分析结果:
+- category: 问题类型
+- tool: 涉及的工具
+- pattern: 要匹配的正则或字面模式
+- context: 发生了什么
 - severity: high/medium/low
 
-Focus on the most recent issues (last 20-30 messages). Don't go back further unless explicitly asked."
+重点关注最近的问题 (最近 20-30 条消息). 除非用户明确要求, 否则不要追溯更早的记录."
 }
 ```
 
-### Step 2: Present Findings to User
+### 步骤 2: 向用户展示分析结果
 
-After gathering behaviors (from arguments or agent), present to user using AskUserQuestion:
+收集到行为信息后 (来自参数或 Agent), 使用 AskUserQuestion 向用户展示:
 
-**Question 1: Which behaviors to hookify?**
-- Header: "Create Rules"
+**问题 1: 要 hookify 哪些行为?**
+- 标题: "创建规则"
 - multiSelect: true
-- Options: List each detected behavior (max 4)
-  - Label: Short description (e.g., "Block rm -rf")
-  - Description: Why it's problematic
+- 选项: 列出每个检测到的行为 (最多 4 个)
+  - 标签: 简短描述 (如 "阻止 rm -rf")
+  - 描述: 为什么有问题
 
-**Question 2: For each selected behavior, ask about action:**
-- "Should this block the operation or just warn?"
-- Options:
-  - "Just warn" (action: warn - shows message but allows)
-  - "Block operation" (action: block - prevents execution)
+**问题 2: 对每个选中的行为, 询问操作方式:**
+- "应该阻止操作还是仅警告?"
+- 选项:
+  - "仅警告" (action: warn - 显示消息但允许)
+  - "阻止操作" (action: block - 阻止执行)
 
-**Question 3: Ask for example patterns:**
-- "What patterns should trigger this rule?"
-- Show detected patterns
-- Allow user to refine or add more
+**问题 3: 询问示例模式:**
+- "什么模式应该触发此规则?"
+- 显示检测到的模式
+- 允许用户完善或添加更多
 
-### Step 3: Generate Rule Files
+### 步骤 3: 生成规则文件
 
-For each confirmed behavior, create a `.claude/hookify.{rule-name}.local.md` file:
+对每个确认的行为, 创建 `.claude/hookify.{rule-name}.local.md` 文件:
 
-**Rule naming convention:**
-- Use kebab-case
-- Be descriptive: `block-dangerous-rm`, `warn-console-log`, `require-tests-before-stop`
-- Start with action verb: block, warn, prevent, require
+**规则命名规范:**
+- 使用 kebab-case
+- 要有描述性: `block-dangerous-rm`, `warn-console-log`, `require-tests-before-stop`
+- 以动作动词开头: block, warn, prevent, require
 
-**File format:**
+**文件格式:**
 ```markdown
 ---
 name: {rule-name}
@@ -98,14 +98,14 @@ pattern: {regex pattern}
 action: {warn|block}
 ---
 
-{Message to show Claude when rule triggers}
+{规则触发时显示给 Claude 的消息}
 ```
 
-**Action values:**
-- `warn`: Show message but allow operation (default)
-- `block`: Prevent operation or stop session
+**action 值:**
+- `warn`: 显示消息但允许操作 (默认)
+- `block`: 阻止操作或停止会话
 
-**For more complex rules (multiple conditions):**
+**更复杂的规则 (多条件):**
 ```markdown
 ---
 name: {rule-name}
@@ -120,71 +120,71 @@ conditions:
     pattern: API_KEY
 ---
 
-{Warning message}
+{警告消息}
 ```
 
-### Step 4: Create Files and Confirm
+### 步骤 4: 创建文件并确认
 
-**IMPORTANT**: Rule files must be created in the current working directory's `.claude/` folder, NOT the plugin directory.
+**重要**: 规则文件必须创建在当前工作目录的 `.claude/` 文件夹中, 而不是插件目录中.
 
-Use the current working directory (where Claude Code was started) as the base path.
+使用当前工作目录 (Claude Code 启动位置) 作为基础路径.
 
-1. Check if `.claude/` directory exists in current working directory
-   - If not, create it first with: `mkdir -p .claude`
+1. 检查当前工作目录中是否存在 `.claude/` 目录
+   - 如果不存在, 先创建: `mkdir -p .claude`
 
-2. Use Write tool to create each `.claude/hookify.{name}.local.md` file
-   - Use relative path from current working directory: `.claude/hookify.{name}.local.md`
-   - The path should resolve to the project's .claude directory, not the plugin's
+2. 使用 Write 工具创建每个 `.claude/hookify.{name}.local.md` 文件
+   - 使用相对于当前工作目录的路径: `.claude/hookify.{name}.local.md`
+   - 路径应解析到项目的 .claude 目录, 而不是插件的
 
-3. Show user what was created:
+3. 向用户展示创建的内容:
    ```
-   Created 3 hookify rules:
+   已创建 3 条 hookify 规则:
    - .claude/hookify.dangerous-rm.local.md
    - .claude/hookify.console-log.local.md
    - .claude/hookify.sensitive-files.local.md
 
-   These rules will trigger on:
-   - dangerous-rm: Bash commands matching "rm -rf"
-   - console-log: Edits adding console.log statements
-   - sensitive-files: Edits to .env or credentials files
+   这些规则将在以下情况触发:
+   - dangerous-rm: 匹配 "rm -rf" 的 Bash 命令
+   - console-log: 添加 console.log 语句的编辑操作
+   - sensitive-files: 对 .env 或凭据文件的编辑
    ```
 
-4. Verify files were created in the correct location by listing them
+4. 通过列出文件来确认它们创建在正确位置
 
-5. Inform user: **"Rules are active immediately - no restart needed!"**
+5. 告知用户: **"规则立即生效 - 无需重启!"**
 
-   The hookify hooks are already loaded and will read your new rules on the next tool use.
+   hookify hooks 已经加载, 会在下一次工具调用时读取你的新规则.
 
-## Event Types Reference
+## 事件类型参考
 
-- **bash**: Matches Bash tool commands
-- **file**: Matches Edit, Write, MultiEdit tools
-- **stop**: Matches when agent wants to stop (use for completion checks)
-- **prompt**: Matches when user submits prompts
-- **all**: Matches all events
+- **bash**: 匹配 Bash 工具命令
+- **file**: 匹配 Edit, Write, MultiEdit 工具
+- **stop**: 匹配 Agent 想要停止时 (用于完成检查)
+- **prompt**: 匹配用户提交提示时
+- **all**: 匹配所有事件
 
-## Pattern Writing Tips
+## 模式编写技巧
 
-**Bash patterns:**
-- Match dangerous commands: `rm\s+-rf|chmod\s+777|dd\s+if=`
-- Match specific tools: `npm\s+install\s+|pip\s+install`
+**Bash 模式:**
+- 匹配危险命令: `rm\s+-rf|chmod\s+777|dd\s+if=`
+- 匹配特定工具: `npm\s+install\s+|pip\s+install`
 
-**File patterns:**
-- Match code patterns: `console\.log\(|eval\(|innerHTML\s*=`
-- Match file paths: `\.env$|\.git/|node_modules/`
+**文件模式:**
+- 匹配代码模式: `console\.log\(|eval\(|innerHTML\s*=`
+- 匹配文件路径: `\.env$|\.git/|node_modules/`
 
-**Stop patterns:**
-- Check for missing steps: (check transcript or completion criteria)
+**Stop 模式:**
+- 检查缺失步骤: (检查会话记录或完成标准)
 
-## Example Workflow
+## 示例工作流
 
-**User says**: "/hookify Don't use rm -rf without asking me first"
+**用户说**: "/hookify 使用 rm -rf 前先问我"
 
-**Your response**:
-1. Analyze: User wants to prevent rm -rf commands
-2. Ask: "Should I block this command or just warn you?"
-3. User selects: "Just warn"
-4. Create `.claude/hookify.dangerous-rm.local.md`:
+**你的响应**:
+1. 分析: 用户想要阻止 rm -rf 命令
+2. 询问: "我应该阻止这个命令还是仅警告你?"
+3. 用户选择: "仅警告"
+4. 创建 `.claude/hookify.dangerous-rm.local.md`:
    ```markdown
    ---
    name: warn-dangerous-rm
@@ -193,39 +193,39 @@ Use the current working directory (where Claude Code was started) as the base pa
    pattern: rm\s+-rf
    ---
 
-   ⚠️ **Dangerous rm command detected**
+   **检测到危险的 rm 命令**
 
-   You requested to be warned before using rm -rf.
-   Please verify the path is correct.
+   你要求在使用 rm -rf 时收到警告.
+   请确认路径是否正确.
    ```
-5. Confirm: "Created hookify rule. It's active immediately - try triggering it!"
+5. 确认: "已创建 hookify 规则. 立即生效 - 试试触发它!"
 
-## Important Notes
+## 重要说明
 
-- **No restart needed**: Rules take effect immediately on the next tool use
-- **File location**: Create files in project's `.claude/` directory (current working directory), NOT the plugin's .claude/
-- **Regex syntax**: Use Python regex syntax (raw strings, no need to escape in YAML)
-- **Action types**: Rules can `warn` (default) or `block` operations
-- **Testing**: Test rules immediately after creating them
+- **无需重启**: 规则在下一次工具调用时立即生效
+- **文件位置**: 在项目的 `.claude/` 目录中创建文件 (当前工作目录), 而不是插件的 .claude/
+- **正则语法**: 使用 Python 正则表达式语法 (YAML 中使用原始字符串, 无需转义)
+- **操作类型**: 规则可以 `warn` (默认) 或 `block` 操作
+- **测试**: 创建规则后立即测试
 
-## Troubleshooting
+## 故障排除
 
-**If rule file creation fails:**
-1. Check current working directory with pwd
-2. Ensure `.claude/` directory exists (create with mkdir if needed)
-3. Use absolute path if needed: `{cwd}/.claude/hookify.{name}.local.md`
-4. Verify file was created with Glob or ls
+**如果规则文件创建失败:**
+1. 使用 pwd 检查当前工作目录
+2. 确保 `.claude/` 目录存在 (如需要则用 mkdir 创建)
+3. 必要时使用绝对路径: `{cwd}/.claude/hookify.{name}.local.md`
+4. 用 Glob 或 ls 验证文件是否已创建
 
-**If rule doesn't trigger after creation:**
-1. Verify file is in project `.claude/` not plugin `.claude/`
-2. Check file with Read tool to ensure pattern is correct
-3. Test pattern with: `python3 -c "import re; print(re.search(r'pattern', 'test text'))"`
-4. Verify `enabled: true` in frontmatter
-5. Remember: Rules work immediately, no restart needed
+**如果规则创建后不触发:**
+1. 确认文件在项目 `.claude/` 中而不是插件 `.claude/` 中
+2. 用 Read 工具检查文件确保模式正确
+3. 测试模式: `python3 -c "import re; print(re.search(r'pattern', 'test text'))"`
+4. 确认 frontmatter 中 `enabled: true`
+5. 注意: 规则立即生效, 无需重启
 
-**If blocking seems too strict:**
-1. Change `action: block` to `action: warn` in the rule file
-2. Or adjust the pattern to be more specific
-3. Changes take effect on next tool use
+**如果阻止过于严格:**
+1. 在规则文件中将 `action: block` 改为 `action: warn`
+2. 或调整模式使其更具体
+3. 更改在下一次工具调用时生效
 
-Use TodoWrite to track your progress through the steps.
+使用 TodoWrite 跟踪你的步骤进度.

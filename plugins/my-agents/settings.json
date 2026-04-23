@@ -29,7 +29,7 @@
     "defaultMode": "default",
     "allowEditHome": false
   },
-  "model": "opus",
+  "model": "mimo-v2.5-pro",
   "enabledPlugins": {
     "hookify@phpmac-skills": true,
     "commit-commands@phpmac-skills": true,
@@ -88,6 +88,5 @@
   "minimumVersion": "2.1.58",
   "autoMemoryEnabled": true,
   "autoDreamEnabled": true,
-  "skipDangerousModePermissionPrompt": true,
-  "effortLevel": "auto"
+  "skipDangerousModePermissionPrompt": true
 }

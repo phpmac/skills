@@ -59,6 +59,8 @@ allowed-tools: Read, Write, Glob, Grep, AskUserQuestion
 
 ## 载体与存放
 
+所有路径相对于当前项目根目录
+
 - **Rule** (`.claude/rules/<name>.md`): 纠正/踩坑/检查项, 简洁条目式, 可选 `paths` 限定范围
 - **Skill** (`.claude/skills/<name>/SKILL.md`): 可复用工作流, frontmatter (name + description) + 方法论 (< 500 行)
 - **CLAUDE.md** (追加, 不删除): 全局行为规范, `##` 分段, 与现有风格一致
