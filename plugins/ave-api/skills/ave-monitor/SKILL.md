@@ -1,6 +1,11 @@
 ---
 name: ave-monitor
 description: Ave.ai 新收录代币定时监控与自动侦查. 当需要定时监控新币/批量收集代币官网/自动信息侦查, 或用户提到新币监控/定时收集/ave监控时使用.
+allowed-tools:
+  - Bash(ls)
+  - Write
+  - Glob
+  - Grep
 ---
 
 # Ave 新币定时监控
