@@ -1,35 +1,27 @@
 {
   "mcpServers": {
     "firecrawl": {
-      "command": "bunx",
-      "args": [
-        "-y",
-        "firecrawl-mcp"
-      ],
-      "env": {
-        "FIRECRAWL_API_KEY": "fc-80cea7731f86442e8471cab13deca196"
-      }
+      "type": "http",
+      "url": "https://mcp.firecrawl.dev/fc-80cea7731f86442e8471cab13deca196/v2/mcp"
     },
     "context7": {
-      "command": "bunx",
-      "args": [
-        "-y",
-        "@upstash/context7-mcp",
-        "--api-key",
-        "ctx7sk-86b4a09c-599d-4460-9854-d3ce26edd3e0"
-      ]
+      "type": "http",
+      "url": "https://mcp.context7.com/mcp",
+      "headers": {
+        "CONTEXT7_API_KEY": "ctx7sk-86b4a09c-599d-4460-9854-d3ce26edd3e0"
+      }
     },
     "notion": {
       "type": "http",
       "url": "https://mcp.notion.com/mcp"
     },
-    "etherscan": {
-      "type": "http",
-      "url": "https://mcp.etherscan.io/mcp"
-    },
     "exa": {
       "type": "http",
       "url": "https://mcp.exa.ai/mcp"
+    },
+    "cloudflare-api": {
+      "type": "http",
+      "url": "https://mcp.cloudflare.com/mcp"
     },
     "chrome-devtools": {
       "command": "bunx",
@@ -37,14 +29,6 @@
         "chrome-devtools-mcp@latest",
         "--autoConnect"
       ]
-    },
-    "cloudflare-api": {
-      "type": "http",
-      "url": "https://mcp.cloudflare.com/mcp"
-    },
-    "markitdown": {
-      "command": "uvx",
-      "args": ["markitdown-mcp"]
     }
   }
 }
