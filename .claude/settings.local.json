@@ -70,7 +70,15 @@
       "mcp__plugin_my-agents_exa__web_fetch_exa",
       "mcp__plugin_my-agents_firecrawl__firecrawl_map",
       "mcp__plugin_my-agents_firecrawl__firecrawl_scrape",
-      "mcp__plugin_my-agents_firecrawl__firecrawl_crawl"
+      "mcp__plugin_my-agents_firecrawl__firecrawl_crawl",
+      "mcp__plugin_my-agents_firecrawl__firecrawl_search",
+      "mcp__plugin_my-agents_context7__resolve-library-id",
+      "mcp__plugin_my-agents_context7__query-docs",
+      "mcp__plugin_my-agents_chrome-devtools__list_pages",
+      "mcp__plugin_my-agents_chrome-devtools__take_screenshot",
+      "mcp__plugin_my-agents_chrome-devtools__take_snapshot",
+      "mcp__plugin_my-agents_chrome-devtools__select_page",
+      "mcp__plugin_my-agents_markitdown__convert_to_markdown"
     ]
   },
   "enabledPlugins": {}

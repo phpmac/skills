@@ -41,6 +41,10 @@
     "cloudflare-api": {
       "type": "http",
       "url": "https://mcp.cloudflare.com/mcp"
+    },
+    "markitdown": {
+      "command": "uvx",
+      "args": ["markitdown-mcp"]
     }
   }
 }
