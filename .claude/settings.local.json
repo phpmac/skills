@@ -12,7 +12,9 @@
       "mcp__plugin_my-agents_chrome-devtools__evaluate_script",
       "mcp__plugin_my-agents_chrome-devtools__navigate_page",
       "mcp__plugin_my-agents_chrome-devtools__take_screenshot",
-      "mcp__plugin_ave-api_ave-api__ave_get_captcha"
+      "mcp__plugin_ave-api_ave-api__ave_get_captcha",
+      "mcp__plugin_my-agents_firecrawl__firecrawl_scrape",
+      "mcp__plugin_x-search_x-search__x_web_search"
     ]
   },
   "enabledPlugins": {}

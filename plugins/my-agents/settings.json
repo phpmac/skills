@@ -27,9 +27,9 @@
     "defaultMode": "default",
     "allowEditHome": false
   },
-  "model": "opus",
+  "model": "deepseek-v4-pro",
   "enabledPlugins": {
-    "hookify@phpmac-skills": true,
+    "hookify@phpmac-skills": false,
     "commit-commands@phpmac-skills": true,
     "code-review@phpmac-skills": true,
     "feature-dev@phpmac-skills": true,
