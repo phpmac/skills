@@ -1,7 +1,7 @@
 {
   "name": "ave-api",
-  "description": "Ave.ai MCP Server - 代币收录数据查询与监控, 支持新收录/详情/热门/涨幅/搜索/监控",
-  "version": "1.0.7",
+  "description": "Ave.ai MCP Server - 代币收录数据查询与监控, 支持新收录/详情/热门/涨幅/搜索/监控/验证码认证",
+  "version": "1.0.9",
   "keywords": [
     "ave",
     "token",

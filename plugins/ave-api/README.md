@@ -12,6 +12,8 @@ Ave.ai 代币数据查询 MCP 插件, 支持新收录代币/详情/热门/涨幅
 | `ave_gainers` | 涨幅榜 |
 | `ave_search` | 代币搜索 (名称/符号/合约地址) |
 | `ave_contract_info` | 代币合约安全审计信息 |
+| `ave_get_captcha` | 获取验证码图片 (自动打开, 用户识别后提交答案) |
+| `ave_verify_captcha` | 提交验证码答案, 获取 ave_token |
 
 ## 环境变量配置
 
@@ -20,6 +22,13 @@ Ave.ai 代币数据查询 MCP 插件, 支持新收录代币/详情/热门/涨幅
 ```bash
 AVE_TOKEN=xxx
 ```
+
+## 认证流程
+
+1. 调用 `ave_get_captcha` 获取验证码图片 (自动弹出)
+2. 识别图片中的数学答案
+3. 调用 `ave_verify_captcha` 提交答案获取 token
+4. 手动更新 `~/.claude/ave/.env` 中的 `AVE_TOKEN`
 
 ## 支持的链
 

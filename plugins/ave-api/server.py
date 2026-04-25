@@ -4,6 +4,7 @@
 import base64
 import json
 import os
+import subprocess
 import urllib.parse
 from pathlib import Path
 
@@ -63,6 +64,20 @@ def _decode(data: dict):
 
 
 # ── HTTP 请求 ──────────────────────────────────────────
+
+
+def _request_raw(path: str, params: dict | None = None) -> dict:
+    """发送 GET 请求 (不要求 token)"""
+    url = f"{BASE_URL}{path}"
+    headers = {"lang": "cn", "Content-Type": "application/json"}
+    if AVE_TOKEN:
+        headers["X-Auth"] = AVE_TOKEN
+    try:
+        with httpx.Client(timeout=TIMEOUT_S) as client:
+            resp = client.get(url, headers=headers, params=params)
+        return resp.json()
+    except Exception as e:
+        return {"status": "error", "message": f"请求失败: {e}"}
 
 
 def _request(path: str, params: dict | None = None) -> dict | list:
@@ -271,6 +286,54 @@ def ave_contract_info(token_id: str) -> dict:
     if isinstance(data, dict) and data.get("status") == "error":
         return data
     return {"status": "ok", "data": data}
+
+
+@mcp.tool()
+def ave_get_captcha() -> dict:
+    """获取验证码图片. 返回图片路径和 captcha id, 用户识别后调用 ave_verify_captcha 提交答案."""
+    raw = _request_raw("/v1/captcha/getCaptcha")
+    if isinstance(raw, dict) and raw.get("status") == "error":
+        return raw
+    result = _decode(raw)
+    if not isinstance(result, dict) or "id" not in result:
+        return {"status": "error", "message": "获取验证码失败"}
+    captcha_id = result["id"]
+    img_data = result.get("image", "")
+    if img_data.startswith("data:image/png;base64,"):
+        img_bytes = base64.b64decode(img_data.split(",")[1])
+        img_path = f"/tmp/ave_captcha_{captcha_id[:8]}.png"
+        Path(img_path).write_bytes(img_bytes)
+        subprocess.run(["open", img_path], check=False)  # 自动打开图片供用户查看
+    else:
+        return {"status": "error", "message": "验证码图片格式异常"}
+    return {"status": "ok", "captcha_id": captcha_id, "image_path": img_path}
+
+
+@mcp.tool()
+def ave_verify_captcha(captcha_id: str, answer: str) -> dict:
+    """提交验证码答案, 获取 ave_token.
+
+    参数:
+        captcha_id: 从 ave_get_captcha 返回的 captcha_id
+        answer: 验证码图片中的数学答案
+
+    返回 ave_token 字符串, 用户需手动更新到 ~/.claude/ave/.env
+    """
+    with httpx.Client(timeout=TIMEOUT_S) as client:
+        resp = client.post(
+            f"{BASE_URL}/v1/captcha/verifyCaptcha",
+            headers={"lang": "cn", "Content-Type": "application/json"},
+            json={"id": captcha_id, "value": answer},
+        )
+    result = resp.json()
+    decoded = _decode(result)
+    if not isinstance(decoded, dict) or not decoded.get("is_verified"):
+        return {"status": "error", "message": "验证失败", "raw": decoded}
+    return {
+        "status": "ok",
+        "ave_token": decoded["ave_token"],
+        "hint": "请手动更新 ~/.claude/ave/.env 中的 AVE_TOKEN",
+    }
 
 
 # ── 入口 ──────────────────────────────────────────────

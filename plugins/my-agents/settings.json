@@ -11,6 +11,7 @@
     "DISABLE_ERROR_REPORTING": "1",
     "DISABLE_FEEDBACK_COMMAND": "1",
     "DISABLE_AUTOUPDATER": "1",
+    "CLAUDE_CODE_DISABLE_1M_CONTEXT": "1",
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
   },
@@ -18,10 +19,6 @@
     "commit": "",
     "pr": ""
   },
-  "disallowedTools": [
-    "WebFetch",
-    "WebSearch"
-  ],
   "permissions": {
     "allow": [],
     "deny": [
@@ -30,6 +27,7 @@
     "defaultMode": "default",
     "allowEditHome": false
   },
+  "model": "opus",
   "enabledPlugins": {
     "hookify@phpmac-skills": true,
     "commit-commands@phpmac-skills": true,
@@ -89,5 +87,8 @@
   "autoMemoryEnabled": true,
   "autoDreamEnabled": true,
   "skipDangerousModePermissionPrompt": true,
-  "model": "opus[1m]"
+  "disallowedTools": [
+    "WebFetch",
+    "WebSearch"
+  ]
 }

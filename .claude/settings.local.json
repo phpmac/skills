@@ -4,7 +4,15 @@
       "mcp__firecrawl__firecrawl_search",
       "mcp__firecrawl__firecrawl_scrape",
       "mcp__plugin_x-search_x-search__x_search",
-      "mcp__plugin_my-agents_exa__web_search_exa"
+      "mcp__plugin_my-agents_exa__web_search_exa",
+      "mcp__plugin_my-agents_chrome-devtools__list_pages",
+      "mcp__plugin_my-agents_chrome-devtools__select_page",
+      "mcp__plugin_my-agents_chrome-devtools__list_network_requests",
+      "mcp__plugin_my-agents_chrome-devtools__get_network_request",
+      "mcp__plugin_my-agents_chrome-devtools__evaluate_script",
+      "mcp__plugin_my-agents_chrome-devtools__navigate_page",
+      "mcp__plugin_my-agents_chrome-devtools__take_screenshot",
+      "mcp__plugin_ave-api_ave-api__ave_get_captcha"
     ]
   },
   "enabledPlugins": {}
