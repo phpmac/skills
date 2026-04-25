@@ -22,7 +22,9 @@
   "permissions": {
     "allow": [],
     "deny": [
-      "Read(./.env)"
+      "Read(./.env)",
+      "WebFetch",
+      "WebSearch"
     ],
     "defaultMode": "default",
     "allowEditHome": false
@@ -86,9 +88,5 @@
   "minimumVersion": "2.1.58",
   "autoMemoryEnabled": true,
   "autoDreamEnabled": true,
-  "skipDangerousModePermissionPrompt": true,
-  "disallowedTools": [
-    "WebFetch",
-    "WebSearch"
-  ]
+  "skipDangerousModePermissionPrompt": true
 }
