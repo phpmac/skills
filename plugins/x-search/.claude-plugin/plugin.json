@@ -1,7 +1,7 @@
 {
   "name": "x-search",
   "description": "X (Twitter) search via xAI API - search tweets, find posts by topic or user",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "keywords": [
     "x",
     "twitter",

@@ -1,5 +1,5 @@
 {
   "name": "hacker-tools",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "资产侦查和渗透工具集 MCP, 从 ~/.claude/hacker-tools/.env 读取配置"
 }

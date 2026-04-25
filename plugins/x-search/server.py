@@ -13,7 +13,7 @@ from mcp.server.fastmcp import FastMCP
 
 # ── 常量 ──────────────────────────────────────────────
 API_URL = "https://api.x.ai/v1/responses"
-MODEL = "grok-4.20-reasoning"
+MODEL = "grok-4.20-0309-reasoning"  # 默认值, _init_config() 可覆盖
 TIMEOUT_S = 120
 MAX_HANDLES = 10
 MAX_DOMAINS = 5
@@ -184,6 +184,26 @@ def _format_response(data: dict, query: str, tool_type: str = "x_search") -> dic
         result["searches"] = tool_details.get("x_search_calls", 0)
 
     return result
+
+
+def _init_config():
+    """从环境变量或 .env 文件初始化配置"""
+    global MODEL
+    env_path = Path.home() / ".claude" / "channels" / "x-search" / ".env"
+    if env_path.exists():
+        for line in env_path.read_text().splitlines():
+            line = line.strip()
+            if line.startswith("XAI_MODEL="):
+                val = line.split("=", 1)[1].strip().strip("'\"")
+                if val:
+                    MODEL = val
+    # 环境变量优先于 .env 文件
+    env_val = os.environ.get("XAI_MODEL", "").strip()
+    if env_val:
+        MODEL = env_val
+
+
+_init_config()
 
 
 def _get_api_key() -> str | None:
